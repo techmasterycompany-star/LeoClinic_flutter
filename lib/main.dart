@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/core/utils/navbar.dart';
+import 'package:leoclinic_flutter/features/patient/business_logic/pages/patientinfo.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      home: Scaffold(body: PatientInfo(), bottomNavigationBar: PatientNavBar()),
     );
   }
 }
