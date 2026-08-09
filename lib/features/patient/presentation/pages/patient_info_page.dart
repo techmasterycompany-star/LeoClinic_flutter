@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/features/patient/presentation/widgets/patient_heath_overview.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/patient_info_app_bar.dart';
 
 /*
@@ -32,7 +33,29 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
 
         */
         // TODO: Add health overview
-        SliverToBoxAdapter(child: Container(height: 300, color: Colors.blue)),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 11),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: Text(
+                  'Health Overview',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+              ),
+
+              GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                children: List.generate(4, (index) {
+                  return HealthOverviewCard(icon: Icons.local_activity);
+                }),
+              ),
+            ]),
+          ),
+        ),
 
         // TODO: Add clinical alerts
         SliverToBoxAdapter(child: Container(height: 200, color: Colors.yellow)),
