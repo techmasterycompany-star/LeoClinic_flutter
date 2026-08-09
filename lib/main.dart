@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/core/theme/app_theme.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin_appointment.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: AppTheme().lightTheme,
+      themeMode: ThemeMode.light,
+      home: AdminAppointment(),
     );
   }
 }
