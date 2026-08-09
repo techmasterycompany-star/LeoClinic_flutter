@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor-dashborad-home.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Doctor-final-navebar.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/DoctorBottomNavBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: Doctorfinalnavebar(),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
     );
   }
 }
