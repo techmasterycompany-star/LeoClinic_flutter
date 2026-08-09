@@ -12,6 +12,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'IBMPlexSans', 
+        useMaterial3: true,
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(body: PatientInfo(), bottomNavigationBar: PatientNavBar()),
     );

@@ -49,41 +49,16 @@ class _PatientInfoState extends State<PatientInfo> {
   }
 }
 
-
 SliverAppBar _buildPatientInfo() {
   return SliverAppBar(
     backgroundColor: Colors.transparent,
     clipBehavior: Clip.antiAlias,
     pinned: true,
-    expandedHeight: 430,
-    elevation: 8,
+    expandedHeight: 290,
     shadowColor: Colors.black,
 
     // I want the user greetings to appear when the user scrolls down, and the patient profile card to appear when the user scrolls up
-    title: Container(
-      margin: const EdgeInsets.only(top: 16.0, bottom: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Good Morning',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-            ),
-          ),
-          Text(
-            'Asser Mohammed',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
-    ),
+    title: greetUser(),
 
     // This is background ui for the Navbar it will be a gradient with a shadow and a rounded bottom border
     flexibleSpace: Container(
@@ -94,63 +69,132 @@ SliverAppBar _buildPatientInfo() {
           end: Alignment.bottomCenter,
         ),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black,
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
+          BoxShadow(color: Colors.black, blurRadius: 10, offset: Offset(0, 5)),
         ],
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(30),
-          bottomRight: Radius.circular(30),
+          bottomLeft: Radius.circular(24),
+          bottomRight: Radius.circular(24),
         ),
       ),
-
       // I will add the content in here
       // TODO
       child: FlexibleSpaceBar(
-        background: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [SizedBox(height: 100), _buildPatientProfileCard()],
+        background: Container(
+          margin: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _buildPatientProfileCard(),
+              SizedBox(height: 10),
+              _buildAppointmentCard(),
+            ],
+          ),
         ),
       ),
     ),
   );
 }
 
+Widget greetUser() {
+  return Container(
+    width: double.infinity,
+    padding: const EdgeInsets.all(8),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          // TODO: Implement the greeting with time of the day
+          'Good Morning',
+          style: TextStyle(fontWeight: FontWeight.w400, color: Colors.white),
+        ),
+
+        Text(
+          // TODO: Implement the patient name
+          'Asser Mohammed',
+          style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget _buildPatientProfileCard() {
   return Container(
-    color: Colors.white,
-    margin: const EdgeInsets.all(30),
-    child: Padding(
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        mainAxisAlignment: .start,
-        children: [
-          Icon(Icons.image),
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
 
-          SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: .start,
+    child: ListTile(
+      leading: const CircleAvatar(radius: 21, child: Icon(Icons.person)),
+      title: Text(
+        // TODO: Implement the patient name
+        'Asser Mohammed Youssef',
+        style: TextStyle(fontWeight: FontWeight.w700),
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
               Text(
-                'Asser Mohammed Youssef',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                // TODO: Implement the real ID
+                'ID: PT-002',
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
               ),
-              SizedBox(height: 8),
+              SizedBox(width: 4),
               Text(
-                'ID: 123456789',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                // TODO: implement Blood type
+                'Blood: B+',
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
               ),
-              SizedBox(height: 8),
+              SizedBox(width: 4),
               Text(
-                'Blood Type: O+',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                // TODO: implement Age
+                'Age: 20',
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
               ),
             ],
           ),
+          SizedBox(height: 4),
+          Text(
+            // TODO: Implement the status
+            'Type 2 Diabetes — Under care',
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+          ),
         ],
       ),
+      // The trailing didn't work with me, if you can make it
+      trailing: const Icon(
+        Icons.keyboard_arrow_right,
+        size: 24,
+        color: Colors.black,
+      ),
+
+      onTap: () {},
+    ),
+  );
+}
+
+Widget _buildAppointmentCard() {
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30), // Pill-shaped rounded corners
+    ),
+    child: ListTile(
+      selected: true,
+      tileColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      leading: const Icon(Icons.calendar_today, size: 20),
+      title: const Text(
+        // TODO: Impelement the next appointment
+        'Next appointment: Aug 12, 2026 · 10:30 Am',
+        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+      ),
+      onTap: () {},
     ),
   );
 }
