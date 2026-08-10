@@ -1,0 +1,137 @@
+import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/core/constants/app_colors.dart';
+import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/appointment_booking_card/status_card/status_of_cards.dart';
+
+class ConfirmedAppointmentCard extends StatelessWidget {
+  final AppointmentModel appointment;
+
+  const ConfirmedAppointmentCard({
+    super.key,
+    required this.appointment,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final statusStyle = StatusOfCards(appointment.status);
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withValues(alpha: 0.5),
+            spreadRadius: 1,
+            blurRadius: 2,
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const CircleAvatar(radius: 24),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      appointment.doctorName,
+                      style: AppTextStyle.textstyle14
+                          .copyWith(color: AppColors.surfaceDark),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      appointment.specialty,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: statusStyle.cardcolor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  statusStyle.label,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: statusStyle.textColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Text(
+            "Patient Name",
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey.shade500,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            appointment.patientName ?? " ",
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 14),
+          Row(
+            children: [
+              _buildInfoItem(Icons.calendar_today_outlined, appointment.date),
+              _buildDivider(),
+              _buildInfoItem(Icons.access_time, appointment.time),
+              _buildDivider(),
+              _buildInfoItem(Icons.videocam_outlined, appointment.location),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoItem(IconData icon, String text) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 16, color: Colors.grey.shade500),
+        const SizedBox(width: 6),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey.shade700,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDivider() {
+    return Container(
+      height: 20,
+      width: 2,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      color: Colors.grey.shade300,
+    );
+  }
+}
