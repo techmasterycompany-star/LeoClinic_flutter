@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
 import 'package:leoclinic_flutter/features/admin/presentation/widgets/appbar.dart';
 
 import '../widgets/alert.dart';
 import '../widgets/doctorperformance.dart';
-import '../widgets/listview.dart';
 import '../widgets/health_overview.dart';
 import '../widgets/today_appointments.dart';
 
@@ -71,7 +71,7 @@ class AdminHomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              MyListView(
+              AppListView(
                 card: TodayAppointmentCard(
                   patientName: 'Emily Carter',
                   patientNumber: '01234567890',
@@ -92,7 +92,7 @@ class AdminHomePage extends StatelessWidget {
                   TextButton(onPressed: () {}, child: Text('View All')),
                 ],
               ),
-              MyListView(
+              AppListView(
                 card: DoctorPerformanceCard(
                   doctorName: 'Sara',
                   speciality: 'Cardiologist',
@@ -112,7 +112,7 @@ class AdminHomePage extends StatelessWidget {
                   TextButton(onPressed: () {}, child: Text('View All')),
                 ],
               ),
-              MyListView(
+              AppListView(
                 card: AlertsCard(
                   title: 'Low inventory',
                   subTitle: '3 medicines are below minimum stock.',

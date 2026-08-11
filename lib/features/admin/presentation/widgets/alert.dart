@@ -19,8 +19,11 @@ class AlertsCard extends StatelessWidget {
       ),
       child: ListTile(
         leading: Icon(Icons.warning_amber_rounded, color: AppColors.danger),
-        title: Text(title, style: AppTextStyle.textstyle14.copyWith(color: AppColors.danger),),
-        subtitle: Text(subTitle, style: AppTextStyle.secondarytext,),
+        title: Text(
+          title,
+          style: AppTextStyle.textstyle14.copyWith(color: AppColors.danger),
+        ),
+        subtitle: Text(subTitle, style: AppTextStyle.secondarytext),
       ),
     );
   }

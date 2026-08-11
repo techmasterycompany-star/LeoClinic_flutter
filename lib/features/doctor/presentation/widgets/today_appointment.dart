@@ -18,7 +18,8 @@ class TodayAppointmentCard extends StatelessWidget {
     required this.patientGender,
     required this.appointmentTime,
     required this.appointmentDate,
-    this.patientImage, required this.location,
+    this.patientImage,
+    required this.location,
   });
 
   @override
@@ -36,12 +37,9 @@ class TodayAppointmentCard extends StatelessWidget {
         leading: CircleAvatar(
           radius: 30,
           // TODO: replace with patient image
-          child: Icon(Icons.person, color: Colors.white),
+          child: Icon(Icons.person, color: AppColors.background),
         ),
-        title: Text(
-          patientName,
-          style: AppTextStyle.textstyle14,
-        ),
+        title: Text(patientName, style: AppTextStyle.textstyle14),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_shadow.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/textbutton.dart';
+import 'package:leoclinic_flutter/core/widgets/app_pill_button.dart';
 
 class NextAppointmentCard extends StatelessWidget {
   final String patientName;
@@ -40,31 +40,33 @@ class NextAppointmentCard extends StatelessWidget {
         leading: CircleAvatar(
           radius: 30,
           // TODO: replace with patient image
-          child: Icon(Icons.person, color: Colors.white),
+          child: Icon(Icons.person, color: AppColors.background),
         ),
         title: Text(
           patientName,
-          style: AppTextStyle.textstyle14.copyWith(color: Colors.white),
+          style: AppTextStyle.textstyle14.copyWith(color: AppColors.background),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '$patientAge Years, $patientGender',
-              style: AppTextStyle.textstyle10.copyWith(color: Colors.white),
+              style: AppTextStyle.textstyle10.copyWith(
+                color: AppColors.background,
+              ),
             ),
             SizedBox(height: 5),
             Text(
               '$appointmentDate | $appointmentTime',
-              style: AppTextStyle.textstyle12.copyWith(color: Colors.white),
+              style: AppTextStyle.textstyle12.copyWith(
+                color: AppColors.background,
+              ),
             ),
           ],
         ),
 
         // TODO: Implement the OnPressed
-        trailing: MyTextButton(text: 'Join Now', onPressed: () {
-          
-        },),
+        trailing: AppPillButton(text: 'Join Now', onPressed: () {}),
       ),
     );
   }

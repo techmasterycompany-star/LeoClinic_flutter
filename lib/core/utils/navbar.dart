@@ -26,8 +26,9 @@ class _PatientNavBarState extends State<PatientNavBar> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(34),
           child: NavigationBar(
-            
-            indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(34)),
+            indicatorShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(34),
+            ),
             destinations: const [
               NavigationDestination(
                 icon: Icon(Icons.home),

@@ -8,7 +8,13 @@ class HealthOverviewCard extends StatelessWidget {
   final String headline;
   final String result;
   final int? percentage;
-  const HealthOverviewCard({super.key, required this.icon, required this.headline, required this.result, this.percentage});
+  const HealthOverviewCard({
+    super.key,
+    required this.icon,
+    required this.headline,
+    required this.result,
+    this.percentage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +38,10 @@ class HealthOverviewCard extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: const Color.fromARGB(83, 244, 67, 54),
+                  color: AppColors.dangerBg,
                 ),
                 child: Icon(icon),
               ),
-
 
               // The measurement
               Text(
@@ -50,15 +55,9 @@ class HealthOverviewCard extends StatelessWidget {
             crossAxisAlignment: .start,
             children: [
               // The health info
-              Text(
-                headline,
-                style: AppTextStyle.textstyle10,
-              ),
+              Text(headline, style: AppTextStyle.textstyle10),
               // The result of health info
-              Text(
-                result,
-                style: AppTextStyle.textstyle12,
-              ),
+              Text(result, style: AppTextStyle.textstyle12),
             ],
           ),
         ],

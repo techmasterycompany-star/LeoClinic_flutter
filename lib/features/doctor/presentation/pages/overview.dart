@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_app_bar.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_new_request.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_next_appointment_card.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/listview.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/today_appointment.dart';
 
 class DoctorHomePage extends StatelessWidget {
@@ -42,7 +42,7 @@ class DoctorHomePage extends StatelessWidget {
                 ],
               ),
 
-              MyListView(
+              AppListView(
                 card: NextAppointmentCard(
                   patientName: 'Sarah',
                   patientAge: '25',
@@ -71,7 +71,7 @@ class DoctorHomePage extends StatelessWidget {
                 ],
               ),
 
-              MyListView(
+              AppListView(
                 card: TodayAppointmentCard(
                   patientName: 'Sarah',
                   patientAge: '25',
@@ -100,7 +100,7 @@ class DoctorHomePage extends StatelessWidget {
                 ],
               ),
 
-              MyListView(
+              AppListView(
                 card: NewRequestCard(
                   patientName: 'Sarah',
                   patientAge: '25',

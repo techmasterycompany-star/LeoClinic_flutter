@@ -11,7 +11,8 @@ class TodayAppointmentCard extends StatelessWidget {
   final String speciality;
   final String time;
   final String status;
-  TodayAppointmentCard({
+
+  const TodayAppointmentCard({
     super.key,
     required this.patientName,
     required this.patientNumber,
@@ -22,27 +23,27 @@ class TodayAppointmentCard extends StatelessWidget {
     this.patientImage,
   });
 
-  late Color statusColor;
-  late Color statusBgColor;
-  void determineStatus(String stat) {
-    if (stat == 'In Progress') {
-      statusColor = AppColors.secondaryColor;
-      statusBgColor = AppColors.primaryColor;
-    } else if (stat == 'Upcoming') {
-      statusColor = AppColors.warning;
-      statusBgColor = AppColors.warningBg;
-    } else if (stat == 'Completed') {
-      statusColor = AppColors.success;
-      statusBgColor = AppColors.successBg;
-    } else {
-      statusColor = AppColors.danger;
-      statusBgColor = AppColors.dangerBg;
-    }
+  ({Color textColor, Color backgroundColor}) get statusColors {
+    return switch (status) {
+      'In Progress' => (
+        textColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.primaryColor,
+      ),
+      'Upcoming' => (
+        textColor: AppColors.warning,
+        backgroundColor: AppColors.warningBg,
+      ),
+      'Completed' => (
+        textColor: AppColors.success,
+        backgroundColor: AppColors.successBg,
+      ),
+      _ => (textColor: AppColors.danger, backgroundColor: AppColors.dangerBg),
+    };
   }
 
   @override
   Widget build(BuildContext context) {
-    determineStatus(status);
+    final colors = statusColors;
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -57,7 +58,7 @@ class TodayAppointmentCard extends StatelessWidget {
         mainAxisAlignment: .start,
         children: [
           CircleAvatar(child: Icon(Icons.person)),
-          SizedBox(width: 10,),
+          SizedBox(width: 10),
 
           Expanded(
             child: Row(
@@ -67,16 +68,16 @@ class TodayAppointmentCard extends StatelessWidget {
                   crossAxisAlignment: .start,
                   children: [
                     Text(patientName, style: AppTextStyle.textstyle12),
-            
+
                     Text(patientNumber, style: AppTextStyle.secondarytext),
-            
+
                     Text(
                       'Dr. $drName | $speciality | $time',
                       style: AppTextStyle.secondarytext,
                     ),
                   ],
                 ),
-            
+
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -84,15 +85,16 @@ class TodayAppointmentCard extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(800),
-                    color: statusBgColor,
+                    color: colors.backgroundColor,
                   ),
-            
+
                   child: Text(
                     status,
-                    style: AppTextStyle.textstyle10.copyWith(color: statusColor),
+                    style: AppTextStyle.textstyle10.copyWith(
+                      color: colors.textColor,
+                    ),
                   ),
                 ),
-                
               ],
             ),
           ),

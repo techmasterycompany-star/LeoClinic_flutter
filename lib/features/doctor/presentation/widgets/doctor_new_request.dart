@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_shadow.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/textbutton.dart';
+import 'package:leoclinic_flutter/core/widgets/app_pill_button.dart';
 
 class NewRequestCard extends StatelessWidget {
   final String patientName;
@@ -83,8 +83,8 @@ class NewRequestCard extends StatelessWidget {
           Row(
             mainAxisAlignment: .spaceEvenly,
             children: [
-              MyTextButton(text: 'Pick a Slot', onPressed: () {}),
-              MyTextButton(
+              AppPillButton(text: 'Pick a Slot', onPressed: () {}),
+              AppPillButton(
                 text: 'Decline',
                 onPressed: () {},
                 backgroundColor: AppColors.secondaryColor,

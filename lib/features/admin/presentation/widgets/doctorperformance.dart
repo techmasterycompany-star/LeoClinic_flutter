@@ -56,11 +56,14 @@ class DoctorPerformanceCard extends StatelessWidget {
 
                 SizedBox(
                   height: 20,
-                  child: VerticalDivider(thickness: 2, color: Colors.black),
+                  child: VerticalDivider(
+                    thickness: 2,
+                    color: AppColors.textPrimary,
+                  ),
                 ),
 
                 Icon(Icons.star_border_purple500_outlined),
-                Text(rate, style: AppTextStyle.textstyle10,),
+                Text(rate, style: AppTextStyle.textstyle10),
               ],
             ),
           ],
