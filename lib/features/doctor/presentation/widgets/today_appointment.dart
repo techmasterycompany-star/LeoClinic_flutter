@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_shadow.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/textButton.dart';
 
 class TodayAppointmentCard extends StatelessWidget {
   final String patientName;

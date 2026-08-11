@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_shadow.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/greeting.dart';
+import 'package:leoclinic_flutter/features/admin/presentation/widgets/greeting.dart';
 
-class DoctorAppBar extends StatelessWidget {
-  const DoctorAppBar({super.key});
+class AdminAppBar extends StatelessWidget {
+  
+  const AdminAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class DoctorAppBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.background,
             borderRadius: BorderRadius.circular(8),
-            boxShadow: [AppBoxShadow.boxShadow]
+            boxShadow: [AppBoxShadow.boxShadow],
           ),
           child: TextButton.icon(
             // TODO: Implement app bar button
