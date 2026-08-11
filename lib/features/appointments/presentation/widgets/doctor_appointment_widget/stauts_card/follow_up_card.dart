@@ -4,7 +4,7 @@ import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/actions_for_cards.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/deatils_of_card.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/stauts_card/deatils_of_card.dart';
 
 class FollowUpAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
@@ -66,7 +66,7 @@ class FollowUpAppointmentCard extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: statusStyle.cardcolor,
+                  color: statusStyle.statuscoloroflabel,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(

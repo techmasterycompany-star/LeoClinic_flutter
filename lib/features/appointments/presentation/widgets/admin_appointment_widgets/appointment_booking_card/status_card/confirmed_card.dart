@@ -3,6 +3,7 @@ import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/stauts_card/deatils_of_card.dart';
 
 class ConfirmedAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
@@ -97,41 +98,15 @@ class ConfirmedAppointmentCard extends StatelessWidget {
           const SizedBox(height: 14),
           Row(
             children: [
-              _buildInfoItem(Icons.calendar_today_outlined, appointment.date),
-              _buildDivider(),
-              _buildInfoItem(Icons.access_time, appointment.time),
-              _buildDivider(),
-              _buildInfoItem(Icons.videocam_outlined, appointment.location),
+              DeatilsOfCard.buildInfoItem(Icons.calendar_today_outlined, appointment.date),
+             DeatilsOfCard.buildDivider(),
+              DeatilsOfCard.buildInfoItem(Icons.access_time, appointment.time),
+              DeatilsOfCard.buildDivider(),
+              DeatilsOfCard.buildInfoItem(Icons.videocam_outlined, appointment.location),
             ],
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildInfoItem(IconData icon, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 16, color: Colors.grey.shade500),
-        const SizedBox(width: 6),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 13,
-            color: Colors.grey.shade700,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDivider() {
-    return Container(
-      height: 20,
-      width: 2,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      color: Colors.grey.shade300,
     );
   }
 }

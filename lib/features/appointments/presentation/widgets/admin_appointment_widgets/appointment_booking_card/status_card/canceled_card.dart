@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/stauts_card/deatils_of_card.dart';
 
 class CanceledAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
@@ -72,38 +73,15 @@ class CanceledAppointmentCard extends StatelessWidget {
           const SizedBox(height: 10),
           Row(
             children: [
-              _buildInfoItem(Icons.calendar_today_outlined, appointment.date),
-              _buildDivider(),
-              _buildInfoItem(Icons.access_time, appointment.time),
-              _buildDivider(),
-              _buildInfoItem(Icons.videocam_outlined, appointment.location),
+              DeatilsOfCard.buildInfoItem(Icons.calendar_today_outlined, appointment.date),
+              DeatilsOfCard.buildDivider(),
+              DeatilsOfCard.buildInfoItem(Icons.access_time, appointment.time),
+              DeatilsOfCard.buildDivider(),
+              DeatilsOfCard.buildInfoItem(Icons.videocam_outlined, appointment.location),
             ],
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildInfoItem(IconData icon, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 15, color: AppColors.textSecondary),
-        const SizedBox(width: 6),
-        Text(
-          text,
-          style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDivider() {
-    return Container(
-      height: 20,
-      width: 1,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      color: AppColors.textSecondary,
     );
   }
 }
