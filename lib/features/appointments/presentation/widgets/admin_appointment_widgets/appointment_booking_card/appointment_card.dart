@@ -17,12 +17,11 @@ class AppointmentCard extends StatelessWidget {
       itemCount: appointments.length,
       itemBuilder: (context, index) {
         final item = appointments[index];
-
         if (item.status == AppointmentStatus.canceled) {
           return CanceledAppointmentCard(appointment: item);
         }
+      return ConfirmedAppointmentCard(appointment: item);
 
-        return ConfirmedAppointmentCard(appointment: item);
       },
     );
   }

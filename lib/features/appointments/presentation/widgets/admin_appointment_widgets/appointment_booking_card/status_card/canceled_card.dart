@@ -51,7 +51,7 @@ class CanceledAppointmentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    appointment.doctorName,
+                    appointment.doctorName!,
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class CanceledAppointmentCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    appointment.specialty,
+                    appointment.specialty!,
                     style: TextStyle(
                       fontSize: 12,
                       color: AppColors.textSecondary,

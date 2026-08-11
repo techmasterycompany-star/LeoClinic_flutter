@@ -4,10 +4,10 @@ import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
 
-class ConfirmedAppointmentCard extends StatelessWidget {
+class NewVisitAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
 
-  const ConfirmedAppointmentCard({
+  const NewVisitAppointmentCard({
     super.key,
     required this.appointment,
   });
@@ -20,7 +20,7 @@ class ConfirmedAppointmentCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: statusStyle.cardcolor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -42,13 +42,13 @@ class ConfirmedAppointmentCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      appointment.doctorName!,
+                      appointment.patientName ?? "",
                       style: AppTextStyle.textstyle14
                           .copyWith(color: AppColors.surfaceDark),
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      appointment.specialty!,
+                      appointment.age ?? "",
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.grey.shade500,
@@ -63,7 +63,7 @@ class ConfirmedAppointmentCard extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: statusStyle.cardcolor,
+                  color: statusStyle.statuscoloroflabel,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -78,23 +78,7 @@ class ConfirmedAppointmentCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Text(
-            "Patient Name",
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey.shade500,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            appointment.patientName ?? " ",
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 14),
+          
           Row(
             children: [
               _buildInfoItem(Icons.calendar_today_outlined, appointment.date),
