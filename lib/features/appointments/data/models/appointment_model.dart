@@ -1,4 +1,6 @@
 
+import 'package:flutter/material.dart';
+
 enum AppointmentStatus { confirmed, canceled, followup , newvisit }
 
 class AppointmentModel {

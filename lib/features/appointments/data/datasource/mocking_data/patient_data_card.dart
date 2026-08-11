@@ -19,7 +19,6 @@ final List<AppointmentModel> patinetappointmentcard = [
     location: "In the clinic",
     status: AppointmentStatus.followup,
     doctorImageUrl: "assets/images/doctor1.png",
-
   ),
   AppointmentModel(
     patientName: "Eman",

@@ -5,7 +5,8 @@ import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doc
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/stauts_card/new_visit_card.dart';
 
 class PatientAppointmentCard extends StatelessWidget {
-  const PatientAppointmentCard({super.key});
+  final bool showactions;
+  const PatientAppointmentCard({super.key,required this.showactions});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +19,10 @@ class PatientAppointmentCard extends StatelessWidget {
       itemBuilder: (context, index) {
         final patientItem = patientAppointment[index];
         if (patientItem.status == AppointmentStatus.followup){
-         return  FollowUpAppointmentCard(appointment: patientItem);
+         return  FollowUpAppointmentCard(appointment: patientItem, showActions: showactions ,);
         }
         else if (patientItem.status == AppointmentStatus.newvisit){
-      return NewVisitAppointmentCard(appointment: patientItem,);
+      return NewVisitAppointmentCard(appointment: patientItem,showActions: showactions,);
         }
         return null;
       },

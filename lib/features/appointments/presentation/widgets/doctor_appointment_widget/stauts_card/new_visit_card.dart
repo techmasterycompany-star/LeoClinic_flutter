@@ -3,13 +3,16 @@ import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/actions_for_cards.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/deatils_of_card.dart';
 
 class NewVisitAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
-
+  final bool showActions;
   const NewVisitAppointmentCard({
     super.key,
-    required this.appointment,
+    required this.appointment, 
+    required this.showActions,
   });
 
   @override
@@ -20,7 +23,7 @@ class NewVisitAppointmentCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: statusStyle.cardcolor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -63,7 +66,7 @@ class NewVisitAppointmentCard extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: statusStyle.statuscoloroflabel,
+                  color: statusStyle.cardcolor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -78,44 +81,23 @@ class NewVisitAppointmentCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          
           Row(
             children: [
-              _buildInfoItem(Icons.calendar_today_outlined, appointment.date),
-              _buildDivider(),
-              _buildInfoItem(Icons.access_time, appointment.time),
-              _buildDivider(),
-              _buildInfoItem(Icons.videocam_outlined, appointment.location),
+              DeatilsOfCard.buildInfoItem(Icons.calendar_today_outlined, appointment.date),
+              DeatilsOfCard.buildDivider(),
+              DeatilsOfCard.buildInfoItem(Icons.access_time, appointment.time),
+              DeatilsOfCard.buildDivider(),
+              DeatilsOfCard.buildInfoItem(Icons.videocam_outlined, appointment.location),
             ],
           ),
+
+          // الأزرار بتظهر بس لو showActions = true
+          if (showActions) ...[
+            const SizedBox(height: 16),
+            ActionsForCards(),
+          ],
         ],
       ),
-    );
-  }
-
-  Widget _buildInfoItem(IconData icon, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 16, color: Colors.grey.shade500),
-        const SizedBox(width: 6),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 13,
-            color: Colors.grey.shade700,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDivider() {
-    return Container(
-      height: 20,
-      width: 2,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      color: Colors.grey.shade300,
     );
   }
 }
