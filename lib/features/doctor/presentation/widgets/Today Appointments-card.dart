@@ -3,7 +3,9 @@ import 'package:leoclinic_flutter/core/utils/assets.dart';
 import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
 
 class Todaysappointmentscard extends StatelessWidget {
-  const Todaysappointmentscard({super.key});
+  String? maintext;
+  final Color? maincolor;
+  Todaysappointmentscard({super.key, this.maintext, this.maincolor});
 
   @override
   Widget build(BuildContext context) {
@@ -21,70 +23,81 @@ class Todaysappointmentscard extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(16),
-        color: Colors.white,
+        color: maincolor ?? Colors.white,
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(Assets.imagesDoctor),
-          SizedBox(width: width * 0.03),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Sarah Legend",
-                  style: Custamtextstyle.test14.copyWith(
-                    color: Color(0xff4A4F5A),
-                  ),
-                ),
-
-                Row(
-                  children: [
-                    Text(
-                      "23years , female",
-                      style: Custamtextstyle.test10.copyWith(
-                        color: Color(0xff6B707B),
-                      ),
-                    ),
-                  ],
-                ),
-
-                Row(
-                  children: [
-                    Image.asset(
-                      Assets.imagesCalendericon,
-                      color: Color(0xff4A4F5A),
-                    ),
-                    Text(
-                      "  27/8/2026 |  ",
-                      style: Custamtextstyle.test12.copyWith(
-                        color: Color(0xff4A4F5A),
-                      ),
-                    ),
-                    Image.asset(
-                      Assets.imagesClockIcon,
-                      color: Color(0xff141B34),
-                    ),
-                    Text(
-                      "  8:00 PM",
-                      style: Custamtextstyle.test12.copyWith(
-                        color: Color(0xff4A4F5A),
-                      ),
-                    ),
-                    SizedBox(width: width * 0.03),
-                    Text("|"),
-                    SizedBox(width: width * 0.03),
-                    Image.asset(Assets.imagesVideo),
-                    Text(
-                      " Online",
-                      style: Custamtextstyle.test12.copyWith(
-                        color: Color(0xff4A4F5A),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+          if (maintext != null)
+            Text(
+              maintext!,
+              style: Custamtextstyle.test14.copyWith(color: Color(0xffDA1E28)),
             ),
+          if (maintext != null) SizedBox(height: height * 0.02),
+          Row(
+            children: [
+              Image.asset(Assets.imagesDoctor),
+              SizedBox(width: width * 0.03),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sarah Legend",
+                      style: Custamtextstyle.test14.copyWith(
+                        color: Color(0xff4A4F5A),
+                      ),
+                    ),
+
+                    Row(
+                      children: [
+                        Text(
+                          "23years , female",
+                          style: Custamtextstyle.test10.copyWith(
+                            color: Color(0xff6B707B),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          Assets.imagesCalendericon,
+                          color: Color(0xff4A4F5A),
+                        ),
+                        Text(
+                          "  27/8/2026 |  ",
+                          style: Custamtextstyle.test12.copyWith(
+                            color: Color(0xff4A4F5A),
+                          ),
+                        ),
+                        Image.asset(
+                          Assets.imagesClockIcon,
+                          color: Color(0xff141B34),
+                        ),
+                        Text(
+                          "  8:00 PM",
+                          style: Custamtextstyle.test12.copyWith(
+                            color: Color(0xff4A4F5A),
+                          ),
+                        ),
+                        SizedBox(width: width * 0.03),
+                        Text("|"),
+                        SizedBox(width: width * 0.03),
+                        Image.asset(Assets.imagesVideo),
+                        Text(
+                          " Online",
+                          style: Custamtextstyle.test12.copyWith(
+                            color: Color(0xff4A4F5A),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),

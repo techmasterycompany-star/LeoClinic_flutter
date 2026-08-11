@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/Notifications.dart';
 
 class Doctorhomeappbar extends StatelessWidget {
   const Doctorhomeappbar({super.key});
@@ -27,9 +28,21 @@ class Doctorhomeappbar extends StatelessWidget {
                 color: Colors.white,
               ),
 
-              child: Icon(
-                Icons.notifications_none_outlined,
-                color: Color(0xff0018A6),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Notifications();
+                      },
+                    ),
+                  );
+                },
+                child: Icon(
+                  Icons.notifications_none_outlined,
+                  color: Color(0xff0018A6),
+                ),
               ),
             ),
           ),

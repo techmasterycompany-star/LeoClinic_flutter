@@ -31,4 +31,10 @@ class Custamtextstyle {
     fontSize: 10,
 
   );
+  static const TextStyle test28 = TextStyle(
+    fontFamily: "IBMPlexSans",
+    fontWeight: FontWeight.w600,
+    fontSize: 28,
+
+  );
 }

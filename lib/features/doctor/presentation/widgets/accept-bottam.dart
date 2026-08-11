@@ -12,16 +12,17 @@ class Acceptbottam extends StatelessWidget {
     required this.text,
     required this.textcolor,
     required this.backgroundcolor,
-    required this.icon, required this.iconcolor,
+    required this.icon,
+    required this.iconcolor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: backgroundcolor,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
         children: [

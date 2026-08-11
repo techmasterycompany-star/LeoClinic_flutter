@@ -5,7 +5,9 @@ import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/accept-bottam.dart';
 
 class Newrequestscard extends StatelessWidget {
-  const Newrequestscard({super.key});
+  String? maintext;
+  IconData? delete;
+  Newrequestscard({super.key, this.maintext, this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -25,78 +27,94 @@ class Newrequestscard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(Assets.imagesDoctor),
-          SizedBox(width: width * 0.03),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Sarah Legend",
-                  style: Custamtextstyle.test14.copyWith(
-                    color: Color(0xff4A4F5A),
+          if (maintext != null) Text(maintext!, style: Custamtextstyle.test14),
+          SizedBox(height: height * 0.01),
+          Row(
+            children: [
+              Image.asset(Assets.imagesDoctor),
+              SizedBox(width: width * 0.03),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Dr. Sarah Legend",
+                        style: Custamtextstyle.test14.copyWith(
+                          color: Color(0xff4A4F5A),
+                        ),
+                      ),
+                      if (delete != null) SizedBox(width: width * 0.3),
+                      Icon(delete),
+                    ],
+                  ),
+                  Text(
+                    "22 years",
+                    style: Custamtextstyle.test10.copyWith(
+                      color: Color(0xff6B707B),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          SizedBox(height: height * 0.03),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(Assets.imagesCalendericon, color: Color(0xff4A4F5A)),
+              Text(
+                "  27/8/2026 |  ",
+                style: Custamtextstyle.test12.copyWith(
+                  color: Color(0xff4A4F5A),
+                ),
+              ),
+              Image.asset(Assets.imagesVideo, color: Color(0xff141B34)),
+              Text(
+                "  In the clinic",
+                style: Custamtextstyle.test12.copyWith(
+                  color: Color(0xff4A4F5A),
+                ),
+              ),
+              SizedBox(width: width * 0.2),
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Color(0x3300875A),
+                ),
+                child: Text(
+                  "New Visit",
+                  style: Custamtextstyle.test10.copyWith(
+                    color: Color(0xff00875A),
                   ),
                 ),
-
-                Row(
-                  children: [
-                    Text(
-                      "23years , female",
-                      style: Custamtextstyle.test10.copyWith(
-                        color: Color(0xff6B707B),
-                      ),
-                    ),
-                  ],
-                ),
-
-                Row(
-                  children: [
-                    Image.asset(
-                      Assets.imagesCalendericon,
-                      color: Color(0xff4A4F5A),
-                    ),
-                    Text(
-                      "  27/8/2026 |  ",
-                      style: Custamtextstyle.test12.copyWith(
-                        color: Color(0xff4A4F5A),
-                      ),
-                    ),
-                    Image.asset(
-                      Assets.imagesClockIcon,
-                      color: Color(0xff141B34),
-                    ),
-                    Text(
-                      "  8:00 PM",
-                      style: Custamtextstyle.test12.copyWith(
-                        color: Color(0xff4A4F5A),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * 0.03),
-                Row(
-                  children: [
-                    Acceptbottam(
-                      text: 'Accept',
-                      textcolor: Colors.white,
-                      backgroundcolor: appcolor.color,
-                      icon: Icons.check,
-                      iconcolor: Colors.white,
-                    ),
-                    SizedBox(width: width * 0.03),
-                    Acceptbottam(
-                      text: "Decline",
-                      textcolor: appcolor.color,
-                      backgroundcolor: appcolor.backbootomcolor,
-                      icon: Icons.close,
-                      iconcolor: appcolor.color,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              ),
+            ],
+          ),
+          SizedBox(height: height * 0.03),
+          Row(
+            children: [
+              Acceptbottam(
+                text: 'Pick a Slot',
+                textcolor: Colors.white,
+                backgroundcolor: appcolor.color,
+                icon: Icons.check,
+                iconcolor: Colors.white,
+              ),
+              SizedBox(width: width * 0.05),
+              Acceptbottam(
+                text: "Decline",
+                textcolor: appcolor.color,
+                backgroundcolor: appcolor.backbootomcolor,
+                icon: Icons.close,
+                iconcolor: appcolor.color,
+              ),
+            ],
           ),
         ],
       ),
