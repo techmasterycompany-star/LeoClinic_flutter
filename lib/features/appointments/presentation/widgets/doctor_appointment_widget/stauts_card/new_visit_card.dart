@@ -91,7 +91,6 @@ class NewVisitAppointmentCard extends StatelessWidget {
             ],
           ),
 
-          // الأزرار بتظهر بس لو showActions = true
           if (showActions) ...[
             const SizedBox(height: 16),
             ActionsForCards(),
