@@ -66,7 +66,7 @@ class FollowUpAppointmentCard extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: statusStyle.statuscoloroflabel,
+                  color: statusStyle.cardcolor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(

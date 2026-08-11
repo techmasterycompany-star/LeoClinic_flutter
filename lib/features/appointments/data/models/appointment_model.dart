@@ -1,5 +1,4 @@
 
-
 enum AppointmentStatus { confirmed, canceled, followup , newvisit }
 
 class AppointmentModel {
