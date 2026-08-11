@@ -5,27 +5,33 @@ import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/app_pill_button.dart';
 
 class NextAppointmentCard extends StatelessWidget {
-  final String patientName;
-  final int patientAge;
-  final String patientGender;
+  final String doctorName;
+  final int doctorAge;
+  final String doctorGender;
   final String appointmentTime;
   final String appointmentDate;
-  final String? patientImage;
+  final String? doctorImage;
+  final String location;
   const NextAppointmentCard({
     super.key,
-    required this.patientName,
-    required this.patientAge,
-    required this.patientGender,
+    required this.doctorName,
+    required this.doctorAge,
+    required this.doctorGender,
     required this.appointmentTime,
     required this.appointmentDate,
-    this.patientImage,
+    this.doctorImage,
+    required this.location,
   });
+
+  bool isOnline() {
+    return location.toLowerCase() == 'online';
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         boxShadow: const [AppBoxShadow.boxShadow],
         gradient: LinearGradient(
@@ -43,14 +49,14 @@ class NextAppointmentCard extends StatelessWidget {
           child: Icon(Icons.person, color: AppColors.background),
         ),
         title: Text(
-          patientName,
+          'Dr. $doctorName',
           style: AppTextStyle.textstyle14.copyWith(color: AppColors.background),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '$patientAge Years, $patientGender',
+              '$doctorAge Years, $doctorGender',
               style: AppTextStyle.textstyle10.copyWith(
                 color: AppColors.background,
               ),
@@ -66,7 +72,16 @@ class NextAppointmentCard extends StatelessWidget {
         ),
 
         // TODO: Implement the OnPressed
-        trailing: AppPillButton(text: 'Join Now', onPressed: () {}),
+        trailing: isOnline()
+            ? AppPillButton(text: 'Join Now', onPressed: () {})
+            : Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                color: AppColors.background,
+                borderRadius: BorderRadius.circular(900)
+                ),
+                child: Text('In the clinic', style: AppTextStyle.textstyle12),
+              ),
       ),
     );
   }

@@ -8,7 +8,7 @@ import '../widgets/doctorperformance.dart';
 import '../widgets/health_overview.dart';
 import '../widgets/today_appointments.dart';
 
-class AdminHomePage extends StatelessWidget {
+class AdminOverview extends StatelessWidget {
   Widget headline(String headline) {
     return Text(
       headline,
@@ -16,7 +16,7 @@ class AdminHomePage extends StatelessWidget {
     );
   }
 
-  const AdminHomePage({super.key});
+  const AdminOverview({super.key});
 
   @override
   Widget build(BuildContext context) {

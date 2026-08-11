@@ -7,8 +7,8 @@ import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_ne
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_next_appointment_card.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/today_appointment.dart';
 
-class DoctorHomePage extends StatelessWidget {
-  const DoctorHomePage({super.key});
+class DoctorOverview extends StatelessWidget {
+  const DoctorOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class DoctorHomePage extends StatelessWidget {
               AppListView(
                 card: NextAppointmentCard(
                   patientName: 'Sarah',
-                  patientAge: '25',
+                  patientAge: 25,
                   patientGender: 'Female',
                   appointmentTime: '10:00 AM',
                   appointmentDate: '2023-10-15',

@@ -4,6 +4,7 @@ import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/appbar.dart';
 
 import '../widgets/patient_caring_specialist.dart';
+import '../widgets/patient_next_appointment_card.dart';
 
 class PatientOverview extends StatelessWidget {
   const PatientOverview({super.key});
@@ -24,7 +25,25 @@ class PatientOverview extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           sliver: SliverList(
             delegate: SliverChildListDelegate([
-              // Next Appointment (Not now until determined)
+              // Next Appointment
+              Row(
+                mainAxisAlignment: .spaceBetween,
+                children: [
+                  headline('Next Appointment'),
+                  TextButton(onPressed: () {}, child: Text('View all')),
+                ],
+              ),
+              AppListView(
+                card: NextAppointmentCard(
+                  doctorName: 'Sarah legend',
+                  doctorAge: 24,
+                  doctorGender: 'female',
+                  appointmentTime: '8:00 PM',
+                  appointmentDate: '27/8/2026',
+                  location: 'visit',
+                ),
+                itemCount: 1,
+              ),
 
               // Caring Specialists
               Row(

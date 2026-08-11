@@ -6,14 +6,17 @@ The page is not done yet, it is just a placeholder for the patient info page. Th
 
 */
 
-class PatientNavBar extends StatefulWidget {
-  const PatientNavBar({super.key});
+class NavBar extends StatelessWidget {
+  final List<NavigationDestination> destination;
+  final int selectedIndex;
+  final ValueChanged<int> onDestinationSelected;
+  NavBar({
+    super.key,
+    required this.destination,
+    required this.selectedIndex,
+    required this.onDestinationSelected,
+  });
 
-  @override
-  State<PatientNavBar> createState() => _PatientNavBarState();
-}
-
-class _PatientNavBarState extends State<PatientNavBar> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -29,29 +32,9 @@ class _PatientNavBarState extends State<PatientNavBar> {
             indicatorShape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(34),
             ),
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Icons.home),
-                selectedIcon: Icon(Icons.home, size: 30),
-                label: 'Home',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.search),
-                selectedIcon: Icon(Icons.search, size: 30),
-                label: 'Search',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.person),
-                selectedIcon: Icon(Icons.person, size: 30),
-                label: 'Profile',
-              ),
-            ],
-            selectedIndex: currentIndex,
-            onDestinationSelected: (int index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
+            destinations: destination,
+            selectedIndex: selectedIndex,
+            onDestinationSelected: onDestinationSelected,
             height: 64,
             animationDuration: const Duration(milliseconds: 300),
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
