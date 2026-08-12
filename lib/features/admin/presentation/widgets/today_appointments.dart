@@ -37,7 +37,7 @@ class TodayAppointmentCard extends StatelessWidget {
         textColor: AppColors.success,
         backgroundColor: AppColors.successBg,
       ),
-      _ => (textColor: AppColors.danger, backgroundColor: AppColors.dangerBg),
+      _ => (textColor: AppColors.failed, backgroundColor: AppColors.fieldBg),
     };
   }
 

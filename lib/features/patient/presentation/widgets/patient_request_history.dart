@@ -28,10 +28,10 @@ class RequestHistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Color appointmentBgCol = isApproved(appointmentStatus)
         ? AppColors.successBg
-        : AppColors.dangerBg;
+        : AppColors.fieldBg;
     Color appointmentTextCol = isApproved(appointmentStatus)
         ? AppColors.success
-        : AppColors.danger;
+        : AppColors.failed;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
