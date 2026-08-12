@@ -64,7 +64,7 @@ class CaringSpecialistCard extends StatelessWidget {
                 Expanded(
                   child: AppPillButton(
                     text: 'View Profile',
-                    onPressed: () {},
+                    onPressed: onViewProfile ?? () {},
                     backgroundColor: AppColors.secondaryColor,
                   ),
                 ),
@@ -72,7 +72,7 @@ class CaringSpecialistCard extends StatelessWidget {
                 Expanded(
                   child: AppPillButton(
                     text: 'Book Appointment',
-                    onPressed: () {},
+                    onPressed: onBookAppointment ?? () {},
                   ),
                 ),
               ],

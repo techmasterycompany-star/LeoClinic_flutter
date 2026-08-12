@@ -32,13 +32,35 @@ class CaringSpecialistModel {
   });
 }
 
+class PatientRequestHistoryModel {
+  final String doctorName;
+  final String speciality;
+  final String appointmentDate;
+  final String appointmentTime;
+  final String location;
+  final String appointmentStatus;
+  final String? doctorImage;
+
+  const PatientRequestHistoryModel({
+    required this.doctorName,
+    required this.speciality,
+    required this.appointmentDate,
+    required this.appointmentTime,
+    required this.location,
+    required this.appointmentStatus,
+    this.doctorImage,
+  });
+}
+
 class PatientOverviewModel {
   final List<PatientAppointmentModel> nextAppointments;
   final List<CaringSpecialistModel> caringSpecialists;
+  final List<PatientRequestHistoryModel> requestsHistory;
 
   const PatientOverviewModel({
     required this.nextAppointments,
     required this.caringSpecialists,
+    required this.requestsHistory,
   });
 
   int get availableDoctorsThisWeek => caringSpecialists.length;
@@ -75,6 +97,24 @@ const patientOverviewMock = PatientOverviewModel(
       doctorName: 'Dr. Laila Samir',
       speciality: 'Pediatrician',
       amount: 90,
+    ),
+  ],
+  requestsHistory: [
+    PatientRequestHistoryModel(
+      doctorName: 'Dr Sara Mohammed',
+      speciality: 'Child psychologist',
+      appointmentDate: '27-8-2026',
+      appointmentTime: '8:00 PM',
+      location: 'online',
+      appointmentStatus: 'Approved',
+    ),
+    PatientRequestHistoryModel(
+      doctorName: 'Dr Asser Mohammed',
+      speciality: 'Child psychologist',
+      appointmentDate: '27-8-2026',
+      appointmentTime: '9:00 PM',
+      location: 'online',
+      appointmentStatus: 'Cancelled',
     ),
   ],
 );
