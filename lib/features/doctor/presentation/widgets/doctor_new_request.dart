@@ -6,7 +6,7 @@ import 'package:leoclinic_flutter/core/widgets/app_pill_button.dart';
 
 class NewRequestCard extends StatelessWidget {
   final String patientName;
-  final String patientAge;
+  final int patientAge;
   final String patientGender;
   final String appointmentDate;
   final String? patientImage;

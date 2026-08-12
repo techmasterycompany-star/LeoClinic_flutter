@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppListView extends StatelessWidget {
-  final Widget card;
+  final Widget? card;
+  final NullableIndexedWidgetBuilder? itemBuilder;
   final int itemCount;
 
-  const AppListView({super.key, required this.card, required this.itemCount});
+  const AppListView({
+    super.key,
+    this.card,
+    this.itemBuilder,
+    required this.itemCount,
+  }) : assert(card != null || itemBuilder != null);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +18,7 @@ class AppListView extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: itemCount,
-      itemBuilder: (context, index) => card,
+      itemBuilder: itemBuilder ?? (context, index) => card!,
     );
   }
 }

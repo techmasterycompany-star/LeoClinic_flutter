@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
+import 'package:leoclinic_flutter/features/doctor/data/models/doctor_overview_model.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_app_bar.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_new_request.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_next_appointment_card.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/today_appointment.dart';
 
 class DoctorOverview extends StatelessWidget {
-  const DoctorOverview({super.key});
+  final DoctorOverviewModel overview;
+
+  const DoctorOverview({super.key, this.overview = doctorOverviewMock});
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +46,19 @@ class DoctorOverview extends StatelessWidget {
               ),
 
               AppListView(
-                card: NextAppointmentCard(
-                  patientName: 'Sarah',
-                  patientAge: 25,
-                  patientGender: 'Female',
-                  appointmentTime: '10:00 AM',
-                  appointmentDate: '2023-10-15',
-                ),
-                itemCount: 3,
+                itemCount: overview.nextAppointments.length,
+                itemBuilder: (context, index) {
+                  final appointment = overview.nextAppointments[index];
+
+                  return NextAppointmentCard(
+                    patientName: appointment.patientName,
+                    patientAge: appointment.patientAge,
+                    patientGender: appointment.patientGender,
+                    appointmentTime: appointment.appointmentTime,
+                    appointmentDate: appointment.appointmentDate,
+                    patientImage: appointment.patientImage,
+                  );
+                },
               ),
 
               // Today's Appointment
@@ -72,15 +80,20 @@ class DoctorOverview extends StatelessWidget {
               ),
 
               AppListView(
-                card: TodayAppointmentCard(
-                  patientName: 'Sarah',
-                  patientAge: '25',
-                  patientGender: 'Female',
-                  appointmentTime: '10:00 AM',
-                  appointmentDate: '2023-10-15',
-                  location: 'online',
-                ),
-                itemCount: 2,
+                itemCount: overview.todayAppointments.length,
+                itemBuilder: (context, index) {
+                  final appointment = overview.todayAppointments[index];
+
+                  return TodayAppointmentCard(
+                    patientName: appointment.patientName,
+                    patientAge: appointment.patientAge,
+                    patientGender: appointment.patientGender,
+                    appointmentTime: appointment.appointmentTime,
+                    appointmentDate: appointment.appointmentDate,
+                    location: appointment.location,
+                    patientImage: appointment.patientImage,
+                  );
+                },
               ),
 
               // New Requests
@@ -101,14 +114,19 @@ class DoctorOverview extends StatelessWidget {
               ),
 
               AppListView(
-                card: NewRequestCard(
-                  patientName: 'Sarah',
-                  patientAge: '25',
-                  patientGender: 'Female',
-                  appointmentDate: '2023-10-15',
-                  location: 'online',
-                ),
-                itemCount: 2,
+                itemCount: overview.newRequests.length,
+                itemBuilder: (context, index) {
+                  final request = overview.newRequests[index];
+
+                  return NewRequestCard(
+                    patientName: request.patientName,
+                    patientAge: request.patientAge,
+                    patientGender: request.patientGender,
+                    appointmentDate: request.appointmentDate,
+                    location: request.location,
+                    patientImage: request.patientImage,
+                  );
+                },
               ),
             ]),
           ),

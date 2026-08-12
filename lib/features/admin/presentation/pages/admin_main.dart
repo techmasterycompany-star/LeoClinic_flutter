@@ -27,7 +27,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
     NavigationDestination(
       icon: Icon(Icons.home),
       selectedIcon: Icon(Icons.home, size: 30),
-      label: 'Patient',
+      label: 'Admin',
     ),
 
     NavigationDestination(

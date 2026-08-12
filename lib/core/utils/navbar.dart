@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-/*
-
-The page is not done yet, it is just a placeholder for the patient info page. The page will be implemented in the future.
-
-*/
-
 class NavBar extends StatelessWidget {
   final List<NavigationDestination> destination;
   final int selectedIndex;

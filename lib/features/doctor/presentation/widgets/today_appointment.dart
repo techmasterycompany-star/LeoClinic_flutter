@@ -5,7 +5,7 @@ import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 
 class TodayAppointmentCard extends StatelessWidget {
   final String patientName;
-  final String patientAge;
+  final int patientAge;
   final String patientGender;
   final String appointmentTime;
   final String appointmentDate;

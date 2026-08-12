@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
+import 'package:leoclinic_flutter/features/patient/data/models/patient_overview_model.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/appbar.dart';
 
 import '../widgets/patient_caring_specialist.dart';
 import '../widgets/patient_next_appointment_card.dart';
 
 class PatientOverview extends StatelessWidget {
-  const PatientOverview({super.key});
+  final PatientOverviewModel overview;
+
+  const PatientOverview({super.key, this.overview = patientOverviewMock});
   Widget headline(String headline) {
     return Text(
       headline,
@@ -34,15 +37,20 @@ class PatientOverview extends StatelessWidget {
                 ],
               ),
               AppListView(
-                card: NextAppointmentCard(
-                  doctorName: 'Sarah legend',
-                  doctorAge: 24,
-                  doctorGender: 'female',
-                  appointmentTime: '8:00 PM',
-                  appointmentDate: '27/8/2026',
-                  location: 'visit',
-                ),
-                itemCount: 1,
+                itemCount: overview.nextAppointments.length,
+                itemBuilder: (context, index) {
+                  final appointment = overview.nextAppointments[index];
+
+                  return NextAppointmentCard(
+                    doctorName: appointment.doctorName,
+                    doctorAge: appointment.doctorAge,
+                    doctorGender: appointment.doctorGender,
+                    appointmentTime: appointment.appointmentTime,
+                    appointmentDate: appointment.appointmentDate,
+                    location: appointment.location,
+                    doctorImage: appointment.doctorImage,
+                  );
+                },
               ),
 
               // Caring Specialists
@@ -51,14 +59,24 @@ class PatientOverview extends StatelessWidget {
                 children: [
                   headline('Caring specialist'),
                   Text(
-                    // TODO: Implement available doctors length
-                    '4 doctors available this week',
+                    '${overview.availableDoctorsThisWeek} doctors available this week',
                     style: AppTextStyle.secondarytext,
                   ),
                 ],
               ),
-              // TODO: Put caring specialist length
-              AppListView(card: CaringSpecialistCard(), itemCount: 4),
+              AppListView(
+                itemCount: overview.caringSpecialists.length,
+                itemBuilder: (context, index) {
+                  final specialist = overview.caringSpecialists[index];
+
+                  return CaringSpecialistCard(
+                    doctorName: specialist.doctorName,
+                    speciality: specialist.speciality,
+                    amount: specialist.amount,
+                    doctorImage: specialist.doctorImage,
+                  );
+                },
+              ),
 
               // Next Appointment (not now until determined)
             ]),
