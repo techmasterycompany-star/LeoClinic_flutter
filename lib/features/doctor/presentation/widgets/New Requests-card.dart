@@ -47,8 +47,10 @@ class Newrequestscard extends StatelessWidget {
                           color: Color(0xff4A4F5A),
                         ),
                       ),
-                      if (delete != null) SizedBox(width: width * 0.3),
-                      Icon(delete),
+                      if (delete != null) ...[
+                        SizedBox(width: width * 0.3),
+                        Icon(delete),
+                      ],
                     ],
                   ),
                   Text(

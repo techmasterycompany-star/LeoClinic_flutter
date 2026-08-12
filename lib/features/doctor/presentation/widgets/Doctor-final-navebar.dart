@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor-Profile.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor-dashborad-home.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor-requset.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/DoctorBottomNavBar.dart';
@@ -11,7 +12,11 @@ class Doctorfinalnavebar extends StatefulWidget {
 }
 
 class _DoctorfinalnavebarState extends State<Doctorfinalnavebar> {
-  final List<Widget> pages = [Doctordashboradhome(), Doctorrequset()];
+  final List<Widget> pages = [
+    Doctordashboradhome(),
+    Doctorrequset(),
+    Doctorprofile(),
+  ];
 
   int currentIndex = 0;
 
