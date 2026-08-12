@@ -77,8 +77,8 @@ const doctorOverviewMock = DoctorOverviewModel(
   ],
   todayAppointments: [
     DoctorAppointmentModel(
-      patientName: 'Sarah',
-      patientAge: 25,
+      patientName: 'Sarah Mohammed',
+      patientAge: 21,
       patientGender: 'Female',
       appointmentTime: '10:00 AM',
       appointmentDate: '2026-08-12',
@@ -91,6 +91,14 @@ const doctorOverviewMock = DoctorOverviewModel(
       appointmentTime: '3:30 PM',
       appointmentDate: '2026-08-12',
       location: 'Clinic',
+    ),
+        DoctorAppointmentModel(
+      patientName: 'Asser Mohammed',
+      patientAge: 20,
+      patientGender: 'Male',
+      appointmentTime: '3:00 PM',
+      appointmentDate: '2026-08-22',
+      location: 'Online',
     ),
   ],
   newRequests: [

@@ -8,11 +8,47 @@ import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_ne
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_next_appointment_card.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/today_appointment.dart';
 
-class DoctorOverview extends StatelessWidget {
+class DoctorOverview extends StatefulWidget {
   final DoctorOverviewModel overview;
 
   const DoctorOverview({super.key, this.overview = doctorOverviewMock});
 
+  @override
+  State<DoctorOverview> createState() => _DoctorOverviewState();
+}
+
+class _DoctorOverviewState extends State<DoctorOverview> {
+  bool nextAppointmentView = false;
+  bool todayAppointmentView = false;
+  bool newRequestView = false;
+
+  Widget _buildEmptyState(String message) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Center(
+        child: Text(
+          message,
+          style: AppTextStyle.secondarytext,
+        ),
+      ),
+    );
+  }
+  
+  void _toggleNextAppointmentView() {
+    setState(() {
+      nextAppointmentView = !nextAppointmentView;
+    });
+  }
+  void _toggleTodayAppointmentView() {
+    setState(() {
+      todayAppointmentView = !todayAppointmentView;
+    });
+  }
+  void _toggleNiewRequestView() {
+    setState(() {
+      newRequestView = !newRequestView;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Widget headline(String headline) {
@@ -27,14 +63,12 @@ class DoctorOverview extends StatelessWidget {
           padding: EdgeInsets.all(10),
           sliver: SliverList(
             delegate: SliverChildListDelegate([
-              // Next Appointment
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   headline('Next Appointments'),
                   TextButton(
-                    // Implement onPressed
-                    onPressed: () {},
+                    onPressed: _toggleNextAppointmentView,
                     child: Text(
                       'See all',
                       style: AppTextStyle.textstyle12.copyWith(
@@ -45,30 +79,34 @@ class DoctorOverview extends StatelessWidget {
                 ],
               ),
 
-              AppListView(
-                itemCount: overview.nextAppointments.length,
-                itemBuilder: (context, index) {
-                  final appointment = overview.nextAppointments[index];
+              widget.overview.nextAppointments.isEmpty
+                  ? _buildEmptyState('No upcoming appointments')
+                  : AppListView(
+                      itemCount: nextAppointmentView
+                          ? widget.overview.nextAppointments.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final appointment =
+                            widget.overview.nextAppointments[index];
 
-                  return NextAppointmentCard(
-                    patientName: appointment.patientName,
-                    patientAge: appointment.patientAge,
-                    patientGender: appointment.patientGender,
-                    appointmentTime: appointment.appointmentTime,
-                    appointmentDate: appointment.appointmentDate,
-                    patientImage: appointment.patientImage,
-                  );
-                },
-              ),
+                        return NextAppointmentCard(
+                          patientName: appointment.patientName,
+                          patientAge: appointment.patientAge,
+                          patientGender: appointment.patientGender,
+                          appointmentTime: appointment.appointmentTime,
+                          appointmentDate: appointment.appointmentDate,
+                          patientImage: appointment.patientImage,
+                        );
+                      },
+                    ),
 
-              // Today's Appointment
               Row(
                 mainAxisAlignment: .spaceBetween,
 
                 children: [
                   headline('Today\'s Appointments'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: _toggleTodayAppointmentView,
                     child: Text(
                       'See all',
                       style: AppTextStyle.textstyle12.copyWith(
@@ -79,30 +117,34 @@ class DoctorOverview extends StatelessWidget {
                 ],
               ),
 
-              AppListView(
-                itemCount: overview.todayAppointments.length,
-                itemBuilder: (context, index) {
-                  final appointment = overview.todayAppointments[index];
+              widget.overview.todayAppointments.isEmpty
+                  ? _buildEmptyState('No appointments today')
+                  : AppListView(
+                      itemCount: todayAppointmentView
+                          ? widget.overview.todayAppointments.length
+                          : 2,
+                      itemBuilder: (context, index) {
+                        final appointment =
+                            widget.overview.todayAppointments[index];
 
-                  return TodayAppointmentCard(
-                    patientName: appointment.patientName,
-                    patientAge: appointment.patientAge,
-                    patientGender: appointment.patientGender,
-                    appointmentTime: appointment.appointmentTime,
-                    appointmentDate: appointment.appointmentDate,
-                    location: appointment.location,
-                    patientImage: appointment.patientImage,
-                  );
-                },
-              ),
+                        return TodayAppointmentCard(
+                          patientName: appointment.patientName,
+                          patientAge: appointment.patientAge,
+                          patientGender: appointment.patientGender,
+                          appointmentTime: appointment.appointmentTime,
+                          appointmentDate: appointment.appointmentDate,
+                          location: appointment.location,
+                          patientImage: appointment.patientImage,
+                        );
+                      },
+                    ),
 
-              // New Requests
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   headline('New Requests'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: _toggleNiewRequestView,
                     child: Text(
                       'See all',
                       style: AppTextStyle.textstyle12.copyWith(
@@ -113,19 +155,23 @@ class DoctorOverview extends StatelessWidget {
                 ],
               ),
 
-              AppListView(
-                itemCount: overview.newRequests.length,
-                itemBuilder: (context, index) {
-                  final request = overview.newRequests[index];
+              widget.overview.newRequests.isEmpty
+                  ? _buildEmptyState('No new requests')
+                  : AppListView(
+                      itemCount: newRequestView
+                          ? widget.overview.newRequests.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final request = widget.overview.newRequests[index];
 
-                  return NewRequestCard(
-                    patientName: request.patientName,
-                    patientAge: request.patientAge,
-                    patientGender: request.patientGender,
-                    appointmentDate: request.appointmentDate,
-                    location: request.location,
-                    patientImage: request.patientImage,
-                  );
+                        return NewRequestCard(
+                          patientName: request.patientName,
+                          patientAge: request.patientAge,
+                          patientGender: request.patientGender,
+                          appointmentDate: request.appointmentDate,
+                          location: request.location,
+                          patientImage: request.patientImage,
+                        );
                 },
               ),
             ]),

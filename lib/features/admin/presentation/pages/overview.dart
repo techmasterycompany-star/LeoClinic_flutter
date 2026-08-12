@@ -9,9 +9,16 @@ import '../widgets/doctorperformance.dart';
 import '../widgets/health_overview.dart';
 import '../widgets/today_appointments.dart';
 
-class AdminOverview extends StatelessWidget {
+class AdminOverview extends StatefulWidget {
   final AdminOverviewModel overview;
 
+  const AdminOverview({super.key, this.overview = adminOverviewMock});
+
+  @override
+  State<AdminOverview> createState() => _AdminOverviewState();
+}
+
+class _AdminOverviewState extends State<AdminOverview> {
   Widget headline(String headline) {
     return Text(
       headline,
@@ -19,8 +26,39 @@ class AdminOverview extends StatelessWidget {
     );
   }
 
-  const AdminOverview({super.key, this.overview = adminOverviewMock});
+  Widget _buildEmptyState(String message) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Center(
+        child: Text(
+          message,
+          style: AppTextStyle.secondarytext,
+        ),
+      ),
+    );
+  }
 
+  void _toggleTodayAppointmentView() {
+    setState(() {
+      todayAppointmentView = !todayAppointmentView;
+    });
+  }
+
+  void _toggleDoctorPerformanceView() {
+    setState(() {
+      doctorPerformanceView = !doctorPerformanceView;
+    });
+  }
+
+  void _toggleAlertView() {
+    setState(() {
+      alertView = !alertView;
+    });
+  }
+
+  bool todayAppointmentView = false;
+  bool doctorPerformanceView = false;
+  bool alertView = false;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -37,7 +75,7 @@ class AdminOverview extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
-                children: overview.statistics.map((statistic) {
+                children: widget.overview.statistics.map((statistic) {
                   return HealthOverviewCard(
                     icon: statistic.icon,
                     headline: statistic.headline,
@@ -47,80 +85,99 @@ class AdminOverview extends StatelessWidget {
                 }).toList(),
               ),
 
-              // Today's Appointments
               Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   headline('Today\'s Appointments'),
-                  // TODO: Impelement Today's Appointment button
                   TextButton(
-                    onPressed: () {},
+                    onPressed: _toggleTodayAppointmentView,
                     child: Text('View All Appointments'),
                   ),
                 ],
               ),
-              AppListView(
-                itemCount: overview.todayAppointments.length,
-                itemBuilder: (context, index) {
-                  final appointment = overview.todayAppointments[index];
+              widget.overview.todayAppointments.isEmpty
+                  ? _buildEmptyState('No appointments today')
+                  : AppListView(
+                      itemCount: todayAppointmentView &&
+                              widget.overview.todayAppointments.isNotEmpty
+                          ? widget.overview.todayAppointments.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final appointment =
+                            widget.overview.todayAppointments[index];
 
-                  return TodayAppointmentCard(
-                    patientName: appointment.patientName,
-                    patientNumber: appointment.patientNumber,
-                    drName: appointment.doctorName,
-                    speciality: appointment.speciality,
-                    time: appointment.time,
-                    status: appointment.status,
-                    patientImage: appointment.patientImage,
-                  );
-                },
-              ),
+                        return TodayAppointmentCard(
+                          patientName: appointment.patientName,
+                          patientNumber: appointment.patientNumber,
+                          drName: appointment.doctorName,
+                          speciality: appointment.speciality,
+                          time: appointment.time,
+                          status: appointment.status,
+                          patientImage: appointment.patientImage,
+                        );
+                      },
+                    ),
 
               // Doctor Performance
               Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   headline('Doctor Performance'),
-                  // TODO: Implement doctor performance onPress
-                  TextButton(onPressed: () {}, child: Text('View All')),
+                  TextButton(
+                    onPressed: _toggleDoctorPerformanceView,
+                    child: Text('View All'),
+                  ),
                 ],
               ),
-              AppListView(
-                itemCount: overview.doctorPerformance.length,
-                itemBuilder: (context, index) {
-                  final doctor = overview.doctorPerformance[index];
+              widget.overview.doctorPerformance.isEmpty
+                  ? _buildEmptyState('No doctor performance data available')
+                  : AppListView(
+                      itemCount: doctorPerformanceView &&
+                              widget.overview.doctorPerformance.isNotEmpty
+                          ? widget.overview.doctorPerformance.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final doctor =
+                            widget.overview.doctorPerformance[index];
 
-                  return DoctorPerformanceCard(
-                    doctorName: doctor.doctorName,
-                    speciality: doctor.speciality,
-                    totalAppointments: doctor.totalAppointments,
-                    appointmentsCompleted: doctor.appointmentsCompleted,
-                    rate: doctor.rateText,
-                    doctorImage: doctor.doctorImage,
-                  );
-                },
-              ),
+                        return DoctorPerformanceCard(
+                          doctorName: doctor.doctorName,
+                          speciality: doctor.speciality,
+                          totalAppointments: doctor.totalAppointments,
+                          appointmentsCompleted:
+                              doctor.appointmentsCompleted,
+                          rate: doctor.rateText,
+                          doctorImage: doctor.doctorImage,
+                        );
+                      },
+                    ),
 
               // Alerts
               Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   headline('Alerts'),
-                  // TODO: Implement alerts onPressed
-                  TextButton(onPressed: () {}, child: Text('View All')),
+                  TextButton(
+                    onPressed: _toggleAlertView,
+                    child: Text('View All'),
+                  ),
                 ],
               ),
-              AppListView(
-                itemCount: overview.alerts.length,
-                itemBuilder: (context, index) {
-                  final alert = overview.alerts[index];
+              widget.overview.alerts.isEmpty
+                  ? _buildEmptyState('No alerts')
+                  : AppListView(
+                      itemCount: alertView && widget.overview.alerts.isNotEmpty
+                          ? widget.overview.alerts.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final alert = widget.overview.alerts[index];
 
-                  return AlertsCard(
-                    title: alert.title,
-                    subTitle: alert.subTitle,
-                  );
-                },
-              ),
+                        return AlertsCard(
+                          title: alert.title,
+                          subTitle: alert.subTitle,
+                        );
+                      },
+                    ),
             ]),
           ),
         ),

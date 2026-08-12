@@ -8,15 +8,48 @@ import 'package:leoclinic_flutter/features/patient/presentation/widgets/patient_
 import '../widgets/patient_caring_specialist.dart';
 import '../widgets/patient_next_appointment_card.dart';
 
-class PatientOverview extends StatelessWidget {
+class PatientOverview extends StatefulWidget {
   final PatientOverviewModel overview;
 
   const PatientOverview({super.key, this.overview = patientOverviewMock});
+
+  @override
+  State<PatientOverview> createState() => _PatientOverviewState();
+}
+
+class _PatientOverviewState extends State<PatientOverview> {
+  bool nextAppointmentView = false;
+  bool requestHistoryView = false;
+
   Widget headline(String headline) {
     return Text(
       headline,
       style: AppTextStyle.textstyle14.copyWith(fontSize: 16),
     );
+  }
+
+  Widget _buildEmptyState(String message) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Center(
+        child: Text(
+          message,
+          style: AppTextStyle.secondarytext,
+        ),
+      ),
+    );
+  }
+
+  void _toggleNextAppointment() {
+    setState(() {
+      nextAppointmentView = !nextAppointmentView;
+    });
+  }
+
+  void _toggleRequestHistory() {
+    setState(() {
+      requestHistoryView = !requestHistoryView;
+    });
   }
 
   @override
@@ -33,74 +66,92 @@ class PatientOverview extends StatelessWidget {
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   headline('Next Appointment'),
-                  TextButton(onPressed: () {}, child: Text('View all')),
+                  TextButton(
+                    onPressed: _toggleNextAppointment,
+                    child: Text('View all'),
+                  ),
                 ],
               ),
-              AppListView(
-                itemCount: overview.nextAppointments.length,
-                itemBuilder: (context, index) {
-                  final appointment = overview.nextAppointments[index];
+              widget.overview.nextAppointments.isEmpty
+                  ? _buildEmptyState('No appointments available')
+                  : AppListView(
+                      itemCount: nextAppointmentView
+                          ? widget.overview.nextAppointments.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final appointment =
+                            widget.overview.nextAppointments[index];
 
-                  return NextAppointmentCard(
-                    doctorName: appointment.doctorName,
-                    doctorAge: appointment.doctorAge,
-                    doctorGender: appointment.doctorGender,
-                    appointmentTime: appointment.appointmentTime,
-                    appointmentDate: appointment.appointmentDate,
-                    location: appointment.location,
-                    doctorImage: appointment.doctorImage,
-                  );
-                },
-              ),
+                        return NextAppointmentCard(
+                          doctorName: appointment.doctorName,
+                          doctorAge: appointment.doctorAge,
+                          doctorGender: appointment.doctorGender,
+                          appointmentTime: appointment.appointmentTime,
+                          appointmentDate: appointment.appointmentDate,
+                          location: appointment.location,
+                          doctorImage: appointment.doctorImage,
+                        );
+                      },
+                    ),
 
               Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   headline('Caring specialist'),
                   Text(
-                    '${overview.availableDoctorsThisWeek} doctors available this week',
+                    '${widget.overview.availableDoctorsThisWeek} doctors available this week',
                     style: AppTextStyle.secondarytext,
                   ),
                 ],
               ),
-              AppListView(
-                itemCount: overview.caringSpecialists.length,
-                itemBuilder: (context, index) {
-                  final specialist = overview.caringSpecialists[index];
+              widget.overview.caringSpecialists.isEmpty
+                  ? _buildEmptyState('No caring specialists available')
+                  : AppListView(
+                      itemCount: widget.overview.caringSpecialists.length,
+                      itemBuilder: (context, index) {
+                        final specialist =
+                            widget.overview.caringSpecialists[index];
 
-                  return CaringSpecialistCard(
-                    doctorName: specialist.doctorName,
-                    speciality: specialist.speciality,
-                    amount: specialist.amount,
-                    doctorImage: specialist.doctorImage,
-                  );
-                },
-              ),
+                        return CaringSpecialistCard(
+                          doctorName: specialist.doctorName,
+                          speciality: specialist.speciality,
+                          amount: specialist.amount,
+                          doctorImage: specialist.doctorImage,
+                        );
+                      },
+                    ),
 
               Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   headline('Request History'),
-                  // TODO: Implement next appointment see all
-                  TextButton(onPressed: () {}, child: Text('See all')),
+                  TextButton(
+                    onPressed: _toggleRequestHistory,
+                    child: Text('See all'),
+                  ),
                 ],
               ),
-              AppListView(
-                itemCount: overview.requestsHistory.length,
-                itemBuilder: (context, index) {
-                  final request = overview.requestsHistory[index];
+              widget.overview.requestsHistory.isEmpty
+                  ? _buildEmptyState('No request history')
+                  : AppListView(
+                      itemCount: requestHistoryView
+                          ? widget.overview.requestsHistory.length
+                          : 1,
+                      itemBuilder: (context, index) {
+                        final request =
+                            widget.overview.requestsHistory[index];
 
-                  return RequestHistoryCard(
-                    doctorName: request.doctorName,
-                    speciality: request.speciality,
-                    appointmentDate: request.appointmentDate,
-                    appointmentTime: request.appointmentTime,
-                    location: request.location,
-                    appointmentStatus: request.appointmentStatus,
-                    doctorImage: request.doctorImage,
-                  );
-                },
-              ),
+                        return RequestHistoryCard(
+                          doctorName: request.doctorName,
+                          speciality: request.speciality,
+                          appointmentDate: request.appointmentDate,
+                          appointmentTime: request.appointmentTime,
+                          location: request.location,
+                          appointmentStatus: request.appointmentStatus,
+                          doctorImage: request.doctorImage,
+                        );
+                      },
+                    ),
             ]),
           ),
         ),
