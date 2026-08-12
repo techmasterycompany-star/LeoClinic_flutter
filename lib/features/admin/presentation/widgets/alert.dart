@@ -13,15 +13,15 @@ class AlertsCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: AppColors.dangerBg,
+        color: AppColors.fieldBg,
         borderRadius: BorderRadius.circular(16),
-        border: BoxBorder.all(color: AppColors.danger),
+        border: BoxBorder.all(color: AppColors.failed),
       ),
       child: ListTile(
-        leading: Icon(Icons.warning_amber_rounded, color: AppColors.danger),
+        leading: Icon(Icons.warning_amber_rounded, color: AppColors.failed),
         title: Text(
           title,
-          style: AppTextStyle.textstyle14.copyWith(color: AppColors.danger),
+          style: AppTextStyle.textstyle14.copyWith(color: AppColors.failed),
         ),
         subtitle: Text(subTitle, style: AppTextStyle.secondarytext),
       ),

@@ -38,7 +38,7 @@ class HealthOverviewCard extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: AppColors.dangerBg,
+                  color: AppColors.fieldBg,
                 ),
                 child: Icon(icon),
               ),
