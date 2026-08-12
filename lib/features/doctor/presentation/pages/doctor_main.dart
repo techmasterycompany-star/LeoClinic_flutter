@@ -47,7 +47,9 @@ class _DoctorMainScreenState extends State<DoctorMainScreen> {
         destination: destination,
         selectedIndex: _index,
         onDestinationSelected: (int index) {
-          _index = index;
+          setState(() {
+            _index = index;
+          });
         },
       ),
     );

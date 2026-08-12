@@ -23,7 +23,6 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
     6. profile
     ============================================
      */
-
     NavigationDestination(
       icon: Icon(Icons.home),
       selectedIcon: Icon(Icons.home, size: 30),
@@ -46,7 +45,9 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
         destination: destination,
         selectedIndex: _index,
         onDestinationSelected: (int index) {
-          _index = index;
+          setState(() {
+            _index = index;
+          });
         },
       ),
     );

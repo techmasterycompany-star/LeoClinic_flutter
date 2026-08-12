@@ -4,14 +4,13 @@ class NavBar extends StatelessWidget {
   final List<NavigationDestination> destination;
   final int selectedIndex;
   final ValueChanged<int> onDestinationSelected;
-  NavBar({
+  const NavBar({
     super.key,
     required this.destination,
     required this.selectedIndex,
     required this.onDestinationSelected,
   });
 
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
