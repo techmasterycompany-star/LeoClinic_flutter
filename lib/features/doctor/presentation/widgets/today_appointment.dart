@@ -36,8 +36,7 @@ class TodayAppointmentCard extends StatelessWidget {
         isThreeLine: true,
         leading: CircleAvatar(
           radius: 30,
-          // TODO: replace with patient image
-          child: Icon(Icons.person, color: AppColors.background),
+          child: patientImage != null ? Image.network(patientImage!) : Image.asset('assets/images/placeholder.png'),
         ),
         title: Text(patientName, style: AppTextStyle.textstyle14),
         subtitle: Column(

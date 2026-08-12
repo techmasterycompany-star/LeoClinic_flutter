@@ -45,8 +45,7 @@ class NextAppointmentCard extends StatelessWidget {
         isThreeLine: true,
         leading: CircleAvatar(
           radius: 30,
-          // TODO: replace with patient image
-          child: Icon(Icons.person, color: AppColors.background),
+          child: doctorImage != null ? Image.network(doctorImage!) : Image.asset('assets/images/placeholder.png'),
         ),
         title: Text(
           'Dr. $doctorName',

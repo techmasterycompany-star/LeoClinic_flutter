@@ -79,7 +79,7 @@ class NewRequestCard extends StatelessWidget {
           ),
 
           // Buttons
-          // TODO: Implement the onPressed
+          // TODO: Implement pick a slot button
           Row(
             mainAxisAlignment: .spaceEvenly,
             children: [

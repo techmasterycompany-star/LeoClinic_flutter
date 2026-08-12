@@ -30,9 +30,8 @@ class DoctorPerformanceCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [AppBoxShadow.boxShadow],
       ),
-      // TODO: Add the doctor image
       child: ListTile(
-        leading: CircleAvatar(child: Icon(Icons.person)),
+        leading: CircleAvatar(child: doctorImage != null ? Image.network(doctorImage!) : Image.asset('assets/images/placeholder.png')),
         title: Text('Dr. $doctorName', style: AppTextStyle.textstyle14),
         subtitle: Column(
           crossAxisAlignment: .start,

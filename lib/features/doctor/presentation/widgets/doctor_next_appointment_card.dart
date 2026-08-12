@@ -39,8 +39,7 @@ class NextAppointmentCard extends StatelessWidget {
         isThreeLine: true,
         leading: CircleAvatar(
           radius: 30,
-          // TODO: replace with patient image
-          child: Icon(Icons.person, color: AppColors.background),
+          child: patientImage != null ? Image.network(patientImage!) : Image.asset('assets/images/placeholder.png'),
         ),
         title: Text(
           patientName,
@@ -65,7 +64,7 @@ class NextAppointmentCard extends StatelessWidget {
           ],
         ),
 
-        // TODO: Implement the OnPressed
+        // TODO: implement join now button
         trailing: AppPillButton(text: 'Join Now', onPressed: () {}),
       ),
     );

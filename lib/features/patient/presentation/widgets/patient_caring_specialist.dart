@@ -54,7 +54,6 @@ class CaringSpecialistCard extends StatelessWidget {
                 ? Image.network(doctorImage!)
                 : Image.asset('assets/images/placeholder.png', width: 180,),
           ),
-          // TODO: Implement view profile
           Positioned(
             bottom: 10,
             left: 0,

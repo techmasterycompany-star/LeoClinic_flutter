@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme().lightTheme,
       themeMode: ThemeMode.light,
-      home: RoleBasedHomeScreen(userRole: .admin),
+      home: RoleBasedHomeScreen(userRole: .doctor),
     );
   }
 }
