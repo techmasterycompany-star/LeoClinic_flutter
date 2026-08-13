@@ -5,4 +5,5 @@ class MyColors {
   static const Color textCard = Color(0xFFDFE1E6);
   static const Color textSecondary = Color(0xFF6B707B);
   static const Color background  = Color(0xFF2238CC);
+  static const Color backgroundColor = Color(0xFF000F75);
 }
