@@ -58,7 +58,7 @@ class AppTextFormField extends StatelessWidget {
         hintStyle:
             hintStyle ??
             TextStyle(
-              fontSize: 14.sp,
+              fontSize: 14,
               fontWeight: FontWeight.w400,
               color: Colors.grey,
             ),
@@ -69,7 +69,7 @@ class AppTextFormField extends StatelessWidget {
       style:
           inputTextStyle ??
           TextStyle(
-            fontSize: 16.sp,
+            fontSize: 16,
             fontWeight: FontWeight.w400,
             color: Colors.grey,
           ),

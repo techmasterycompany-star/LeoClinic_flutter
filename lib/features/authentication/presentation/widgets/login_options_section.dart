@@ -43,7 +43,7 @@ class LoginOptionsSection extends StatelessWidget {
               const Radio<String>(value: "doctor"),
               const SizedBox(width: 20),
               Text("Patient", style: TextStyle(fontSize: 16.sp)),
-              const Radio<String>(value: "patient"),
+              const Radio<String>(value: "Patient"),
             ],
           ),
         ),
