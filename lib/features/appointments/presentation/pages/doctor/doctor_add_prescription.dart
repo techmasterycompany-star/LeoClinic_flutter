@@ -4,8 +4,8 @@ import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/search_and_filtering.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/patient_appointment_card.dart';
 
-class DoctorAppointment extends StatelessWidget {
-  const DoctorAppointment({super.key});
+class DoctorAddPrescription extends StatelessWidget {
+  const DoctorAddPrescription({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,6 @@ class DoctorAppointment extends StatelessWidget {
             child: Column(
               children: [
                 TopHeadline(title: 'Appointments'),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                  child: SearchAndFiltering(),
-                ),
-                AppointmentFilterSection(section1: "All",section2: "Request",section3: "Confirmed",),
-                PatientAppointmentCard(showactions: false,showdatetime: false,)
                   ]),
           ))));
   }

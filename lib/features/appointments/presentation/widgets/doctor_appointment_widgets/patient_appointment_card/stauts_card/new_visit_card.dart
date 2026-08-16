@@ -4,16 +4,20 @@ import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/actions_for_cards.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/stauts_card/deatils_of_card.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/widget/actions_for_cards.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/stauts_card/deatils_of_card.dart';
 
 class NewVisitAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
   final bool showActions;
+    final bool showdatetime;
+
   const NewVisitAppointmentCard({
     super.key,
     required this.appointment, 
     required this.showActions,
+        required this.showdatetime
+
   });
 
   @override
@@ -84,7 +88,9 @@ class NewVisitAppointmentCard extends StatelessWidget {
           const SizedBox(height: 16),
           Row(
             children: [
+              if(showdatetime)
               DeatilsOfCard.buildInfoItem(Icons.calendar_today_outlined, appointment.date),
+              if(showdatetime)
               DeatilsOfCard.buildDivider(),
               DeatilsOfCard.buildInfoItem(Icons.access_time, appointment.time),
               DeatilsOfCard.buildDivider(),

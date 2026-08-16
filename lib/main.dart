@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin/admin_appointment.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/profile_patient_for_doctor.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme().lightTheme,
       themeMode: ThemeMode.light,
-      home: AdminAppointment(),
+      home: ProfilePatientForDoctor(),
     );
   }
 }

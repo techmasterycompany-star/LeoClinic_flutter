@@ -3,7 +3,7 @@ import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/stauts_card/deatils_of_card.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/stauts_card/deatils_of_card.dart';
 
 class ConfirmedAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
