@@ -31,7 +31,7 @@ class FileItemCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.background,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppColors.cardBorder, width: 1.2),
+              border: Border.all(color: AppColors.border, width: 1.2),
             ),
             child: Row(
               children: [
@@ -47,7 +47,7 @@ class FileItemCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.cardTitleGrey,
+                      color: AppColors.border,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -61,12 +61,12 @@ class FileItemCard extends StatelessWidget {
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.fromBorderSide(
-                        BorderSide(color: AppColors.downloadBlue, width: 1.4),
+                        BorderSide(color: AppColors.primaryColor, width: 1.4),
                       ),
                     ),
                     child: const Icon(
                       Icons.arrow_downward,
-                      color: AppColors.downloadBlue,
+                      color: AppColors.primaryColor,
                       size: 16,
                     ),
                   ),
@@ -77,7 +77,7 @@ class FileItemCard extends StatelessWidget {
                   customBorder: const CircleBorder(),
                   child: const Icon(
                     Icons.delete_outline,
-                    color: AppColors.deleteRed,
+                    color: AppColors.failed,
                     size: 24,
                   ),
                 ),
