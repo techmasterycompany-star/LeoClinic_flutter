@@ -11,6 +11,13 @@ class AppTextStyle {
     color: AppColors.textPrimary,
   );
 
+  static const TextStyle secondarytext = TextStyle(
+    fontFamily: _fontFamily,
+    fontSize: 12,
+    fontWeight: .w400,
+    color: AppColors.textSecondary,
+  );
+
   static const TextStyle textstyle10 = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 10,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/profile_patient_for_doctor.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Doctor-final-navebar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme().lightTheme,
       themeMode: ThemeMode.light,
-      home: ProfilePatientForDoctor(),
+      home: Doctorfinalnavebar(),
     );
   }
 }
