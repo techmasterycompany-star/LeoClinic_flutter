@@ -17,6 +17,7 @@ class ConfirmedAndCanclledButtons extends StatelessWidget {
       children: [
         Expanded(
           child: Button(
+            showicon: false,
             label: "Cancelled",
             onPressed: canclledOnPressed,
             backgroundcolor: AppColors.secondaryColor,
@@ -26,6 +27,7 @@ class ConfirmedAndCanclledButtons extends StatelessWidget {
         const SizedBox(width: 20,),
         Expanded(
           child: Button(
+            showicon: false,
             label: 'Confirm',
             onPressed: confirmOnPressed,
             backgroundcolor: AppColors.primaryColor,

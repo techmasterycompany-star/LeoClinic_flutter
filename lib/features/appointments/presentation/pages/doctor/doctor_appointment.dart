@@ -22,7 +22,7 @@ class DoctorAppointment extends StatelessWidget {
                   child: SearchAndFiltering(),
                 ),
                 AppointmentFilterSection(section1: "All",section2: "Request",section3: "Confirmed",),
-                PatientAppointmentCard(showactions: false,showdatetime: false,)
+                PatientAppointmentCard(showdatetime: false,)
                   ]),
           ))));
   }

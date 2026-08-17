@@ -115,7 +115,9 @@ class _PrescriptionCardState extends State<PrescriptionCard> {
           const SizedBox(height: 20),
           Align(
             alignment: Alignment.centerRight,
-            child: Button(label: "Add Prescriptions", onPressed:  widget.onPressed,backgroundcolor: AppColors.primaryColor,foregroundcolor: AppColors.background,)
+            child: Button(label: "Add Prescriptions", onPressed:  widget.onPressed,
+            backgroundcolor: AppColors.primaryColor,
+            foregroundcolor: AppColors.background, showicon: false, width: 200,)
           ),
         ],
       ),

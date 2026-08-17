@@ -14,7 +14,7 @@ class DoctorAddPrescription extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                TopHeadline(title: 'Appointments'),
+                TopHeadline(title: 'Appointments',),
                 AddPrescriptionCard(),
                   ]),
           ))));

@@ -13,10 +13,10 @@ class TopHeadline extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-      const SizedBox(width: 20),
+      const SizedBox(width: 25),
       ArrowBackTopScreen(),
       Padding(
-        padding: const EdgeInsets.only(left: 65),
+        padding: const EdgeInsets.only(left: 72),
         child: Text(
           title,
           style: AppTextStyle.heading,
