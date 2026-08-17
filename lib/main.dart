@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_add_prescription.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Doctor-final-navebar.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme().lightTheme,
       themeMode: ThemeMode.light,
-      home: Doctorfinalnavebar(),
+      home: DoctorAddPrescription(),
     );
   }
 }

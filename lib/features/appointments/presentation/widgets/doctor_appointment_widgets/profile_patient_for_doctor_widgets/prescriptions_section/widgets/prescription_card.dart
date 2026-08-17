@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/widgets/button.dart';
 
-class PrescriptionCard extends StatelessWidget {
+class PrescriptionCard extends StatefulWidget {
   final String title;
   final String date;
   final List<String> items;
@@ -18,6 +18,11 @@ class PrescriptionCard extends StatelessWidget {
     this.onItemsAdded, required this.onPressed,
   });
 
+  @override
+  State<PrescriptionCard> createState() => _PrescriptionCardState();
+}
+
+class _PrescriptionCardState extends State<PrescriptionCard> {
   @override
   Widget build(BuildContext context) {
     const Color lightBlueBg = Color(0xFFEAF0FE);
@@ -50,7 +55,7 @@ class PrescriptionCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    widget.title,
                     style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -64,7 +69,7 @@ class PrescriptionCard extends StatelessWidget {
                           size: 16, color: AppColors.textSecondary),
                       const SizedBox(width: 6),
                       Text(
-                        date,
+                        widget.date,
                         style: TextStyle(fontSize: 14, color:AppColors.textSecondary ),
                       ),
                     ],
@@ -81,7 +86,7 @@ class PrescriptionCard extends StatelessWidget {
           Wrap(
             spacing: 20,
             runSpacing: 10,
-            children: items
+            children: widget.items
                 .map(
                   (item) => Row(
                     mainAxisSize: MainAxisSize.min,
@@ -110,7 +115,7 @@ class PrescriptionCard extends StatelessWidget {
           const SizedBox(height: 20),
           Align(
             alignment: Alignment.centerRight,
-            child: Button(label: "Add Prescriptions", onPressed:  onPressed,)
+            child: Button(label: "Add Prescriptions", onPressed:  widget.onPressed,backgroundcolor: AppColors.primaryColor,foregroundcolor: AppColors.background,)
           ),
         ],
       ),
