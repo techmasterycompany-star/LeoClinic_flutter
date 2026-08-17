@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
-import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/search_and_filtering.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/patient_appointment_card.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/add_prescription_card/add_prescription_card.dart';
 
 class DoctorAddPrescription extends StatelessWidget {
   const DoctorAddPrescription({super.key});
@@ -17,6 +15,7 @@ class DoctorAddPrescription extends StatelessWidget {
             child: Column(
               children: [
                 TopHeadline(title: 'Appointments'),
+                AddPrescriptionCard(),
                   ]),
           ))));
   }

@@ -47,7 +47,7 @@ class FileItemCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.border,
+                      color: AppColors.textSecondary,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
