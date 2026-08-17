@@ -4,19 +4,19 @@ import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
 import 'package:leoclinic_flutter/core/widgets/status_of_cards.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/widget/actions_for_cards.dart';
+import 'package:leoclinic_flutter/core/widgets/actions_for_cards.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/stauts_card/deatils_of_card.dart';
 
 class NewVisitAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
-  final bool showActions;
     final bool showdatetime;
+      final void Function() onPressedOfBlueAcion;
+  final void Function() onPressedOfLightBlueAcion;
 
   const NewVisitAppointmentCard({
     super.key,
     required this.appointment, 
-    required this.showActions,
-        required this.showdatetime
+        required this.showdatetime, required this.onPressedOfBlueAcion, required this.onPressedOfLightBlueAcion
 
   });
 
@@ -98,10 +98,13 @@ class NewVisitAppointmentCard extends StatelessWidget {
             ],
           ),
 
-          if (showActions) ...[
             const SizedBox(height: 16),
-            ActionsForCards(),
-          ],
+            ActionsForCards(showiconLightbutton: true,
+            showiconDarkbutton: false,
+          labelOfBlueAction: 'Pick A Slot', labelOflightblueAction: 'Decline',
+           onPressedOfBlueAcion: onPressedOfBlueAcion, onPressedOfLightBlueAcion: onPressedOfLightBlueAcion,
+            blueBackground: AppColors.primaryColor, lightBlueBackground: AppColors.secondaryColor,
+             foregroundForblueBackground: AppColors.background, foregroundForLightblueBackground: AppColors.primaryColor,),
         ],
       ),
     );
