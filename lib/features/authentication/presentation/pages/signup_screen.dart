@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'verification.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:leoclinic_flutter/core/utils/app_colors.dart';
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/login_options_section.dart';
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/password_and_confirm.dart';
+
 import '../../business_logic/cubit/auth_cubit.dart';
 import '../../business_logic/cubit/auth_state.dart';
 import '../../data/models/register_request_model.dart';
 import '../widgets/app_text_button.dart';
 import '../widgets/app_text_form_field.dart';
+import 'verification.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -28,6 +30,11 @@ class _SignupScreenState extends State<SignupScreen> {
 
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final specialityIdController = TextEditingController();
+  final priceController = TextEditingController();
+  final bioController = TextEditingController();
+  final dateOfBirthController = TextEditingController();
+  final addressController = TextEditingController();
 
   bool isTermsAccepted = false;
   String? selectedRole = "patient";
@@ -40,6 +47,12 @@ class _SignupScreenState extends State<SignupScreen> {
     phoneController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    specialityIdController.dispose();
+    priceController.dispose();
+    bioController.dispose();
+
+    dateOfBirthController.dispose();
+    addressController.dispose();
 
     super.dispose();
   }
@@ -52,10 +65,14 @@ class _SignupScreenState extends State<SignupScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Verification(),
+              builder: (context) => Verification(
+                email: emailController.text.trim(),
+                isResetPassword: false,
+              ),
             ),
           );
         }
+
         if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -64,7 +81,6 @@ class _SignupScreenState extends State<SignupScreen> {
           );
         }
       },
-
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
@@ -85,18 +101,30 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
               ),
+
               Positioned(
                 top: 66.h,
                 left: 37.w,
-                child: Image.asset("assets/images/Group2.png"),
+                child: Image.asset(
+                  "assets/images/Group2.png",
+                ),
               ),
+
               Positioned(
                 top: 125.h,
                 left: 0,
-                child: Image.asset("assets/images/Rectangle.png"),
+                child: Image.asset(
+                  "assets/images/Rectangle.png",
+                ),
               ),
+
               Padding(
-                padding: EdgeInsets.fromLTRB(20.w, 185.h, 20.w, 40.h),
+                padding: EdgeInsets.fromLTRB(
+                  20.w,
+                  185.h,
+                  20.w,
+                  40.h,
+                ),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +137,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+
                       SizedBox(height: 14.h),
+
                       Text(
                         "Create your account.",
                         style: TextStyle(
@@ -118,7 +148,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
+
                       SizedBox(height: 22.h),
+
                       Form(
                         key: formKey,
                         child: Column(
@@ -127,12 +159,13 @@ class _SignupScreenState extends State<SignupScreen> {
                               children: [
                                 SizedBox(
                                   width: 164.w,
-                                  height: 45.h,
+                                  height: 50.h,
                                   child: AppTextFormField(
                                     hintText: "First Name",
                                     controller: firstNameController,
                                     validator: (value) {
-                                      if (value == null || value.trim().isEmpty) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
                                         return 'Enter your first name';
                                       }
 
@@ -140,15 +173,18 @@ class _SignupScreenState extends State<SignupScreen> {
                                     },
                                   ),
                                 ),
-                                Spacer(),
+
+                                const Spacer(),
+
                                 SizedBox(
                                   width: 164.w,
-                                  height: 45.h,
+                                  height: 50.h,
                                   child: AppTextFormField(
                                     hintText: "Last Name",
                                     controller: lastNameController,
                                     validator: (value) {
-                                      if (value == null || value.trim().isEmpty) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
                                         return 'Enter your last name';
                                       }
 
@@ -158,17 +194,20 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                               ],
                             ),
+
                             SizedBox(height: 27.h),
+
                             Row(
                               children: [
                                 SizedBox(
                                   width: 164.w,
-                                  height: 45.h,
+                                  height: 50.h,
                                   child: AppTextFormField(
                                     hintText: "Email",
                                     controller: emailController,
                                     validator: (value) {
-                                      if (value == null || value.trim().isEmpty) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
                                         return 'Enter your email';
                                       }
 
@@ -176,7 +215,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                         r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
                                       );
 
-                                      if (!emailRegex.hasMatch(value.trim())) {
+                                      if (!emailRegex.hasMatch(
+                                        value.trim(),
+                                      )) {
                                         return 'Enter a valid email';
                                       }
 
@@ -184,22 +225,28 @@ class _SignupScreenState extends State<SignupScreen> {
                                     },
                                   ),
                                 ),
-                                Spacer(),
+
+                                const Spacer(),
+
                                 SizedBox(
                                   width: 164.w,
-                                  height: 45.h,
+                                  height: 50.h,
                                   child: AppTextFormField(
                                     hintText: "Phone Number",
                                     controller: phoneController,
                                     validator: (value) {
-                                      if (value == null || value.trim().isEmpty) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
                                         return 'Enter your phone number';
                                       }
+
                                       final phoneRegex = RegExp(
                                         r'^01[0125][0-9]{8}$',
                                       );
 
-                                      if (!phoneRegex.hasMatch(value.trim())) {
+                                      if (!phoneRegex.hasMatch(
+                                        value.trim(),
+                                      )) {
                                         return 'Enter a valid phone number';
                                       }
 
@@ -209,23 +256,115 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                               ],
                             ),
+
                             SizedBox(height: 22.h),
+
                             PasswordAndConfirm(
                               passwordController: passwordController,
-                              confirmPasswordController: confirmPasswordController,
+                              confirmPasswordController:
+                              confirmPasswordController,
                             ),
                             SizedBox(height: 16.h),
+
+                            if (selectedRole == "doctor") ...[
+                              AppTextFormField(
+                                hintText: "Speciality ID",
+                                controller: specialityIdController,
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty) {
+                                    return "Enter speciality ID";
+                                  }
+                                  return null;
+                                },
+                              ),
+
+                              SizedBox(height: 12.h),
+
+                              AppTextFormField(
+                                hintText: "Price",
+                                controller: priceController,
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty) {
+                                    return "Enter price";
+                                  }
+
+                                  if (int.tryParse(value.trim()) == null) {
+                                    return "Enter a valid price";
+                                  }
+
+                                  return null;
+                                },
+                              ),
+
+                              SizedBox(height: 12.h),
+
+                              AppTextFormField(
+                                hintText: "Bio",
+                                controller: bioController,
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty) {
+                                    return "Enter your bio";
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+
+                            if (selectedRole == "patient") ...[
+                              GestureDetector(
+                                onTap: () async {
+                                  final pickedDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime(2000),
+                                    firstDate: DateTime(1900),
+                                    lastDate: DateTime.now(),
+                                  );
+
+                                  if (pickedDate != null) {
+                                    dateOfBirthController.text =
+                                        pickedDate.toUtc().toIso8601String();
+                                  }
+                                },
+                                child: AbsorbPointer(
+                                  child: AppTextFormField(
+                                    hintText: "Date of Birth",
+                                    controller: dateOfBirthController,
+                                    validator: (value) {
+                                      if (value == null || value.trim().isEmpty) {
+                                        return "Enter your date of birth";
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 12.h),
+
+                              AppTextFormField(
+                                hintText: "Address",
+                                controller: addressController,
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty) {
+                                    return "Enter your address";
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+                            SizedBox(height: 16.h),
+
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Checkbox(
                                   value: isTermsAccepted,
                                   onChanged: (value) {
                                     setState(() {
-                                      isTermsAccepted = value!;
+                                      isTermsAccepted = value ?? false;
                                     });
                                   },
                                 ),
+
                                 RichText(
                                   text: TextSpan(
                                     children: [
@@ -234,7 +373,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                         style: TextStyle(
                                           color: MyColors.textPrimary,
                                           fontSize: 13.sp,
-                                          fontWeight: FontWeight.w400,
                                         ),
                                       ),
                                       TextSpan(
@@ -250,7 +388,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                         style: TextStyle(
                                           color: MyColors.textPrimary,
                                           fontSize: 13.sp,
-                                          fontWeight: FontWeight.w400,
                                         ),
                                       ),
                                       TextSpan(
@@ -266,10 +403,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                               ],
                             ),
+
                             SizedBox(height: 16.h),
+
                             AppTextButton(
                               backgroundColor: MyColors.backgroundCard,
-                              buttonText: state is AuthLoading ? "Loading..." : "Sign up",
+                              buttonText: state is AuthLoading
+                                  ? "Loading..."
+                                  : "Sign up",
                               textStyle: TextStyle(
                                 color: MyColors.textCard,
                                 fontSize: 16.sp,
@@ -277,23 +418,41 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               onPressed: () {
                                 if (state is AuthLoading) return;
+
                                 validateSignup();
                               },
                             ),
-                            SizedBox(height: 16),
+
+                            SizedBox(height: 16.h),
+
                             LoginOptionsSection(
                               selectedRole: selectedRole,
                               onRoleChanged: (value) {
                                 setState(() {
                                   selectedRole = value;
+
+                                  if (selectedRole != "patient") {
+                                    dateOfBirthController.clear();
+                                    addressController.clear();
+                                  }
+
+                                  if (selectedRole != "doctor") {
+                                    specialityIdController.clear();
+                                    priceController.clear();
+                                    bioController.clear();
+                                  }
                                 });
                               },
                             ),
-                            SizedBox(height: 5),
+
+                            SizedBox(height: 5.h),
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Already have an account? "),
+                                const Text(
+                                  "Already have an account? ",
+                                ),
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.pop(context);
@@ -321,6 +480,7 @@ class _SignupScreenState extends State<SignupScreen> {
       },
     );
   }
+
   void validateSignup() {
     if (!formKey.currentState!.validate()) {
       return;
@@ -329,13 +489,34 @@ class _SignupScreenState extends State<SignupScreen> {
     if (!isTermsAccepted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please accept the Terms and Privacy Policies'),
+          content: Text(
+            'Please accept the Terms and Privacy Policies',
+          ),
         ),
       );
+
       return;
     }
 
     final role = selectedRole!.toLowerCase();
+
+    DoctorProfileModel? doctorProfile;
+    PatientProfileModel? patientProfile;
+
+    if (role == 'doctor') {
+      doctorProfile = DoctorProfileModel(
+        specialityId: specialityIdController.text.trim(),
+        price: int.parse(priceController.text.trim()),
+        bio: bioController.text.trim(),
+      );
+    }
+
+    if (role == 'patient') {
+      patientProfile = PatientProfileModel(
+        dateOfBirth: dateOfBirthController.text.trim(),
+        address: addressController.text.trim(),
+      );
+    }
 
     final request = RegisterRequestModel(
       name:
@@ -344,10 +525,9 @@ class _SignupScreenState extends State<SignupScreen> {
       password: passwordController.text,
       role: role,
       contactNumber: phoneController.text.trim(),
+      doctorProfile: doctorProfile,
+      patientProfile: patientProfile,
     );
-
-    print('ROLE: $role');
-    print('REQUEST: ${request.toJson()}');
 
     context.read<AuthCubit>().register(request);
   }

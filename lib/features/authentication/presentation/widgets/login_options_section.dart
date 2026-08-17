@@ -39,11 +39,23 @@ class LoginOptionsSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Doctor", style: TextStyle(fontSize: 16.sp)),
-              const Radio<String>(value: "doctor"),
+              Text(
+                "Doctor",
+                style: TextStyle(fontSize: 16.sp),
+              ),
+              const Radio<String>(
+                value: "doctor",
+              ),
+
               const SizedBox(width: 20),
-              Text("Patient", style: TextStyle(fontSize: 16.sp)),
-              const Radio<String>(value: "Patient"),
+
+              Text(
+                "Patient",
+                style: TextStyle(fontSize: 16.sp),
+              ),
+              const Radio<String>(
+                value: "patient",
+              ),
             ],
           ),
         ),

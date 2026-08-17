@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:leoclinic_flutter/core/utils/app_colors.dart';
-import 'package:leoclinic_flutter/features/authentication/presentation/pages/create_new_password.dart';
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/app_text_button.dart';
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/otp_input.dart';
 
@@ -12,7 +12,14 @@ import '../../data/models/verify_reset_password_token_request_model.dart';
 import 'login_screen.dart';
 
 class Verification extends StatefulWidget {
-  const Verification({super.key});
+  final String email;
+  final bool isResetPassword;
+
+  const Verification({
+    super.key,
+    required this.email,
+    this.isResetPassword = false,
+  });
 
   @override
   State<Verification> createState() => _VerificationState();
@@ -27,17 +34,22 @@ class _VerificationState extends State<Verification> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is VerifyResetPasswordTokenSuccess) {
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CreateNewPassword(
-                token: verificationCode,
-              ),
+        if (state is VerifyEmailSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
             ),
           );
+
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const LoginScreen(),
+            ),
+                (route) => false,
+          );
         }
+
         if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -51,7 +63,6 @@ class _VerificationState extends State<Verification> {
         backgroundColor: Colors.white,
         body: Stack(
           children: [
-
             Container(
               height: 600.h,
               width: double.infinity,
@@ -85,7 +96,7 @@ class _VerificationState extends State<Verification> {
 
             Positioned(
               top: 70.h,
-              left: 30,
+              left: 30.w,
               child: GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(
@@ -116,18 +127,16 @@ class _VerificationState extends State<Verification> {
             ),
 
             Padding(
-              padding: EdgeInsetsGeometry.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 20.w,
                 460.h,
                 20.w,
                 40.h,
               ),
-
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Text(
                       "Verification",
                       style: TextStyle(
@@ -143,28 +152,32 @@ class _VerificationState extends State<Verification> {
                       "Enter verification code",
                       style: TextStyle(
                         color: MyColors.textSecondary,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
+                      ),
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    Text(
+                      "Code sent to ${widget.email}",
+                      style: TextStyle(
+                        color: MyColors.textSecondary,
+                        fontSize: 14.sp,
                       ),
                     ),
 
                     Form(
                       key: formKey,
-
                       child: Column(
                         children: [
-
                           OtpInput(
                             length: 6,
-
                             onCompleted: (code) {
                               verificationCode = code;
                             },
-
                             validator: (value) {
-
-                              if (value == null ||
-                                  value.isEmpty) {
+                              if (value == null || value.isEmpty) {
                                 return 'Please enter the verification code';
                               }
 
@@ -187,7 +200,7 @@ class _VerificationState extends State<Verification> {
 
                             textStyle: TextStyle(
                               color: MyColors.textCard,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                             ),
 
@@ -195,17 +208,15 @@ class _VerificationState extends State<Verification> {
                             MyColors.backgroundCard,
 
                             onPressed: () {
-
-                              if (context
-                                  .read<AuthCubit>()
-                                  .state
-                              is AuthLoading) {
+                              if (context.read<AuthCubit>().state is AuthLoading) {
                                 return;
                               }
 
-                              if (formKey.currentState!
-                                  .validate()) {
+                              if (!formKey.currentState!.validate()) {
+                                return;
+                              }
 
+                              if (widget.isResetPassword) {
                                 final request =
                                 VerifyResetPasswordTokenRequestModel(
                                   token: verificationCode,
@@ -216,6 +227,8 @@ class _VerificationState extends State<Verification> {
                                     .verifyResetPasswordToken(
                                   request,
                                 );
+                              } else {
+                                context.read<AuthCubit>().verifyEmail(verificationCode);
                               }
                             },
                           ),

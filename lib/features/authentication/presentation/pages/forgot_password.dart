@@ -20,6 +20,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final formKey = GlobalKey<FormState>();
+
   final emailController = TextEditingController();
 
   @override
@@ -42,7 +43,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Verification(),
+              builder: (context) => Verification(
+                email: emailController.text.trim(),
+                isResetPassword: true,
+              ),
             ),
           );
         }
@@ -55,6 +59,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           );
         }
       },
+
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Stack(
@@ -78,18 +83,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Positioned(
               top: 140.h,
               left: 0,
-              child: Image.asset("assets/images/Group1.png"),
+              child: Image.asset(
+                "assets/images/Group1.png",
+              ),
             ),
 
             Positioned(
               top: 320.h,
               left: 0,
-              child: Image.asset("assets/images/Rectangle.png"),
+              child: Image.asset(
+                "assets/images/Rectangle.png",
+              ),
             ),
 
             Positioned(
               top: 70.h,
-              left: 30,
+              left: 30.w,
               child: GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
@@ -100,6 +109,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Icons.arrow_back_ios,
                       color: MyColors.textCard,
                     ),
+
                     Text(
                       "Back to login",
                       style: TextStyle(
@@ -114,7 +124,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
 
             Padding(
-              padding: EdgeInsetsGeometry.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 20.w,
                 440.h,
                 20.w,
@@ -174,7 +184,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
                               );
 
-                              if (!emailRegex.hasMatch(value.trim())) {
+                              if (!emailRegex.hasMatch(
+                                value.trim(),
+                              )) {
                                 return 'Enter a valid email';
                               }
 
@@ -185,7 +197,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           SizedBox(height: 16.h),
 
                           AppTextButton(
-                            backgroundColor: MyColors.backgroundCard,
+                            backgroundColor:
+                            MyColors.backgroundCard,
 
                             buttonText:
                             context.watch<AuthCubit>().state
@@ -200,12 +213,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             ),
 
                             onPressed: () {
-                              if (context.read<AuthCubit>().state
+                              if (context
+                                  .read<AuthCubit>()
+                                  .state
                               is AuthLoading) {
                                 return;
                               }
 
-                              ValidationToForgotPassword(context);
+                              validateForgotPassword();
                             },
                           ),
                         ],
@@ -221,7 +236,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 
-  void ValidationToForgotPassword(BuildContext context) {
+  void validateForgotPassword() {
     if (!formKey.currentState!.validate()) {
       return;
     }
