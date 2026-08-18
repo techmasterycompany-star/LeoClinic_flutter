@@ -10,13 +10,15 @@ import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doc
 class NewVisitAppointmentCard extends StatelessWidget {
   final AppointmentModel appointment;
     final bool showdatetime;
+      final bool showactions;
+
       final void Function() onPressedOfBlueAcion;
   final void Function() onPressedOfLightBlueAcion;
 
   const NewVisitAppointmentCard({
     super.key,
     required this.appointment, 
-        required this.showdatetime, required this.onPressedOfBlueAcion, required this.onPressedOfLightBlueAcion
+        required this.showdatetime, required this.onPressedOfBlueAcion, required this.onPressedOfLightBlueAcion, required this.showactions
 
   });
 
@@ -99,6 +101,7 @@ class NewVisitAppointmentCard extends StatelessWidget {
           ),
 
             const SizedBox(height: 16),
+            if(showactions)
             ActionsForCards(showiconLightbutton: true,
             showiconDarkbutton: false,
           labelOfBlueAction: 'Pick A Slot', labelOflightblueAction: 'Decline',

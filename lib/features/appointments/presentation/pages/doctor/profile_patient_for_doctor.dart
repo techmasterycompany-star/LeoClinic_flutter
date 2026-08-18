@@ -43,7 +43,7 @@ class ProfilePatientForDoctor extends StatelessWidget {
                     section3: "Confirmed",
                   ),
                 ),
-                PatientAppointmentCard(showdatetime: false),
+                PatientAppointmentCard(showdatetime: false,showactions:false,),
                 PrescriptionSection(),
                 FileSection(),
                 SizedBox(height: 60),

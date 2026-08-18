@@ -20,7 +20,7 @@ class AdminAppointment extends StatelessWidget {
                 TopHeadline(title: 'Appointments'),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                  child: SearchAndFiltering(),
+                  child: SearchAndFiltering(hinttext: "Search..",),
                 ),
                 DetilasDashboard(),
                 AppointmentFilterSection(section1: "Today",section2: "NewVisit",section3: "Follow-Up",),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/utils/responsive.dart';
@@ -96,7 +97,9 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
             const SizedBox(height: 10),
             NewPrescriptionText(numberController: _numberController),
             const SizedBox(height: 20),
-            ConfirmedAndCanclledButtons(confirmOnPressed: (){},canclledOnPressed: (){},),
+            ConfirmedAndCanclledButtons(confirmOnPressed: (){},canclledOnPressed: (){
+              GoRouter.of(context).push("/ProfilePatientForDoctor");
+            },),
           ],
         ),
       ),

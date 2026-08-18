@@ -7,7 +7,8 @@ import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doc
 
 class PatientAppointmentCard extends StatelessWidget {
   final bool showdatetime;
-  const PatientAppointmentCard({super.key, required this.showdatetime});
+  final bool showactions;
+  const PatientAppointmentCard({super.key, required this.showdatetime, required this.showactions});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,14 @@ class PatientAppointmentCard extends StatelessWidget {
         if (patientItem.status == AppointmentStatus.followup){
          return  FollowUpAppointmentCard(appointment: patientItem,
          showdatetime: showdatetime,
+         showactions: showactions,
          onPressedOfBlueAcion: (){
           GoRouter.of(context).push("/PickAslotScreen");
          },onPressedOfLightBlueAcion: (){},);
         }
         else if (patientItem.status == AppointmentStatus.newvisit){
       return NewVisitAppointmentCard(appointment: patientItem,
+      showactions: showactions,
       showdatetime: showdatetime,onPressedOfBlueAcion: (){
         GoRouter.of(context).push("/PickAslotScreen");
       },

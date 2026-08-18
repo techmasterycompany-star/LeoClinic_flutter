@@ -11,10 +11,12 @@ class FollowUpAppointmentCard extends StatelessWidget {
   final bool showdatetime;
   final void Function() onPressedOfBlueAcion;
   final void Function() onPressedOfLightBlueAcion;
+    final bool showactions;
+
   const FollowUpAppointmentCard({
     super.key,
     required this.appointment,
-    required this.showdatetime, required this.onPressedOfBlueAcion, required this.onPressedOfLightBlueAcion,
+    required this.showdatetime, required this.onPressedOfBlueAcion, required this.onPressedOfLightBlueAcion, required this.showactions,
   });
 
   @override
@@ -101,7 +103,9 @@ class FollowUpAppointmentCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 16), ActionsForCards(showiconLightbutton: true,
+          const SizedBox(height: 16), 
+          if(showactions)
+          ActionsForCards(showiconLightbutton: true,
           showiconDarkbutton: false,
           labelOfBlueAction: 'Pick A Slot', labelOflightblueAction: 'Decline',
            onPressedOfBlueAcion: onPressedOfBlueAcion, onPressedOfLightBlueAcion: onPressedOfLightBlueAcion,

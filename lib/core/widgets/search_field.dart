@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/utils/responsive.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({super.key});
+  final String hinttext;
+  const SearchField({super.key, required this.hinttext});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class SearchField extends StatelessWidget {
         fontSize: Responsive.value<double>(context, mobile: 14, tablet: 16),
       ),
       decoration: InputDecoration(
-        hintText: "Search..",
+        hintText: hinttext,
         hintStyle: TextStyle(
           color: Colors.grey.shade400,
           fontSize: Responsive.value<double>(context, mobile: 14, tablet: 16),

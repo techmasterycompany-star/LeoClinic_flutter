@@ -4,9 +4,10 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/pick_a_slot_screen_for_patient.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/profile_patient_for_doctor.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/DoctorRequestAppointment',
+  initialLocation: '/PatientAppointment',
   routes: [
     GoRoute(
       path: '/ProfilePatientForDoctor',
@@ -30,6 +31,12 @@ final GoRouter router = GoRouter(
       path: '/PickAslotScreen',
       builder: (BuildContext context, GoRouterState state) {
         return const PickAslotScreen();
+      },
+    ),
+     GoRoute(
+      path: '/PatientAppointment',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientAppointment();
       },
     ),
   ],
