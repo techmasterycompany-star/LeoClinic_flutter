@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/search_and_filtering.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widget/patient_appointment_card.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/patient_appointment_card.dart';
 
-class DoctorRequest extends StatelessWidget {
-  const DoctorRequest({super.key});
+class DoctorRequestAppointment extends StatelessWidget {
+  const DoctorRequestAppointment({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,7 @@ class DoctorRequest extends StatelessWidget {
                   child: SearchAndFiltering(),
                 ),
                 AppointmentFilterSection(section1: "Request",section2: "Confirmd",section3: "Cancelled",),
-                PatientAppointmentCard(showactions: true,)
-
+                PatientAppointmentCard(showdatetime: false,)
                   ]),
           ))));
   }

@@ -38,4 +38,16 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );
+   static const TextStyle textstyle16 = TextStyle(
+    fontFamily: _fontFamily,
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textPrimary,
+  );
+  static const TextStyle textstyle18 = TextStyle(
+    fontFamily: _fontFamily,
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textPrimary,
+  );
 }
