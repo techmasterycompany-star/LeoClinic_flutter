@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:leoclinic_flutter/core/routes/navigation_manger.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin/admin_appointment.dart';
@@ -13,11 +16,28 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme().lightTheme,
-      themeMode: ThemeMode.light,
-      routerConfig: router,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return BlocProvider(
+          create: (_) => AuthCubit(
+            LoginRepo(
+              AuthApiServices(
+                DioClient(),
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme().lightTheme,
+        themeMode: ThemeMode.light,
+        routerConfig: router,
+      ),
     );
   }
 }

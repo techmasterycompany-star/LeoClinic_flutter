@@ -1,5 +1,4 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
 class Prefhelper {
   static const String tokenkey = "auth_token";
   static Future<void> savetoken(String token) async {
