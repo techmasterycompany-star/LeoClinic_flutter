@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin/admin_appointment.dart';
 
 import 'overview.dart';
 
@@ -13,29 +14,27 @@ class AdminMainScreen extends StatefulWidget {
 class _AdminMainScreenState extends State<AdminMainScreen> {
   int _index = 0;
   final List<NavigationDestination> destination = const [
-    /*
-    ============================================
-    1. Home
-    2. appointment
-    3. doctor details for admin
-    4. patient information
-    5. payment
-    6. profile
-    ============================================
-     */
     NavigationDestination(
       icon: Icon(Icons.home),
       selectedIcon: Icon(Icons.home, size: 30),
-      label: 'Admin',
+      label: 'Home',
     ),
-
+    NavigationDestination(
+      icon: Icon(Icons.calendar_month_outlined),
+      selectedIcon: Icon(Icons.calendar_month, size: 30),
+      label: 'Appointments',
+    ),
     NavigationDestination(
       icon: Icon(Icons.person),
       selectedIcon: Icon(Icons.person, size: 30),
       label: 'Profile',
     ),
   ];
-  final List<Widget> _pages = [AdminOverview(), Placeholder()];
+  final List<Widget> _pages = [
+    AdminOverview(),
+    AdminAppointment(),
+    Placeholder(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

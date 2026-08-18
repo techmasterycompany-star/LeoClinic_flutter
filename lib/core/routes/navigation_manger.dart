@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:leoclinic_flutter/features/authentication/presentation/pages/login_screen.dart';
+import 'package:leoclinic_flutter/features/authentication/presentation/pages/signup_screen.dart';
+
+import 'package:leoclinic_flutter/features/admin/presentation/pages/admin_main.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor_main.dart';
+import 'package:leoclinic_flutter/features/patient/presentation/pages/patient_main.dart';
 
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_add_prescription.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
@@ -16,6 +21,34 @@ final GoRouter router = GoRouter(
       path: '/login',
       builder: (BuildContext context, GoRouterState state) {
         return const LoginScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/signup',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SignupScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/admin',
+      builder: (BuildContext context, GoRouterState state) {
+        return const AdminMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/doctor',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DoctorMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/patient',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientMainScreen();
       },
     ),
 

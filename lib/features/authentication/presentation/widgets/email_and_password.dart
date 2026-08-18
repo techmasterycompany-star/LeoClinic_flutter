@@ -64,12 +64,6 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               if (value == null || value.isEmpty) {
                 return 'Please enter your password';
               }
-              final passwordRegex = RegExp(
-                r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$',
-              );
-              if (!passwordRegex.hasMatch(value)) {
-                return 'Password must be at least 8 characters';
-              }
               return null;
             },
           ),

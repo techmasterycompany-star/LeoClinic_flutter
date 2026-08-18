@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
+import 'package:leoclinic_flutter/core/widgets/top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/appointment_booking_card/appointment_card.dart';
 import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/details_dashboard/deatils_dashboard.dart';

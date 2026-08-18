@@ -47,7 +47,7 @@ class _PasswordAndConfirmState extends State<PasswordAndConfirm> {
             );
 
             if (!passwordRegex.hasMatch(value)) {
-              return 'Password must be at least 8 characters';
+              return 'Min 8 chars, upper, lower, digit and special char';
             }
 
             return null;
