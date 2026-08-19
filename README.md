@@ -1,17 +1,48 @@
-# leoclinic_flutter
+# LeoClinic Flutter 🏥
 
-A new Flutter project.
+LeoClinic is a Flutter-based medical application developed with a scalable feature-based architecture and a clear separation of responsibilities between the presentation, business logic, and data layers.  
+The project focuses on providing a structured foundation for healthcare-related features while maintaining clean and maintainable Flutter code.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Authentication**
+  - User registration and login
+  - Email verification
+  - Forgot password
+  - Password reset
+- **Appointment Management**
+- **Doctor Features**
+- **Patient Features**
+- **Profile Management**
+- **Admin Features**
+- **REST API Integration**
+- **Responsive UI**
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 App Screenshots
+
+| Splash Screen | Login | Signup | Forgot Password | Login (Full Flow) |
+| :-----------: | :---: | :----: | :-------------: | :---------------: |
+| <img src="doc/screenshots/splash.png" width="160"/> | <img src="doc/screenshots/login.png" width="160"/> | <img src="doc/screenshots/signup.png" width="160"/> | <img src="doc/screenshots/forgot.png" width="160"/> | <img src="doc/screenshots/login_full.png" width="160"/> |
+
+---
+
+## Architecture
+
+The project follows a feature-based architecture with separation between the main application layers:
+
+```text
+lib/
+├── core/
+├── features/
+│   ├── admin/
+│   ├── appointments/
+│   ├── authentication/
+│   ├── doctor/
+│   ├── patient/
+│   └── profile/
+├── home.dart
+└── main.dart

@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/core/widgets/app_greeting.dart';
+import 'package:leoclinic_flutter/core/widgets/app_notification_button.dart';
+
+class PatientAppBar extends StatelessWidget {
+  const PatientAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      pinned: true,
+      title: const AppGreeting(),
+
+      actions: [AppNotificationButton(onPressed: () {})],
+    );
+  }
+}
