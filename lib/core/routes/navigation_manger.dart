@@ -10,7 +10,7 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/PatientAppointment',
+  initialLocation: '/login',
   routes: [
     GoRoute(
       path: '/login',

@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:leoclinic_flutter/core/routes/navigation_manger.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin/admin_appointment.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
+import 'core/network/dio_client.dart';
+import 'features/authentication/business_logic/cubit/auth_cubit.dart';
+import 'features/authentication/data/datasource/auth_api_services.dart';
+import 'features/authentication/data/repositories/login_repo.dart';
 
 void main() {
   runApp(const HomePage());
@@ -22,13 +24,7 @@ class HomePage extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return BlocProvider(
-          create: (_) => AuthCubit(
-            LoginRepo(
-              AuthApiServices(
-                DioClient(),
-              ),
-            ),
-          ),
+          create: (_) => AuthCubit(LoginRepo(AuthApiServices(DioClient()))),
           child: child!,
         );
       },
