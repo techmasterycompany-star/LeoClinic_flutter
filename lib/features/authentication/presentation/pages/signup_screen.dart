@@ -74,11 +74,9 @@ class _SignupScreenState extends State<SignupScreen> {
         }
 
         if (state is AuthError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-            ),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       builder: (context, state) {
@@ -103,28 +101,19 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
 
               Positioned(
-                top: 66.h,
+                top: 55.h,
                 left: 37.w,
-                child: Image.asset(
-                  "assets/images/Group2.png",
-                ),
+                child: Image.asset("assets/images/Group2.png"),
               ),
 
               Positioned(
-                top: 125.h,
+                top: 115.h,
                 left: 0,
-                child: Image.asset(
-                  "assets/images/Rectangle.png",
-                ),
+                child: Image.asset("assets/images/Rectangle.png"),
               ),
 
               Padding(
-                padding: EdgeInsets.fromLTRB(
-                  20.w,
-                  185.h,
-                  20.w,
-                  40.h,
-                ),
+                padding: EdgeInsets.fromLTRB(20.w, 175.h, 20.w, 40.h),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +184,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ],
                             ),
 
-                            SizedBox(height: 27.h),
+                            SizedBox(height: 16.h),
 
                             Row(
                               children: [
@@ -215,9 +204,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
                                       );
 
-                                      if (!emailRegex.hasMatch(
-                                        value.trim(),
-                                      )) {
+                                      if (!emailRegex.hasMatch(value.trim())) {
                                         return 'Enter a valid email';
                                       }
 
@@ -244,9 +231,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         r'^01[0125][0-9]{8}$',
                                       );
 
-                                      if (!phoneRegex.hasMatch(
-                                        value.trim(),
-                                      )) {
+                                      if (!phoneRegex.hasMatch(value.trim())) {
                                         return 'Enter a valid phone number';
                                       }
 
@@ -257,12 +242,12 @@ class _SignupScreenState extends State<SignupScreen> {
                               ],
                             ),
 
-                            SizedBox(height: 22.h),
+                            SizedBox(height: 16.h),
 
                             PasswordAndConfirm(
                               passwordController: passwordController,
                               confirmPasswordController:
-                              confirmPasswordController,
+                                  confirmPasswordController,
                             ),
                             SizedBox(height: 16.h),
 
@@ -321,8 +306,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                   );
 
                                   if (pickedDate != null) {
-                                    dateOfBirthController.text =
-                                        pickedDate.toUtc().toIso8601String();
+                                    dateOfBirthController.text = pickedDate
+                                        .toUtc()
+                                        .toIso8601String();
                                   }
                                 },
                                 child: AbsorbPointer(
@@ -330,7 +316,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                     hintText: "Date of Birth",
                                     controller: dateOfBirthController,
                                     validator: (value) {
-                                      if (value == null || value.trim().isEmpty) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
                                         return "Enter your date of birth";
                                       }
                                       return null;
@@ -450,9 +437,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  "Already have an account? ",
-                                ),
+                                const Text("Already have an account? "),
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.pop(context);
@@ -489,9 +474,7 @@ class _SignupScreenState extends State<SignupScreen> {
     if (!isTermsAccepted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text(
-            'Please accept the Terms and Privacy Policies',
-          ),
+          content: Text('Please accept the Terms and Privacy Policies'),
         ),
       );
 
@@ -520,7 +503,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
     final request = RegisterRequestModel(
       name:
-      '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
+          '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
       email: emailController.text.trim(),
       password: passwordController.text,
       role: role,
