@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/arrow_back_for_top_screen.dart';
 
 class TopHeadline extends StatelessWidget {
   final String title;
+  final double numofPad;
   const TopHeadline({
     super.key,
-    required this.title
+    required this.title, required this.numofPad
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-      const SizedBox(width: 25),
+       SizedBox(width: 25.w),
       ArrowBackTopScreen(),
       Padding(
-        padding: const EdgeInsets.only(left: 72),
+        padding: EdgeInsets.only(left: numofPad.w),
         child: Text(
           title,
           style: AppTextStyle.heading,

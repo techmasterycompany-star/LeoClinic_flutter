@@ -24,21 +24,12 @@ class HomePage extends StatelessWidget {
   minTextAdapt: true,
   splitScreenMode: true,
   builder: (_, child) {
-    return BlocProvider(
-      create: (_) => AuthCubit(
-        LoginRepo(
-          AuthApiServices(
-            DioClient(),
-          ),
-        ),
-      ),
-      child: MaterialApp.router(
+    return  MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: AppTheme().lightTheme,
         themeMode: ThemeMode.light,
         routerConfig: router,
-      ),
-    );
+      );
   },
 );
   }

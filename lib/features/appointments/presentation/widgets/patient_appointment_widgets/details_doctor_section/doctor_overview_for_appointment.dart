@@ -24,7 +24,7 @@ class DoctorOverviewForAppointment extends StatelessWidget {
          
           Padding(
             padding: EdgeInsets.only(top: 40.h),
-            child: TopHeadline(title: 'Appointment'),
+            child: TopHeadline(title: 'Appointment',numofPad: 73,),
           ),
 
      Positioned(
