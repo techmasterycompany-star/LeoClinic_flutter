@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-<<<<<<< HEAD
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/book_appointment.dart';
 
-=======
->>>>>>> 8dc76576153d683dd8c2782ff7017022e9f32367
 import 'package:leoclinic_flutter/features/authentication/presentation/pages/login_screen.dart';
 
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_add_prescription.dart';
