@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/actions_for_cards.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/pick_a_slot_widgets/book_a_slot_items/day_a_slot.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/pick_a_slot_widgets/book_a_slot_items/time_a_slot.dart';
 
 class _DayTab {
   final String title;
   final String subtitle;
   final List<String> slots;
-  
 
   const _DayTab({
     required this.title,
@@ -17,9 +19,13 @@ class _DayTab {
 }
 
 class BookASlot extends StatefulWidget {
-    final void Function() onPressedOfBlueAcion;
+  final void Function() onPressedOfBlueAcion;
   final void Function() onPressedOfLightBlueAcion;
-  const BookASlot({super.key, required this.onPressedOfBlueAcion, required this.onPressedOfLightBlueAcion});
+  const BookASlot({
+    super.key,
+    required this.onPressedOfBlueAcion,
+    required this.onPressedOfLightBlueAcion,
+  });
 
   @override
   State<BookASlot> createState() => _BookASlotState();
@@ -30,7 +36,7 @@ class _BookASlotState extends State<BookASlot> {
     _DayTab(title: 'Today', subtitle: 'No slots', slots: []),
     _DayTab(
       title: 'Tomorrow',
-      subtitle: '10 Feb Tuseday',
+      subtitle: '3 slots avaliable',
       slots: ['09:00 AM', '09:00 AM', '09:00 AM', '09:00 AM'],
     ),
     _DayTab(
@@ -38,10 +44,37 @@ class _BookASlotState extends State<BookASlot> {
       subtitle: '10 slots avaliable',
       slots: ['09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM'],
     ),
+    _DayTab(
+      title: '12 Feb Wednesday',
+      subtitle: '5 slots avaliable',
+      slots: ['09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM'],
+    ),
+    _DayTab(title: '13 Feb Thursday', subtitle: 'No slots', slots: []),
+    _DayTab(
+      title: '14 Feb Friday',
+      subtitle: '8 slots avaliable',
+      slots: [
+        '08:00 AM',
+        '08:30 AM',
+        '09:00 AM',
+        '09:30 AM',
+        '10:00 AM',
+        '10:30 AM',
+        '11:00 AM',
+        '11:30 AM',
+      ],
+    ),
+    _DayTab(
+      title: '15 Feb Saturday',
+      subtitle: '3 slots avaliable',
+      slots: ['09:00 AM', '09:30 AM', '10:00 AM'],
+    ),
   ];
 
   int _selectedDayIndex = 1;
   String? _selectedSlot;
+
+  List<String> get currentSlots => _days[_selectedDayIndex].slots;
 
   void _selectDay(int index) {
     setState(() {
@@ -56,10 +89,8 @@ class _BookASlotState extends State<BookASlot> {
 
   @override
   Widget build(BuildContext context) {
-    final currentDay = _days[_selectedDayIndex];
-
     return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30),
+      padding: EdgeInsets.only(left: 30.w, right: 30.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -70,62 +101,37 @@ class _BookASlotState extends State<BookASlot> {
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
 
-          Row(
-            children: List.generate(_days.length, (index) {
-              final day = _days[index];
-              final isSelected = index == _selectedDayIndex;
+          SizedBox(
+            height: 60.h,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: _days.length,
+              itemBuilder: (context, index) {
+                final day = _days[index];
+                final isSelected = index == _selectedDayIndex;
 
-              return Expanded(
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () => _selectDay(index),
-                  child: Column(
-                    children: [
-                      Text(
-                        day.title,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.textstyle14.copyWith(
-                          color: isSelected
-                              ? AppColors.primaryColor
-                              : AppColors.surfaceDark,
-                          fontWeight: isSelected
-                              ? FontWeight.w700
-                              : FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        day.subtitle,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.textstyle12.copyWith(
-                          color: isSelected
-                              ? AppColors.primaryColor
-                              : AppColors.textSecondary,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        height: 2,
-                        width: double.infinity,
-                        color: isSelected
-                            ? AppColors.primaryColor
-                            : Colors.transparent,
-                      ),
-                    ],
+                return Padding(
+                  padding: EdgeInsets.only(
+                    right: index == _days.length - 1 ? 0 : 24,
                   ),
-                ),
-              );
-            }),
+                  child: DaySlot(
+                    title: day.title,
+                    subtitle: day.subtitle,
+                    isSelected: isSelected,
+                    onTap: () => _selectDay(index),
+                  ),
+                );
+              },
+            ),
           ),
           const Divider(height: 1),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
 
-          if (currentDay.slots.isEmpty)
+          if (currentSlots.isEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
+              padding: EdgeInsets.symmetric(vertical: 12.h),
               child: Text(
                 'No slots available for this day',
                 style: AppTextStyle.textstyle14.copyWith(
@@ -134,45 +140,29 @@ class _BookASlotState extends State<BookASlot> {
               ),
             )
           else
-            Wrap(
-              spacing: 12,
-              runSpacing: 12,
-              children: currentDay.slots.map((slot) {
-                final isSelected = slot == _selectedSlot;
+            SizedBox(
+              height: 48.h,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: currentSlots.length,
+                itemBuilder: (context, index) {
+                  final slot = currentSlots[index];
+                  final isSelected = slot == _selectedSlot;
 
-                return GestureDetector(
-                  onTap: () => _selectSlot(slot),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 150),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 12,
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      right: index == currentSlots.length - 1 ? 0 : 12.w,
                     ),
-                    decoration: BoxDecoration(
-                      color: isSelected ? AppColors.primaryColor : Colors.white,
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(
-                        color: isSelected
-                            ? AppColors.primaryColor
-                            : Colors.grey.shade300,
-                      ),
+                    child: TimeSlot(
+                      time: slot,
+                      isSelected: isSelected,
+                      onTap: () => _selectSlot(slot),
                     ),
-                    child: Text(
-                      slot,
-                      style: AppTextStyle.textstyle14.copyWith(
-                        color: isSelected
-                            ? Colors.white
-                            : AppColors.surfaceDark,
-                        fontWeight: isSelected
-                            ? FontWeight.w700
-                            : FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
+                  );
+                },
+              ),
             ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
           ActionsForCards(
             showiconLightbutton: false,
             showiconDarkbutton: false,
@@ -185,7 +175,7 @@ class _BookASlotState extends State<BookASlot> {
             foregroundForblueBackground: AppColors.primaryColor,
             foregroundForLightblueBackground: AppColors.background,
           ),
-          const SizedBox(height: 80),
+          SizedBox(height: 80.h),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Filter extends StatelessWidget {
   const Filter({
@@ -10,11 +11,11 @@ class Filter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 48,
-      height: 48,
+      width: 48.w,
+      height: 48.h,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(14.r),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withValues(alpha: 0.15),
@@ -25,13 +26,13 @@ class Filter extends StatelessWidget {
       ),
       child: IconButton(
         padding: EdgeInsets.zero,
-        icon: const Icon(
+        icon: Icon(
           Icons.tune_rounded,
-          color: Color(0xFF3B4EFF),
-          size: 22,
+          color: const Color(0xFF3B4EFF),
+          size: 22.sp,
         ),
         onPressed: () {
-          log(MediaQuery.of(context).size.width.toString());
+          log(ScreenUtil().screenWidth.toString());
         },
       ),
     );

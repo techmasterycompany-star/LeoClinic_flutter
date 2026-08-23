@@ -21,7 +21,7 @@ dependencies:
   dio: ^5.11.0
 
   # Responsive UI
-  flutter_screenutil:
+  flutter_screenutil: ^5.9.3
 
   # SVG
   flutter_svg: ^2.3.0
@@ -34,6 +34,7 @@ dependencies:
 
   # Local Storage
   shared_preferences: ^2.5.5
+  easy_date_timeline: ^2.0.9
 
 dev_dependencies:
   flutter_test:

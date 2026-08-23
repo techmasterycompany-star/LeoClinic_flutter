@@ -1,5 +1,5 @@
 
-import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/appointment_model.dart';
 
 final List<AppointmentModel> mockAppointments = [
   AppointmentModel(

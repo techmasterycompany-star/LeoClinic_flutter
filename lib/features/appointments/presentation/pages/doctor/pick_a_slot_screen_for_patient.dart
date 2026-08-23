@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/pick_a_slot_widgets/book_a_slot.dart';
@@ -13,13 +14,13 @@ class PickAslotScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: EdgeInsets.only(top: 20.h),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TopHeadline(title: 'Appointments'),
-               SizedBox(height: 30),
+               SizedBox(height: 30.h),
                 Center(
                   child: PatientDetailsCard(
                     name: 'Asmaa Osman',

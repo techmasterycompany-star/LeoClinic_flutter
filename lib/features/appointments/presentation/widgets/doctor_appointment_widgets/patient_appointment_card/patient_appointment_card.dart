@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/features/appointments/data/datasource/mocking_data/patient_data_card.dart';
-import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/appointment_model.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/stauts_card/follow_up_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/stauts_card/new_visit_card.dart';
 
 class PatientAppointmentCard extends StatelessWidget {
   final bool showdatetime;
-  const PatientAppointmentCard({super.key, required this.showdatetime});
+  final bool showactions;
+  const PatientAppointmentCard({super.key, required this.showdatetime, required this.showactions});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,14 @@ class PatientAppointmentCard extends StatelessWidget {
         if (patientItem.status == AppointmentStatus.followup){
          return  FollowUpAppointmentCard(appointment: patientItem,
          showdatetime: showdatetime,
+         showactions: showactions,
          onPressedOfBlueAcion: (){
           GoRouter.of(context).push("/PickAslotScreen");
          },onPressedOfLightBlueAcion: (){},);
         }
         else if (patientItem.status == AppointmentStatus.newvisit){
       return NewVisitAppointmentCard(appointment: patientItem,
+      showactions: showactions,
       showdatetime: showdatetime,onPressedOfBlueAcion: (){
         GoRouter.of(context).push("/PickAslotScreen");
       },

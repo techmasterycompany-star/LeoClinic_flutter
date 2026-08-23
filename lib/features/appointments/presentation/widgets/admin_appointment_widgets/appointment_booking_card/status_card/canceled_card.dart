@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
-import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/appointment_model.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/stauts_card/deatils_of_card.dart';
 
 class CanceledAppointmentCard extends StatelessWidget {
@@ -14,11 +15,11 @@ class CanceledAppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.fieldBg,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +30,7 @@ class CanceledAppointmentCard extends StatelessWidget {
               Text(
                 "Canceled Appointment",
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.failed,
                 ),
@@ -37,24 +38,24 @@ class CanceledAppointmentCard extends StatelessWidget {
               Text(
                 appointment.time,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 13.sp,
                   color: AppColors.failed,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Row(
             children: [
-              const CircleAvatar(radius: 20),
-              const SizedBox(width: 10),
+              CircleAvatar(radius: 20.r),
+              SizedBox(width: 10.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     appointment.doctorName!,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style: TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
@@ -62,7 +63,7 @@ class CanceledAppointmentCard extends StatelessWidget {
                   Text(
                     appointment.specialty!,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp,
                       color: AppColors.textSecondary,
                     ),
                   ),
@@ -70,7 +71,7 @@ class CanceledAppointmentCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Row(
             children: [
               DeatilsOfCard.buildInfoItem(Icons.calendar_today_outlined, appointment.date),

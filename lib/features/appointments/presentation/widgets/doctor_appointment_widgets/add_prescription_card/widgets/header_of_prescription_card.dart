@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
@@ -13,19 +14,19 @@ class HeaderOfPrescriptionCard extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.r),
           decoration: BoxDecoration(
-            color: Color(0xFFEAF0FE),
-            borderRadius: BorderRadius.circular(14),
+            color: const Color(0xFFEAF0FE),
+            borderRadius: BorderRadius.circular(14.r),
           ),
           child: SvgPicture.asset(
             "assets/icons/validation-approval-for-prescription.svg",
-            height: 24,
-            width: 24,
+            height: 24.h,
+            width: 24.w,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20, top: 10),
+          padding: EdgeInsets.only(left: 20.w, top: 10.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,7 +36,7 @@ class HeaderOfPrescriptionCard extends StatelessWidget {
                   color: AppColors.surfaceDark,
                 ),
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: 5.h),
               Text(
                 'Enter prescription details for the patient',
                 style: AppTextStyle.textstyle14.copyWith(

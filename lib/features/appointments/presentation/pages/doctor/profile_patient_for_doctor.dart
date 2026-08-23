@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/core/utils/responsive.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
 import 'package:leoclinic_flutter/core/widgets/top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/patient_appointment_card/patient_appointment_card.dart';
@@ -17,12 +17,12 @@ class ProfilePatientForDoctor extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-              top: Responsive.value(context, mobile: 20, tablet: 24),
+              top: 20.h,
             ),
             child: Column(
               children: [
                 TopHeadline(title: "Appointment"),
-                SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 PatientDetailsCard(
                   name: 'Asmaa Osman',
                   imageUrl:
@@ -35,7 +35,7 @@ class ProfilePatientForDoctor extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    top: Responsive.value(context, mobile: 20, tablet: 30),
+                    top: 20.h,
                   ),
                   child: AppointmentFilterSection(
                     section1: "Previous Visit",
@@ -43,10 +43,10 @@ class ProfilePatientForDoctor extends StatelessWidget {
                     section3: "Confirmed",
                   ),
                 ),
-                PatientAppointmentCard(showdatetime: false),
+                PatientAppointmentCard(showdatetime: false,showactions:false,),
                 PrescriptionSection(),
                 FileSection(),
-                SizedBox(height: 60),
+                SizedBox(height: 60.h),
               ],
             ),
           ),

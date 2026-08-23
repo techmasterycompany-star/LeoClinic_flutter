@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 
 class AppointmentFilterSection extends StatefulWidget {
@@ -24,16 +25,16 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
   Widget build(BuildContext context) {
     List<String> filters = [widget.section1, widget.section2, widget.section3,];
     return Padding(
-      padding: const EdgeInsets.only(left: 25, bottom: 25),
+      padding: EdgeInsets.only(left: 25.w, bottom: 25.h),
       child: SizedBox(
-        height: 45,
+        height: 45.h,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: filters.length,
           itemBuilder: (context, index) {
             final bool isSelected = selectedIndex == index;
             return Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: EdgeInsets.only(right: 10.w),
               child: GestureDetector(
                 onTap: () {
                   setState(() {
@@ -41,9 +42,9 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
                   });
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 10.h,
                   ),
                   decoration: BoxDecoration(
                     boxShadow: [
@@ -55,12 +56,12 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
                       ),
                     ],
                     color: isSelected ? AppColors.selected : AppColors.unselected,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
                       color: isSelected
                           ? AppColors.selected
                           : const Color.fromARGB(255, 238, 238, 238),
-                      width: 1,
+                      width: 1.w,
                     ),
                   ),
                   child: Text(
@@ -68,7 +69,7 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
                     style: TextStyle(
                       color: isSelected ? Colors.white : Colors.grey.shade700,
                       fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                     ),
                   ),
                 ),

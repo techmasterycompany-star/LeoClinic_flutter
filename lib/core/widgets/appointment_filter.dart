@@ -5,11 +5,14 @@ class AppointmentFilterSection extends StatefulWidget {
   final String section1;
   final String section2;
   final String section3;
+  final String ?section4;
+
   const AppointmentFilterSection({
     super.key,
     required this.section1,
     required this.section2,
-    required this.section3,
+    required this.section3, 
+    this.section4,
   });
 
   @override
@@ -22,7 +25,9 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> filters = [widget.section1, widget.section2, widget.section3,];
+    List<String> filters = widget.section4 != null ? [widget.section1, widget.section2, widget.section3,widget.section4!,
+    ]:[widget.section1, widget.section2, widget.section3,
+    ];
     return Padding(
       padding: const EdgeInsets.only(left: 25, bottom: 25),
       child: SizedBox(
@@ -32,7 +37,8 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
           itemCount: filters.length,
           itemBuilder: (context, index) {
             final bool isSelected = selectedIndex == index;
-            return Padding(
+            return 
+            Padding(
               padding: const EdgeInsets.only(right: 10),
               child: GestureDetector(
                 onTap: () {
@@ -40,7 +46,8 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
                     selectedIndex = index;
                   });
                 },
-                child: Container(
+                child:
+                Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 10,
@@ -71,7 +78,7 @@ class _AppointmentFilterSectionState extends State<AppointmentFilterSection> {
                       fontSize: 14,
                     ),
                   ),
-                ),
+                )  ,
               ),
             );
           },

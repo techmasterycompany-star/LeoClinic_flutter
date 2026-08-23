@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
-import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/appointment_model.dart';
 
 class StatusOfCards {
   final AppointmentStatus status;

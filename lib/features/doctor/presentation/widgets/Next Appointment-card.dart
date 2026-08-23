@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/utils/assets.dart';
 import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
 
@@ -9,13 +10,10 @@ class Nextappointmentcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 14.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         gradient: const LinearGradient(
           colors: [Color(0xff0018A6), Color(0xff4A5FDB), Color(0xffB3BCF2)],
           begin: Alignment.centerLeft,
@@ -31,13 +29,13 @@ class Nextappointmentcard extends StatelessWidget {
               style: Custamtextstyle.test14.copyWith(color: Colors.white),
             ),
 
-          SizedBox(height: height * 0.02),
+          SizedBox(height: 16.h),
 
           Row(
             children: [
               Image.asset(Assets.imagesDoctor),
 
-              SizedBox(width: width * 0.03),
+              SizedBox(width: 12.w),
 
               Expanded(
                 child: Column(
@@ -62,10 +60,10 @@ class Nextappointmentcard extends StatelessWidget {
                         const Spacer(),
 
                         Container(
-                          padding: const EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10.r),
                           decoration: BoxDecoration(
                             color: const Color(0xff0018A6),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(16.r),
                           ),
                           child: Text(
                             "Join Now",

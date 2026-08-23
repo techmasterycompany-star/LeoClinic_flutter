@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/widgets/button.dart';
 
@@ -24,7 +25,7 @@ class ConfirmedAndCanclledButtons extends StatelessWidget {
             foregroundcolor: AppColors.primaryColor,
           ),
         ),
-        const SizedBox(width: 20,),
+        SizedBox(width: 20.w),
         Expanded(
           child: Button(
             showicon: false,

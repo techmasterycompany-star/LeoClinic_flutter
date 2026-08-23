@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/features/appointments/data/datasource/mocking_data/appointment_data_card.dart';
-import 'package:leoclinic_flutter/features/appointments/data/models/appointment_model.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/appointment_model.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/appointment_booking_card/status_card/canceled_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/appointment_booking_card/status_card/confirmed_card.dart';
 

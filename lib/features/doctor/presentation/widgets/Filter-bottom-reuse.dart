@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Filter-bottom.dart';
 
 class Filterbottomreuse extends StatefulWidget {
@@ -12,7 +13,6 @@ class _FilterbottomreuseState extends State<Filterbottomreuse> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
     return Row(
       children: [
         Filterbottom(
@@ -24,7 +24,7 @@ class _FilterbottomreuseState extends State<Filterbottomreuse> {
             });
           },
         ),
-        SizedBox(width: width * 0.03),
+        SizedBox(width: 12.w),
         Filterbottom(
           text: "Requests",
           isselecleted: selectedIndex == 1,
@@ -34,7 +34,7 @@ class _FilterbottomreuseState extends State<Filterbottomreuse> {
             });
           },
         ),
-        SizedBox(width: width * 0.03),
+        SizedBox(width: 12.w),
         Filterbottom(
           text: "Canceled",
           isselecleted: selectedIndex == 2,
