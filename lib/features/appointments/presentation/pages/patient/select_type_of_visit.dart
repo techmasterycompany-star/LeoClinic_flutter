@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
+import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/core/widgets/button.dart';
 import 'package:leoclinic_flutter/features/appointments/domain/entities/doctor_details_for_appointment.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/details_doctor_section/doctor_overview_for_appointment.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/details_doctor_section/select_date_and_select_time.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/select_type_of_visit/select_type_of_visit.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/selection_card.dart';
 
-class BookAppointment extends StatefulWidget {
-  const BookAppointment({super.key});
+class SelectTypeOfVisitScreen extends StatefulWidget {
+  const SelectTypeOfVisitScreen({super.key});
 
   @override
-  State<BookAppointment> createState() => _BookAppointmentState();
+  State<SelectTypeOfVisitScreen> createState() =>
+      _SelectTypeOfVisitScreenState();
 }
 
-class _BookAppointmentState extends State<BookAppointment> {
+class _SelectTypeOfVisitScreenState extends State<SelectTypeOfVisitScreen> {
   DoctorDetailsForAppointment detailsForAppointment =
       DoctorDetailsForAppointment(
         nameOfDoctor: "Dr.Mohamed Gamal",
@@ -23,6 +28,8 @@ class _BookAppointmentState extends State<BookAppointment> {
         rating: 4.9,
         review: 10,
       );
+  int selectedIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +47,9 @@ class _BookAppointmentState extends State<BookAppointment> {
             child: Container(
               width: double.infinity,
               color: Colors.white,
-              child:SelectDateAndSelectTime(onPressed: (){
-                GoRouter.of(context).push("/SelectTypeOfVisitScreen");
-              },),
+              child: SelectTypeOfVisit(
+                onPressed: (){},
+              ),
             ),
           ),
         ],

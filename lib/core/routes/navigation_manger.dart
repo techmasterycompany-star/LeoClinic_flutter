@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/book_appointment.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/select_type_of_visit.dart';
 
 import 'package:leoclinic_flutter/features/authentication/presentation/pages/login_screen.dart';
 
@@ -11,7 +12,7 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/BookAppointment',
   routes: [
     GoRoute(
       path: '/login',
@@ -57,6 +58,12 @@ final GoRouter router = GoRouter(
       path: '/BookAppointment',
       builder: (BuildContext context, GoRouterState state) {
         return const BookAppointment();
+      },
+    ),
+        GoRoute(
+      path: '/SelectTypeOfVisitScreen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SelectTypeOfVisitScreen();
       },
     ),
   ],
