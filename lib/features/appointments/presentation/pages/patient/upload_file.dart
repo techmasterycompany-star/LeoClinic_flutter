@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/widgets/top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/upload_file_screen/upload_file.dart';
@@ -57,7 +58,9 @@ class _UplaodFileState extends State<UplaodFile> {
                 ),
               ),
               width: double.infinity,
-              child: UploadFile()
+              child: UploadFile(onPressedOfBlueAcion: (){
+                GoRouter.of(context).push("/PatientAppointment");
+              },onPressedOfLightBlueAcion: (){},)
             ),
           ),
         ],
