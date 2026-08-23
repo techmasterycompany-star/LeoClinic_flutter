@@ -133,7 +133,7 @@ class PatientInfo extends StatelessWidget {
               crossAxisAlignment: .start,
               spacing: 20,
               children: [
-                Custamappbarallpage(maintext: 'PatientInfo'),
+                Custamappbarallpage(maintext: 'Patient List'),
                 Custamsearche(),
                 AppointmentNew(),
                 headline('Statistics'),

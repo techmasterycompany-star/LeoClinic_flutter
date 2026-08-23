@@ -7,10 +7,10 @@ import 'package:leoclinic_flutter/core/theme/app_theme.dart';
 import 'package:leoclinic_flutter/features/authentication/business_logic/cubit/auth_cubit.dart';
 import 'package:leoclinic_flutter/features/authentication/data/datasource/auth_api_services.dart';
 import 'package:leoclinic_flutter/features/authentication/data/repositories/login_repo.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/pages/patient_info.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/patient_list.dart';
 
 void main() {
-  runApp(const Home());
+  runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
@@ -18,38 +18,21 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ScreenUtilInit(
-  designSize: const Size(375, 812),
-  minTextAdapt: true,
-  splitScreenMode: true,
-  builder: (_, child) {
-    return BlocProvider(
-      create: (_) => AuthCubit(
-        LoginRepo(
-          AuthApiServices(
-            DioClient(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return BlocProvider(
+          create: (_) => AuthCubit(LoginRepo(AuthApiServices(DioClient()))),
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme().lightTheme,
+            themeMode: ThemeMode.light,
+            routerConfig: router,
           ),
-        ),
-      ),
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme().lightTheme,
-        themeMode: ThemeMode.light,
-        routerConfig: router,
-      ),
-    );
-  },
-);
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PatientInfo(),
+        );
+      },
     );
   }
 }
