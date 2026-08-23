@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/search_and_filtering.dart';
@@ -13,7 +15,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     body: SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(top: 20.h),
         child: Stack(
           children: [
             SingleChildScrollView(
@@ -21,7 +23,7 @@ Widget build(BuildContext context) {
                 children: [
                   TopHeadline(title: 'Appointments'),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                     child: SearchAndFiltering(hinttext: "Doctor name.."),
                   ),
                   AppointmentFilterSection(
@@ -31,14 +33,16 @@ Widget build(BuildContext context) {
                     section4: "Cancelled",
                   ),
                   PatientAppointmentCard(showdatetime: true, showactions: false),
-                  SizedBox(height: 80),
+                  SizedBox(height: 80.h),
                 ],
               ),
             ),
             Positioned(
-              bottom: 10,
+              bottom:80,
               right: 25,
-              child: FlaotingAction(onPressed: () {}),
+              child: FlaotingAction(onPressed: () {
+                GoRouter.of(context).push("/BookAppointment");
+              }),
             ),
           ],
         ),

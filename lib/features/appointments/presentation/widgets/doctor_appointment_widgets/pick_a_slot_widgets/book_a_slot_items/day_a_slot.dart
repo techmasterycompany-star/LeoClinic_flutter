@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 
@@ -31,7 +32,7 @@ class DaySlot extends StatelessWidget {
               fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
           Text(
             subtitle,
             textAlign: TextAlign.center,
@@ -39,11 +40,11 @@ class DaySlot extends StatelessWidget {
               color: isSelected ? AppColors.primaryColor : AppColors.textSecondary,
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            height: 2,
-            width: 100,
+            height: 2.h,
+            width: 100.w,
             color: isSelected ? AppColors.primaryColor : Colors.transparent,
           ),
         ],

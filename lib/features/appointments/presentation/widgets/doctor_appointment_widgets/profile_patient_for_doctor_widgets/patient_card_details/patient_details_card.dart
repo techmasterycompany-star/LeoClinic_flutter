@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
-import 'package:leoclinic_flutter/core/utils/responsive.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/profile_patient_for_doctor_widgets/patient_card_details/widgets/detalis_of_patient_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/profile_patient_for_doctor_widgets/patient_card_details/widgets/status_of_patient_card.dart';
 
@@ -26,11 +26,12 @@ class PatientDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isMobile = ScreenUtil().screenWidth < 600;
     return Container(
-      width: Responsive.value(context, mobile: 370, tablet: 420),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14),
+      width: isMobile ? 370.w : 420.w,
+      padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 14.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         gradient: LinearGradient(
           begin: AlignmentDirectional.topStart,
           end: AlignmentGeometry.bottomRight,
@@ -44,47 +45,49 @@ class PatientDetailsCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 90,
-            height: 90,
+            width: 90.w,
+            height: 90.h,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 3),
+              border: Border.all(color: Colors.white, width: 3.w),
               image: DecorationImage(
                 image: NetworkImage(imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 name,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 6),
-              const Icon(
+              SizedBox(width: 6.w),
+              Icon(
                 Icons.chat_bubble_outline,
                 color: Colors.white,
-                size: 18,
+                size: 18.sp,
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           DetailsOfPatientCard(age: age, phone: phone, city: city),
-          const SizedBox(height: 16),
-
+          SizedBox(height: 16.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               StatusOfPatientCard(label: "4 Appointment"),
-              const SizedBox(width: 8),
-              StatusOfPatientCard(label: "1 Upcoming",showDot: true,),
+              SizedBox(width: 8.w),
+              StatusOfPatientCard(
+                label: "1 Upcoming",
+                showDot: true,
+              ),
             ],
           ),
         ],

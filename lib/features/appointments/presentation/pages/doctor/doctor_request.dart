@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/core/widgets/appointment_filter.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/admin_appointment_widgets/search_and_filtering.dart';
@@ -12,13 +13,13 @@ class DoctorRequestAppointment extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: EdgeInsets.only(top: 20.h),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 TopHeadline(title: 'Appointments'),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                   child: SearchAndFiltering(hinttext: "Search..",),
                 ),
                 AppointmentFilterSection(section1: "Request",section2: "Confirmd",section3: "Cancelled",),

@@ -1,41 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/utils/assets.dart';
 import 'package:leoclinic_flutter/core/utils/color.dart';
 import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/accept-bottam.dart';
 
 class Newrequestscard extends StatelessWidget {
-  String? maintext;
-  IconData? delete;
-  Newrequestscard({super.key, this.maintext, this.delete});
+  final String? maintext;
+  final IconData? delete;
+  const Newrequestscard({super.key, this.maintext, this.delete});
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 14.w),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 12,
             spreadRadius: 1,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (maintext != null) Text(maintext!, style: Custamtextstyle.test14),
-          SizedBox(height: height * 0.01),
+          SizedBox(height: 8.h),
           Row(
             children: [
               Image.asset(Assets.imagesDoctor),
-              SizedBox(width: width * 0.03),
+              SizedBox(width: 12.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -44,11 +43,11 @@ class Newrequestscard extends StatelessWidget {
                       Text(
                         "Dr. Sarah Legend",
                         style: Custamtextstyle.test14.copyWith(
-                          color: Color(0xff4A4F5A),
+                          color: const Color(0xff4A4F5A),
                         ),
                       ),
                       if (delete != null) ...[
-                        SizedBox(width: width * 0.3),
+                        SizedBox(width: 120.w),
                         Icon(delete),
                       ],
                     ],
@@ -56,7 +55,7 @@ class Newrequestscard extends StatelessWidget {
                   Text(
                     "22 years",
                     style: Custamtextstyle.test10.copyWith(
-                      color: Color(0xff6B707B),
+                      color: const Color(0xff6B707B),
                     ),
                   ),
                 ],
@@ -64,41 +63,41 @@ class Newrequestscard extends StatelessWidget {
             ],
           ),
 
-          SizedBox(height: height * 0.03),
+          SizedBox(height: 24.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(Assets.imagesCalendericon, color: Color(0xff4A4F5A)),
+              Image.asset(Assets.imagesCalendericon, color: const Color(0xff4A4F5A)),
               Text(
                 "  27/8/2026 |  ",
                 style: Custamtextstyle.test12.copyWith(
-                  color: Color(0xff4A4F5A),
+                  color: const Color(0xff4A4F5A),
                 ),
               ),
-              Image.asset(Assets.imagesVideo, color: Color(0xff141B34)),
+              Image.asset(Assets.imagesVideo, color: const Color(0xff141B34)),
               Text(
                 "  In the clinic",
                 style: Custamtextstyle.test12.copyWith(
-                  color: Color(0xff4A4F5A),
+                  color: const Color(0xff4A4F5A),
                 ),
               ),
-              SizedBox(width: width * 0.2),
+              const Spacer(),
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(8.r),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Color(0x3300875A),
+                  borderRadius: BorderRadius.circular(16.r),
+                  color: const Color(0x3300875A),
                 ),
                 child: Text(
                   "New Visit",
                   style: Custamtextstyle.test10.copyWith(
-                    color: Color(0xff00875A),
+                    color: const Color(0xff00875A),
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: height * 0.03),
+          SizedBox(height: 24.h),
           Row(
             children: [
               Acceptbottam(
@@ -108,7 +107,7 @@ class Newrequestscard extends StatelessWidget {
                 icon: Icons.check,
                 iconcolor: Colors.white,
               ),
-              SizedBox(width: width * 0.05),
+              SizedBox(width: 20.w),
               Acceptbottam(
                 text: "Decline",
                 textcolor: appcolor.color,

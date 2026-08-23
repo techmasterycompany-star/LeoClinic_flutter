@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/actions_for_cards.dart';
@@ -89,7 +90,7 @@ class _BookASlotState extends State<BookASlot> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30),
+      padding: EdgeInsets.only(left: 30.w, right: 30.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -100,10 +101,10 @@ class _BookASlotState extends State<BookASlot> {
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
 
           SizedBox(
-            height: 60,
+            height: 60.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _days.length,
@@ -126,11 +127,11 @@ class _BookASlotState extends State<BookASlot> {
             ),
           ),
           const Divider(height: 1),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
 
           if (currentSlots.isEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
+              padding: EdgeInsets.symmetric(vertical: 12.h),
               child: Text(
                 'No slots available for this day',
                 style: AppTextStyle.textstyle14.copyWith(
@@ -140,7 +141,7 @@ class _BookASlotState extends State<BookASlot> {
             )
           else
             SizedBox(
-              height: 48,
+              height: 48.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: currentSlots.length,
@@ -150,7 +151,7 @@ class _BookASlotState extends State<BookASlot> {
 
                   return Padding(
                     padding: EdgeInsets.only(
-                      right: index == currentSlots.length - 1 ? 0 : 12,
+                      right: index == currentSlots.length - 1 ? 0 : 12.w,
                     ),
                     child: TimeSlot(
                       time: slot,
@@ -161,7 +162,7 @@ class _BookASlotState extends State<BookASlot> {
                 },
               ),
             ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
           ActionsForCards(
             showiconLightbutton: false,
             showiconDarkbutton: false,
@@ -174,7 +175,7 @@ class _BookASlotState extends State<BookASlot> {
             foregroundForblueBackground: AppColors.primaryColor,
             foregroundForLightblueBackground: AppColors.background,
           ),
-          const SizedBox(height: 80),
+          SizedBox(height: 80.h),
         ],
       ),
     );

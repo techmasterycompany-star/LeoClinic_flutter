@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
-import 'package:leoclinic_flutter/core/utils/responsive.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/add_prescription_card/widgets/confirmed_and_canclled_buttons.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/add_prescription_card/widgets/date_of_prescription_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/doctor_appointment_widgets/add_prescription_card/widgets/header_of_prescription_card.dart';
@@ -29,23 +29,23 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 650,
-      width: 390,
+      height: 650.h,
+      width: 390.w,
       padding: EdgeInsets.symmetric(
-        horizontal: Responsive.value(context, mobile: 16, tablet: 24),
-        vertical: Responsive.value(context, mobile: 24, tablet: 40),
+        horizontal: 16.w,
+        vertical: 24.h,
       ),
       margin: EdgeInsets.symmetric(
-        horizontal: Responsive.value(context, mobile: 20, tablet: 30),
-        vertical: Responsive.value(context, mobile: 50, tablet: 70),
+        horizontal: 20.w,
+        vertical: 50.h,
       ),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-            topRight: Radius.circular(40),
+            topLeft: Radius.circular(40.r),
+            topRight: Radius.circular(40.r),
           ),
         ),
         shadows: [
@@ -59,14 +59,14 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: Responsive.value(context, mobile: 10, tablet: 20),
-          vertical: Responsive.value(context, mobile: 30, tablet: 30),
+          horizontal: 10.w,
+          vertical: 30.h,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeaderOfPrescriptionCard(),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               "Number Prescripation",
               style: AppTextStyle.textstyle14.copyWith(
@@ -74,9 +74,9 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
                 color: AppColors.surfaceDark,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             NumberOfPrescriptionField(numberController: _numberController),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               "Date",
               style: AppTextStyle.textstyle14.copyWith(
@@ -84,9 +84,9 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
                 color: AppColors.surfaceDark,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             DateOfPrescriptionCard(),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               "New Prescripation",
               style: AppTextStyle.textstyle14.copyWith(
@@ -94,9 +94,9 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
                 color: AppColors.surfaceDark,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             NewPrescriptionText(numberController: _numberController),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             ConfirmedAndCanclledButtons(confirmOnPressed: (){},canclledOnPressed: (){
               GoRouter.of(context).push("/ProfilePatientForDoctor");
             },),

@@ -1,40 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Custamtextstyle {
-  static const TextStyle test12 = TextStyle(
+  static final TextStyle test12 = TextStyle(
     fontFamily: "IBMPlexSans",
     fontWeight: FontWeight.w400,
-    fontSize: 12,
-
+    fontSize: 12.sp,
   );
-  static const TextStyle test18 = TextStyle(
+  static final TextStyle test18 = TextStyle(
     fontFamily: "IBMPlexSans",
     fontWeight: FontWeight.w700,
-    fontSize: 18,
-
+    fontSize: 18.sp,
   );
-  static const TextStyle test16 = TextStyle(
+  static final TextStyle test16 = TextStyle(
     fontFamily: "IBMPlexSans",
     fontWeight: FontWeight.w700,
-    fontSize: 16,
-
+    fontSize: 16.sp,
   );
-   static const TextStyle test14 = TextStyle(
+  static final TextStyle test14 = TextStyle(
     fontFamily: "IBMPlexSans",
     fontWeight: FontWeight.w700,
-    fontSize: 14,
-
+    fontSize: 14.sp,
   );
-  static const TextStyle test10 = TextStyle(
+  static final TextStyle test10 = TextStyle(
     fontFamily: "IBMPlexSans",
     fontWeight: FontWeight.w400,
-    fontSize: 10,
-
+    fontSize: 10.sp,
   );
-  static const TextStyle test28 = TextStyle(
+  static final TextStyle test28 = TextStyle(
     fontFamily: "IBMPlexSans",
     fontWeight: FontWeight.w600,
-    fontSize: 28,
-
+    fontSize: 28.sp,
   );
 }

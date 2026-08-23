@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 
@@ -19,12 +20,12 @@ class PatientIntakeBriefCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(22),
-      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.all(22.r),
+      padding: EdgeInsets.all(20.r),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border,width: 2),
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: AppColors.border, width: 2.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +34,7 @@ class PatientIntakeBriefCard extends StatelessWidget {
             'Patient Intake Brief',
             style: AppTextStyle.textstyle18.copyWith(color: AppColors.primaryColor,fontWeight: FontWeight.w700),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           _InfoSection(
             label: 'REASON FOR VISIT',
             value: reasonForVisit,
@@ -72,7 +73,7 @@ class _InfoSection extends StatelessWidget {
           label,
           style: AppTextStyle.textstyle10.copyWith(color: AppColors.surfaceDark,fontWeight: FontWeight.w400)
         ),
-        const SizedBox(height: 6),
+        SizedBox(height: 6.h),
         Text(
           value,
           style:AppTextStyle.textstyle16.copyWith(color: AppColors.primaryColor,fontWeight: FontWeight.w500)
