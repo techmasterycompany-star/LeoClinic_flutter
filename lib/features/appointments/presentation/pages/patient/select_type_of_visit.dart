@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
-import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
-import 'package:leoclinic_flutter/core/widgets/button.dart';
 import 'package:leoclinic_flutter/features/appointments/domain/entities/doctor_details_for_appointment.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/details_doctor_section/doctor_overview_for_appointment.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/details_doctor_section/select_date_and_select_time.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/select_type_of_visit/select_type_of_visit.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/selection_card.dart';
 
 class SelectTypeOfVisitScreen extends StatefulWidget {
   const SelectTypeOfVisitScreen({super.key});
@@ -48,7 +43,9 @@ class _SelectTypeOfVisitScreenState extends State<SelectTypeOfVisitScreen> {
               width: double.infinity,
               color: Colors.white,
               child: SelectTypeOfVisit(
-                onPressed: (){},
+                onPressed: (){
+                  GoRouter.of(context).push("/PatientDeatilsScreen");
+                },
               ),
             ),
           ),

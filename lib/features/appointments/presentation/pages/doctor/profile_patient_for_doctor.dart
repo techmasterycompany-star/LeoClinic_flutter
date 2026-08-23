@@ -21,7 +21,7 @@ class ProfilePatientForDoctor extends StatelessWidget {
             ),
             child: Column(
               children: [
-                TopHeadline(title: "Appointment"),
+                TopHeadline(title: "Appointment",numofPad: 73,),
                 SizedBox(height: 30.h),
                 PatientDetailsCard(
                   name: 'Asmaa Osman',

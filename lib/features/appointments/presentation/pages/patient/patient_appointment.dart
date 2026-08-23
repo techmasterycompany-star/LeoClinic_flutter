@@ -21,7 +21,7 @@ Widget build(BuildContext context) {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  TopHeadline(title: 'Appointments'),
+                  TopHeadline(title: 'Appointments',numofPad: 73),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                     child: SearchAndFiltering(hinttext: "Doctor name.."),

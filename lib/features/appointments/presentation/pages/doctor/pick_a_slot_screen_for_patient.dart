@@ -19,7 +19,7 @@ class PickAslotScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TopHeadline(title: 'Appointments'),
+                TopHeadline(title: 'Appointments',numofPad: 73),
                SizedBox(height: 30.h),
                 Center(
                   child: PatientDetailsCard(
