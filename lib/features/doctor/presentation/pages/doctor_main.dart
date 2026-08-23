@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'overview.dart';
 import 'doctor-Profile.dart';
-import 'Notifications.dart';
+import '../../../../core/widgets/notification.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_appointment.dart';
 
 import 'package:leoclinic_flutter/core/utils/navbar.dart';

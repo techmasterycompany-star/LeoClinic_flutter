@@ -7,47 +7,47 @@ class AppTextStyle {
 
   static final TextStyle heading = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 28.sp,
+    fontSize: 28,
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
   );
 
   static final TextStyle secondarytext = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 12.sp,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
   );
 
   static final TextStyle textstyle10 = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 10.sp,
+    fontSize: 10,
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );
 
   static final TextStyle textstyle12 = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 12.sp,
+    fontSize: 12,
     fontWeight: FontWeight.w500,
     color: AppColors.textPrimary,
   );
 
   static final TextStyle textstyle14 = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 14.sp,
+    fontSize: 14,
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );
    static final TextStyle textstyle16 = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 16.sp,
+    fontSize: 16,
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );
   static final TextStyle textstyle18 = TextStyle(
     fontFamily: _fontFamily,
-    fontSize: 18.sp,
+    fontSize: 18,
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
   );

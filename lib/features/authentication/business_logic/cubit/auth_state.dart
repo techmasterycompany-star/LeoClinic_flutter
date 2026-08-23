@@ -2,7 +2,6 @@ import '../../data/models/forgot_password_response_model.dart';
 import '../../data/models/login_response_model.dart';
 import '../../data/models/register_response_model.dart';
 import '../../data/models/reset_password_response_model.dart';
-import '../../data/models/verify_email_response_model.dart';
 import '../../data/models/verify_reset_password_token_response_model.dart';
 abstract class AuthState {}
 

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/New%20Requests-card.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Next%20Appointment-card.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Today%20Appointments-card.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/today_appointment_card.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custam-searche.dart';
 
 class Doctordashboradbody extends StatelessWidget {

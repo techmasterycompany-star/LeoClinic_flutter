@@ -19,10 +19,12 @@ class DoctorAppointment extends StatelessWidget {
                 TopHeadline(title: 'Appointments'),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                  child: SearchAndFiltering(),
+                  child: SearchAndFiltering(
+                    hinttext: 'Search here',
+                  ),
                 ),
                 AppointmentFilterSection(section1: "All",section2: "Request",section3: "Confirmed",),
-                PatientAppointmentCard(showdatetime: false,)
+                PatientAppointmentCard(showdatetime: false, showactions: true,)
                   ]),
           ))));
   }

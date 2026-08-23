@@ -11,7 +11,7 @@ class Todaysappointmentscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 14.w),
+      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -21,7 +21,7 @@ class Todaysappointmentscard extends StatelessWidget {
             offset: const Offset(0, 4),
           ),
         ],
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(16),
         color: maincolor ?? Colors.white,
       ),
       child: Column(
@@ -32,11 +32,11 @@ class Todaysappointmentscard extends StatelessWidget {
               maintext!,
               style: Custamtextstyle.test14.copyWith(color: const Color(0xffDA1E28)),
             ),
-          if (maintext != null) SizedBox(height: 16.h),
+          if (maintext != null) SizedBox(height: 16),
           Row(
             children: [
               Image.asset(Assets.imagesDoctor),
-              SizedBox(width: 12.w),
+              SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,9 +81,9 @@ class Todaysappointmentscard extends StatelessWidget {
                             color: const Color(0xff4A4F5A),
                           ),
                         ),
-                        SizedBox(width: 12.w),
+                        SizedBox(width: 12),
                         const Text("|"),
-                        SizedBox(width: 12.w),
+                        SizedBox(width: 12),
                         Image.asset(Assets.imagesVideo),
                         Text(
                           " Online",

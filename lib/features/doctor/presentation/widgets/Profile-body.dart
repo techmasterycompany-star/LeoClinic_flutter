@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/utils/assets.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/profile-bottom.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/profile_bottom.dart';
 
 class Profilebody extends StatelessWidget {
   const Profilebody({super.key});

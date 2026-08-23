@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor-dashborad-body.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor-home-appbar.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_dashborad_body.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_home_appbar.dart';
 
 class Doctordashboradhome extends StatelessWidget {
   const Doctordashboradhome({super.key});

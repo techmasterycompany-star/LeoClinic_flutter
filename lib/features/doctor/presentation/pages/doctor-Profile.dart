@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Profile-body.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Profile-card.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custam-appbar-allpage.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custom_appbar_allpage.dart';
 
 class Doctorprofile extends StatelessWidget {
   const Doctorprofile({super.key});

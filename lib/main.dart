@@ -4,14 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leoclinic_flutter/core/network/dio_client.dart';
 import 'package:leoclinic_flutter/core/routes/navigation_manger.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin/admin_appointment.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
 import 'package:leoclinic_flutter/features/authentication/business_logic/cubit/auth_cubit.dart';
 import 'package:leoclinic_flutter/features/authentication/data/datasource/auth_api_services.dart';
 import 'package:leoclinic_flutter/features/authentication/data/repositories/login_repo.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/patient_info.dart';
 
 void main() {
-  runApp(const HomePage());
+  runApp(const Home());
 }
 
 class HomePage extends StatelessWidget {
@@ -41,5 +40,16 @@ class HomePage extends StatelessWidget {
     );
   },
 );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: PatientInfo(),
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/pages/Notifications.dart';
+import 'package:leoclinic_flutter/core/widgets/notification.dart';
 
 class Doctorhomeappbar extends StatelessWidget {
   const Doctorhomeappbar({super.key});
