@@ -6,6 +6,8 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
 
+import 'patient_list.dart';
+
 class DoctorMainScreen extends StatefulWidget {
   const DoctorMainScreen({super.key});
 
@@ -33,6 +35,11 @@ class _DoctorMainScreenState extends State<DoctorMainScreen> {
     ),
     NavigationDestination(
       icon: Icon(Icons.person),
+      selectedIcon: Icon(Icons.person_outline, size: 30),
+      label: 'Profile',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.person),
       selectedIcon: Icon(Icons.person, size: 30),
       label: 'Profile',
     ),
@@ -42,6 +49,7 @@ class _DoctorMainScreenState extends State<DoctorMainScreen> {
     DoctorOverview(),
     DoctorAppointment(),
     Notifications(),
+    PatientInfo(),
     Doctorprofile(),
   ];
 
