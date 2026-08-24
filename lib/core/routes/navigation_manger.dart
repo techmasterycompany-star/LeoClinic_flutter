@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/book_appointment.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_details.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/payment_page.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/select_type_of_visit.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/upload_file.dart';
 
@@ -14,7 +15,7 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/BookAppointment',
+  initialLocation: '/PaymentPage',
   routes: [
     GoRoute(
       path: '/login',
@@ -80,6 +81,11 @@ final GoRouter router = GoRouter(
         return const UplaodFile();
       },
     ),
-
+ GoRoute(
+      path: '/PaymentPage',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PaymentPage();
+      },
+    ),
   ],
 );

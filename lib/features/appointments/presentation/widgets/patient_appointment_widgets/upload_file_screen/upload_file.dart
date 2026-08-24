@@ -30,7 +30,6 @@ class _UploadFileState extends State<UploadFile> {
 
     if (files.isNotEmpty) {
       PlatformFile file = files.first;
-      // كمل هنا لو عايز تعمل حاجة بالملف
     } else {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -100,7 +99,7 @@ class _UploadFileState extends State<UploadFile> {
 
             SizedBox(height: 20.h),
             GestureDetector(
-              onTap: chooseFile, // ← ربطتها هنا كمان
+              onTap: chooseFile,
               child: Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 40.h),

@@ -59,7 +59,7 @@ class _UplaodFileState extends State<UplaodFile> {
               ),
               width: double.infinity,
               child: UploadFile(onPressedOfBlueAcion: (){
-                GoRouter.of(context).push("/PatientAppointment");
+                GoRouter.of(context).push("/PaymentPage");
               },onPressedOfLightBlueAcion: (){},)
             ),
           ),
