@@ -9,7 +9,7 @@ class AppTextStyle {
     fontFamily: _fontFamily,
     fontSize: 28.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.surfaceDark,
+    color: const Color.fromARGB(255, 52, 53, 55),
   );
 
   static final TextStyle secondarytext = TextStyle(
