@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/receipt_appointment_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/book_appointment.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_details.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/payment_page.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/review_booking.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/select_type_of_visit.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/upload_file.dart';
 
@@ -85,6 +87,13 @@ final GoRouter router = GoRouter(
       path: '/PaymentPage',
       builder: (BuildContext context, GoRouterState state) {
         return const PaymentPage();
+      },
+    ),
+     GoRoute(
+      path: '/ReviewBookingAppointment',
+      builder: (BuildContext context, GoRouterState state) {
+        final appointmentReceiptCard = state.extra as AppointmentReceiptCard;
+        return  ReviewBookingAppointment(appointmentReceiptCard: appointmentReceiptCard,);
       },
     ),
   ],
