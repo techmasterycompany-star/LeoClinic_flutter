@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/widgets/Top_headline_of_screens.dart';
 import 'package:leoclinic_flutter/core/widgets/button.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/receipt_appointment_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/payment_widgets/invoice_details_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/payment_widgets/payment_method_card.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/widgets/patient_appointment_widgets/payment_widgets/payment_summary_card.dart';
@@ -17,7 +19,7 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage> {
   final TextEditingController _patientNameController =
-      TextEditingController(text: 'Eleanor Pena  (ID: PT-2025-001)');
+      TextEditingController(text: 'Eleanor Pena');
   final TextEditingController _doctorController =
       TextEditingController(text: 'Dr. Anil Patel');
   final TextEditingController _deptController =
@@ -71,7 +73,12 @@ class _PaymentPageState extends State<PaymentPage> {
                       SizedBox(height: 24.h),
                       Button(
                         label: "Confirm & Pay \$246.75",
-                        onPressed: () {},
+                        onPressed: () {
+                          GoRouter.of(context).push("/ReviewBookingAppointment",
+                          extra: AppointmentReceiptCard(date: _dueDateController.text, time: "8.30 pm", package: "Video Call", patientName: _patientNameController.text,
+                           age: "21", gender: "Male", fee: 20.00, tax: 2.00,doctorname: _doctorController.text, 
+                           dept: _deptController.text));
+                        },
                         backgroundcolor: AppColors.primaryColor,
                         foregroundcolor: AppColors.background,
                         showicon: false,
