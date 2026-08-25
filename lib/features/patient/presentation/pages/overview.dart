@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
 import 'package:leoclinic_flutter/features/patient/data/models/patient_overview_model.dart';
@@ -82,14 +83,17 @@ class _PatientOverviewState extends State<PatientOverview> {
                         final appointment =
                             widget.overview.nextAppointments[index];
 
-                        return NextAppointmentCard(
-                          doctorName: appointment.doctorName,
-                          doctorAge: appointment.doctorAge,
-                          doctorGender: appointment.doctorGender,
-                          appointmentTime: appointment.appointmentTime,
-                          appointmentDate: appointment.appointmentDate,
-                          location: appointment.location,
-                          doctorImage: appointment.doctorImage,
+                        return GestureDetector(
+                          onTap: () => context.push('/BookAppointment'),
+                          child: NextAppointmentCard(
+                            doctorName: appointment.doctorName,
+                            doctorAge: appointment.doctorAge,
+                            doctorGender: appointment.doctorGender,
+                            appointmentTime: appointment.appointmentTime,
+                            appointmentDate: appointment.appointmentDate,
+                            location: appointment.location,
+                            doctorImage: appointment.doctorImage,
+                          ),
                         );
                       },
                     ),
@@ -117,6 +121,7 @@ class _PatientOverviewState extends State<PatientOverview> {
                           speciality: specialist.speciality,
                           amount: specialist.amount,
                           doctorImage: specialist.doctorImage,
+                          onBookAppointment: () => context.push('/BookAppointment'),
                         );
                       },
                     ),

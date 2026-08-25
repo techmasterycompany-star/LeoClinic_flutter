@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/core/constants/app_colors.dart';
+import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/utils/assets.dart';
-import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
 
 class Todaysappointmentscard extends StatelessWidget {
   String? maintext;
@@ -9,21 +10,19 @@ class Todaysappointmentscard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: AppColors.border.withValues(alpha: 0.5),
             blurRadius: 12,
             spreadRadius: 1,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
         borderRadius: BorderRadius.circular(16),
-        color: maincolor ?? Colors.white,
+        color: maincolor ?? AppColors.background,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,21 +30,21 @@ class Todaysappointmentscard extends StatelessWidget {
           if (maintext != null)
             Text(
               maintext!,
-              style: Custamtextstyle.test14.copyWith(color: Color(0xffDA1E28)),
+              style: AppTextStyle.textstyle14.copyWith(color: AppColors.failed),
             ),
-          if (maintext != null) SizedBox(height: height * 0.02),
+          if (maintext != null) SizedBox(height: 16),
           Row(
             children: [
               Image.asset(Assets.imagesDoctor),
-              SizedBox(width: width * 0.03),
+              SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Sarah Legend",
-                      style: Custamtextstyle.test14.copyWith(
-                        color: Color(0xff4A4F5A),
+                      style: AppTextStyle.textstyle14.copyWith(
+                        color: AppColors.surfaceDark,
                       ),
                     ),
 
@@ -53,8 +52,8 @@ class Todaysappointmentscard extends StatelessWidget {
                       children: [
                         Text(
                           "23years , female",
-                          style: Custamtextstyle.test10.copyWith(
-                            color: Color(0xff6B707B),
+                          style: AppTextStyle.textstyle10.copyWith(
+                            color: AppColors.textSecondary,
                           ),
                         ),
                       ],
@@ -64,32 +63,32 @@ class Todaysappointmentscard extends StatelessWidget {
                       children: [
                         Image.asset(
                           Assets.imagesCalendericon,
-                          color: Color(0xff4A4F5A),
+                          color: AppColors.surfaceDark,
                         ),
                         Text(
                           "  27/8/2026 |  ",
-                          style: Custamtextstyle.test12.copyWith(
-                            color: Color(0xff4A4F5A),
+                          style: AppTextStyle.textstyle12.copyWith(
+                            color: AppColors.surfaceDark,
                           ),
                         ),
                         Image.asset(
                           Assets.imagesClockIcon,
-                          color: Color(0xff141B34),
+                          color: AppColors.textPrimary,
                         ),
                         Text(
                           "  8:00 PM",
-                          style: Custamtextstyle.test12.copyWith(
-                            color: Color(0xff4A4F5A),
+                          style: AppTextStyle.textstyle12.copyWith(
+                            color: AppColors.surfaceDark,
                           ),
                         ),
-                        SizedBox(width: width * 0.03),
-                        Text("|"),
-                        SizedBox(width: width * 0.03),
+                        SizedBox(width: 12),
+                        const Text("|"),
+                        SizedBox(width: 12),
                         Image.asset(Assets.imagesVideo),
                         Text(
                           " Online",
-                          style: Custamtextstyle.test12.copyWith(
-                            color: Color(0xff4A4F5A),
+                          style: AppTextStyle.textstyle12.copyWith(
+                            color: AppColors.surfaceDark,
                           ),
                         ),
                       ],
