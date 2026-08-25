@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/widgets/profile_page.dart';
 import 'overview.dart';
-import '../../../../core/widgets/notification.dart';
+import 'notifications.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_appointment.dart';
 
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
@@ -46,9 +46,9 @@ class _DoctorMainScreenState extends State<DoctorMainScreen> {
   ];
 
   final List<Widget> _pages = [
-    DoctorOverview(),
-    DoctorAppointment(),
-    Notifications(),
+    const DoctorOverview(),
+    const DoctorAppointment(),
+    const Notifications(),
     PatientInfo(),
     const ProfilePage(
       name: 'Dr. Omnia Mahmoud',

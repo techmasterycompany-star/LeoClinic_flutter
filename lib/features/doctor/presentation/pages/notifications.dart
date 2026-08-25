@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Filter-bottom-reuse.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Filter-bottom.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/New%20Requests-card.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Next%20Appointment-card.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/Today%20Appointments-card.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custam-appbar-allpage.dart';
-import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custam-searche.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/filter_bottom_reuse.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/new_requests_card.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/next_appointment_card.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/today_appointments_card.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custom_appbar_allpage.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/widgets/custam_searche.dart';
 
 class Notifications extends StatelessWidget {
   const Notifications({super.key});

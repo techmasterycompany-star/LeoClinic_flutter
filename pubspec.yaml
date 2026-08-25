@@ -42,6 +42,11 @@ dependencies:
   # Font Awesome icons
   font_awesome_flutter: ^11.0.0
 
+  flutter_bloc:
+  equatable:
+  flutter_screenutil: ^5.9.3
+  easy_date_timeline: ^2.0.9
+
   # HTTP client for working with APIs
   dio: ^5.11.0
   
