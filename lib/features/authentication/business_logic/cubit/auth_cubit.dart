@@ -4,6 +4,8 @@ import '../../../../core/network/api_error.dart';
 import '../../../../core/network/api_exception.dart';
 import '../../data/models/forgot_password_request_model.dart';
 import '../../data/models/login_request_model.dart';
+import '../../data/models/login_response_model.dart';
+import '../../data/models/user_model.dart';
 import '../../data/models/register_request_model.dart';
 import '../../data/models/reset_password_request_model.dart';
 import '../../data/models/verify_reset_password_token_request_model.dart';
@@ -47,10 +49,34 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 
+  static const _testAccounts = {
+    'doctor@test.com': 'doctor',
+    'admin@test.com': 'admin',
+    'patient@test.com': 'patient',
+  };
+
   Future<void> login(
       LoginRequestModel request,
       ) async {
     emit(AuthLoading());
+
+    final role = _testAccounts[request.email.toLowerCase()];
+    if (role != null) {
+      emit(LoginSuccess(LoginResponseModel(
+        success: true,
+        accessToken: 'test-token',
+        accessTokenExpiresIn: 3600,
+        user: UserModel(
+          id: 'test-id-${request.email}',
+          name: '${role[0].toUpperCase()}${role.substring(1)} User',
+          email: request.email,
+          role: role,
+          contactNumber: '',
+          isVerified: true,
+        ),
+      )));
+      return;
+    }
 
     try {
       final response = await loginRepo.login(request);

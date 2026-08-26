@@ -30,9 +30,8 @@ class HealthOverviewCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // The icon and the measurement
           Row(
-            mainAxisAlignment: .spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 padding: EdgeInsets.all(10),
@@ -42,21 +41,16 @@ class HealthOverviewCard extends StatelessWidget {
                 ),
                 child: Icon(icon),
               ),
-
-              // The measurement
               Text(
                 percentage ?? 'None',
                 style: AppTextStyle.textstyle10,
               ),
             ],
           ),
-
           Column(
             crossAxisAlignment: .start,
             children: [
-              // The health info
               Text(headline, style: AppTextStyle.textstyle10),
-              // The result of health info
               Text(result, style: AppTextStyle.textstyle12),
             ],
           ),

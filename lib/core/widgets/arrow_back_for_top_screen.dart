@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 
 class ArrowBackTopScreen extends StatelessWidget {
   const ArrowBackTopScreen({
@@ -11,7 +12,7 @@ class ArrowBackTopScreen extends StatelessWidget {
       width: 32,
       height: 32,
       decoration: BoxDecoration(
-        color: Color(0xffF0F1F5),
+        color: AppColors.surfaceLight,
         borderRadius: BorderRadius.circular(8),
       ),
       child: IconButton(

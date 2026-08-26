@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/utils/assets.dart';
-import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
+import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 
 class Profilecard extends StatelessWidget {
   const Profilecard({super.key});
@@ -32,11 +32,11 @@ class Profilecard extends StatelessWidget {
             children: [
               Text(
                 "Dr.omnia moahmouad",
-                style: Custamtextstyle.test16.copyWith(color: Colors.white),
+                style: AppTextStyle.textstyle16.copyWith(color: Colors.white),
               ),
               Text(
                 "Saralegend123@gmail.com ",
-                style: Custamtextstyle.test12.copyWith(
+                style: AppTextStyle.textstyle12.copyWith(
                   color: Color(0XFFDFE1E6),
                 ),
               ),

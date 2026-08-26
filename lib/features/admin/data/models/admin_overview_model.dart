@@ -4,7 +4,7 @@ class AdminStatisticModel {
   final IconData icon;
   final String headline;
   final String result;
-  final int? percentage;
+  final String? percentage;
 
   const AdminStatisticModel({
     required this.icon,
@@ -81,25 +81,25 @@ const adminOverviewMock = AdminOverviewModel(
       icon: Icons.people,
       headline: 'Today\'s Patient',
       result: '32',
-      percentage: 8,
+      percentage: '8%',
     ),
     AdminStatisticModel(
       icon: Icons.medical_services_outlined,
       headline: 'Active doctors',
       result: '12',
-      percentage: 3,
+      percentage: '3%',
     ),
     AdminStatisticModel(
       icon: Icons.euro_outlined,
       headline: 'Clinic Revenue',
       result: '4,000',
-      percentage: 12,
+      percentage: '12%',
     ),
     AdminStatisticModel(
       icon: Icons.edit_calendar_outlined,
       headline: 'Pending Appointments',
       result: '10',
-      percentage: 5,
+      percentage: '5%',
     ),
   ],
   todayAppointments: [

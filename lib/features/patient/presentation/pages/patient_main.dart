@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
+import 'package:leoclinic_flutter/core/widgets/profile_page.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
 import 'overview.dart';
 
 class PatientMainScreen extends StatefulWidget {
@@ -12,28 +14,30 @@ class PatientMainScreen extends StatefulWidget {
 class _PatientMainScreenState extends State<PatientMainScreen> {
   int _index = 0;
   final List<NavigationDestination> destination = const [
-    /*
-      ============================================
-    1. Home
-    2. appointment
-    4. doctor appointment (page name = patient appointment)
-    5. chat
-    6. profile
-      ============================================
-     */
     NavigationDestination(
       icon: Icon(Icons.home),
       selectedIcon: Icon(Icons.home, size: 30),
-      label: 'Patient',
+      label: 'Home',
     ),
-
+    NavigationDestination(
+      icon: Icon(Icons.calendar_today_outlined),
+      selectedIcon: Icon(Icons.calendar_today, size: 30),
+      label: 'Appointments',
+    ),
     NavigationDestination(
       icon: Icon(Icons.person),
       selectedIcon: Icon(Icons.person, size: 30),
       label: 'Profile',
     ),
   ];
-  final List<Widget> _pages = const [PatientOverview(), Placeholder()];
+  final List<Widget> _pages = [
+    PatientOverview(),
+    PatientAppointment(),
+    ProfilePage(
+      name: 'Sarah Jenkins',
+      email: 'sarah.jenkins@email.com',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,7 @@ class Notifications extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Custamappbarallpage(maintext: "Notifications"),
+              const Custamappbarallpage(maintext: "Notifications", showBackButton: false,),
               const Custamsearche(),
               SizedBox(height: 16.h),
               const Filterbottomreuse(),
