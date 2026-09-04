@@ -24,7 +24,7 @@ class PatientAppointment extends StatelessWidget {
                     TopHeadline(
                       title: 'Appointments',
                       numofPad: 73,
-                      showBackButton: false,
+                      
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
