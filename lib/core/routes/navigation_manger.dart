@@ -134,17 +134,5 @@ final GoRouter router = GoRouter(
         return  ReviewBookingAppointment(appointmentReceiptCard: appointmentReceiptCard,);
       },
     ),
-     GoRoute(
-      path: '/PatientMainScreen',
-      builder: (BuildContext context, GoRouterState state) {
-        return const PatientMainScreen();
-      },
-    ),
-       GoRoute(
-      path: '/DoctorMainScreen',
-      builder: (BuildContext context, GoRouterState state) {
-        return const DoctorMainScreen();
-      },
-    ),
   ],
 );
