@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/network/dio_client.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
+import 'package:leoclinic_flutter/core/widgets/overview_shared.dart';
 import 'package:leoclinic_flutter/features/doctor/data/datasource/doctor_api_services.dart';
-import 'package:leoclinic_flutter/features/doctor/data/models/doctor_model.dart';
 import 'package:leoclinic_flutter/features/patient/data/models/patient_overview_model.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/appbar.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/patient_request_history.dart';
@@ -25,66 +24,9 @@ class _PatientOverviewState extends State<PatientOverview> {
   bool nextAppointmentView = false;
   bool requestHistoryView = false;
 
+  // DoctorApiServices is kept for future API integration.
+  // ignore: unused_field
   final DoctorApiServices _doctorApiServices = DoctorApiServices(DioClient());
-  List<DoctorModel>? _doctors;
-  bool _loadingDoctors = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchDoctors();
-  }
-
-  Future<void> _fetchDoctors() async {
-    try {
-      final doctors = await _doctorApiServices.searchDoctors();
-      if (mounted) {
-        setState(() {
-          _doctors = doctors;
-          _loadingDoctors = false;
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        setState(() {
-          _doctors = null;
-          _loadingDoctors = false;
-        });
-      }
-    }
-  }
-
-  List<CaringSpecialistModel> get _caringSpecialists {
-    final doctors = _doctors;
-    if (doctors == null) return const [];
-    return doctors.map((doctor) {
-      return CaringSpecialistModel(
-        doctorName: doctor.name,
-        speciality: doctor.speciality,
-        amount: doctor.consultationFee ?? 0,
-        doctorImage: doctor.image,
-      );
-    }).toList();
-  }
-
-  Widget headline(String headline) {
-    return Text(
-      headline,
-      style: AppTextStyle.textstyle14.copyWith(fontSize: 16),
-    );
-  }
-
-  Widget _buildEmptyState(String message) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Center(
-        child: Text(
-          message,
-          style: AppTextStyle.secondarytext,
-        ),
-      ),
-    );
-  }
 
   void _toggleNextAppointment() {
     setState(() {
@@ -105,22 +47,18 @@ class _PatientOverviewState extends State<PatientOverview> {
         PatientAppBar(),
 
         SliverPadding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(10),
           sliver: SliverList(
             delegate: SliverChildListDelegate([
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  headline('Next Appointment'),
-                  TextButton(
-                    onPressed: _toggleNextAppointment,
-                    child: Text('View all'),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Next Appointment',
+                actionText: 'View all',
+                onAction: _toggleNextAppointment,
               ),
               widget.overview.nextAppointments.isEmpty
-                  ? _buildEmptyState('No appointments available')
+                  ? const EmptyState(message: 'No appointments available')
                   : AppListView(
+                      spacing: 10,
                       itemCount: nextAppointmentView
                           ? widget.overview.nextAppointments.length
                           : 1,
@@ -145,24 +83,18 @@ class _PatientOverviewState extends State<PatientOverview> {
                       },
                     ),
 
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  headline('Caring specialist'),
-                  Text(
-                    _loadingDoctors
-                        ? 'Loading doctors...'
-                        : '${_caringSpecialists.length} doctors available this week',
-                    style: AppTextStyle.secondarytext,
-                  ),
-                ],
+              SectionHeader(
+                title: 'Caring specialist',
               ),
-              _caringSpecialists.isEmpty
-                  ? _buildEmptyState('No caring specialists available')
+              widget.overview.caringSpecialists.isEmpty
+                  ? const EmptyState(
+                      message: 'No caring specialists available')
                   : AppListView(
-                      itemCount: _caringSpecialists.length,
+                      spacing: 10,
+                      itemCount: widget.overview.caringSpecialists.length,
                       itemBuilder: (context, index) {
-                        final specialist = _caringSpecialists[index];
+                        final specialist =
+                            widget.overview.caringSpecialists[index];
 
                         return GestureDetector(
                           onTap: () {
@@ -178,19 +110,15 @@ class _PatientOverviewState extends State<PatientOverview> {
                       },
                     ),
 
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  headline('Request History'),
-                  TextButton(
-                    onPressed: _toggleRequestHistory,
-                    child: Text('See all'),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Request History',
+                actionText: 'See all',
+                onAction: _toggleRequestHistory,
               ),
               widget.overview.requestsHistory.isEmpty
-                  ? _buildEmptyState('No request history')
+                  ? const EmptyState(message: 'No request history')
                   : AppListView(
+                      spacing: 10,
                       itemCount: requestHistoryView
                           ? widget.overview.requestsHistory.length
                           : 1,

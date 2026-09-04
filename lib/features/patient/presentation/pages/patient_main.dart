@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
 import 'package:leoclinic_flutter/core/widgets/profile_page.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/Notifications.dart';
 import 'overview.dart';
 
 class PatientMainScreen extends StatefulWidget {
@@ -16,28 +16,31 @@ class _PatientMainScreenState extends State<PatientMainScreen> {
   int _index = 0;
   final List<NavigationDestination> destination = const [
     NavigationDestination(
-      icon: Icon(Icons.home),
+      icon: Icon(Icons.home_outlined),
       selectedIcon: Icon(Icons.home, size: 30),
       label: 'Home',
     ),
-    NavigationDestination(
+        NavigationDestination(
+      icon: Icon(Icons.notifications_outlined),
+      selectedIcon: Icon(Icons.notifications, size: 30),
+      label: 'Notifications',
+    ),
+        NavigationDestination(
       icon: Icon(Icons.calendar_today_outlined),
       selectedIcon: Icon(Icons.calendar_today, size: 30),
       label: 'Appointments',
     ),
     NavigationDestination(
-      icon: Icon(Icons.person),
+      icon: Icon(Icons.person_outline),
       selectedIcon: Icon(Icons.person, size: 30),
       label: 'Profile',
     ),
   ];
   final List<Widget> _pages = [
     PatientOverview(),
+    Notifications(),
     PatientAppointment(),
-    ProfilePage(
-      name: 'Sarah Jenkins',
-      email: 'sarah.jenkins@email.com',
-    ),
+    ProfilePage(),
   ];
 
   @override

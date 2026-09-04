@@ -66,9 +66,9 @@ class RequestHistoryCard extends StatelessWidget {
           // Other data
           ListTile(
             leading: CircleAvatar(
-              child: doctorImage != null
-                  ? Image.network(doctorImage!)
-                  : Image.asset('assets/images/placeholder.png'),
+              backgroundImage: doctorImage != null
+                  ? NetworkImage(doctorImage!)
+                  : const AssetImage('assets/images/placeholder.png'),
             ),
 
             title: Text(doctorName, style: AppTextStyle.textstyle14),

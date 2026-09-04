@@ -34,10 +34,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
   final List<Widget> _pages = [
     AdminOverview(),
     AdminAppointment(),
-    ProfilePage(
-      name: 'Admin User',
-      email: 'admin@leoclinic.com',
-    ),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {

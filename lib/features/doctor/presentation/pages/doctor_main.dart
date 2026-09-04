@@ -48,10 +48,7 @@ class _DoctorMainScreenState extends State<DoctorMainScreen> {
     DoctorRequestAppointment(),
     Notifications(),
     PatientInfo(),
-    ProfilePage(
-      name: 'Dr. Mohamed Gamal',
-      email: 'mohamed.gamal@leoclinic.com',
-    ),
+    ProfilePage(),
   ];
 
   @override

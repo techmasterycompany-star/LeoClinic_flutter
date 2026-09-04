@@ -76,6 +76,22 @@ const patientOverviewMock = PatientOverviewModel(
       appointmentDate: '2026-08-27',
       location: 'Visit',
     ),
+    PatientAppointmentModel(
+      doctorName: 'Mohamed Gamal',
+      doctorAge: 30,
+      doctorGender: 'Male',
+      appointmentTime: '10:00 AM',
+      appointmentDate: '2026-08-28',
+      location: 'Online',
+    ),
+    PatientAppointmentModel(
+      doctorName: 'Sara Ali',
+      doctorAge: 28,
+      doctorGender: 'Female',
+      appointmentTime: '2:00 PM',
+      appointmentDate: '2026-08-29',
+      location: 'Visit',
+    ),
   ],
   caringSpecialists: [
     CaringSpecialistModel(
@@ -101,7 +117,7 @@ const patientOverviewMock = PatientOverviewModel(
   ],
   requestsHistory: [
     PatientRequestHistoryModel(
-      doctorName: 'Dr Sara Mohammed',
+      doctorName: 'Dr Ahmed',
       speciality: 'Child psychologist',
       appointmentDate: '27-8-2026',
       appointmentTime: '8:00 PM',
@@ -109,12 +125,20 @@ const patientOverviewMock = PatientOverviewModel(
       appointmentStatus: 'Approved',
     ),
     PatientRequestHistoryModel(
-      doctorName: 'Dr Asser Mohammed',
+      doctorName: 'Dr Asser',
       speciality: 'Child psychologist',
       appointmentDate: '27-8-2026',
       appointmentTime: '9:00 PM',
       location: 'online',
       appointmentStatus: 'Cancelled',
+    ),
+    PatientRequestHistoryModel(
+      doctorName: 'Dr Omar',
+      speciality: 'Child psychologist',
+      appointmentDate: '27-8-2026',
+      appointmentTime: '3:00 PM',
+      location: 'online',
+      appointmentStatus: 'Approved',
     ),
   ],
 );

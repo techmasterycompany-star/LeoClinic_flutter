@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:leoclinic_flutter/core/constants/app_colors.dart';
-import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
+import 'package:leoclinic_flutter/core/widgets/overview_shared.dart';
 import 'package:leoclinic_flutter/features/doctor/data/models/doctor_overview_model.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_app_bar.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/widgets/doctor_new_request.dart';
@@ -23,39 +22,26 @@ class _DoctorOverviewState extends State<DoctorOverview> {
   bool todayAppointmentView = false;
   bool newRequestView = false;
 
-  Widget _buildEmptyState(String message) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Center(
-        child: Text(
-          message,
-          style: AppTextStyle.secondarytext,
-        ),
-      ),
-    );
-  }
-  
   void _toggleNextAppointmentView() {
     setState(() {
       nextAppointmentView = !nextAppointmentView;
     });
   }
+
   void _toggleTodayAppointmentView() {
     setState(() {
       todayAppointmentView = !todayAppointmentView;
     });
   }
-  void _toggleNiewRequestView() {
+
+  void _toggleNewRequestView() {
     setState(() {
       newRequestView = !newRequestView;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    Widget headline(String headline) {
-      return Text(headline, style: AppTextStyle.heading);
-    }
-
     return CustomScrollView(
       slivers: [
         DoctorAppBar(),
@@ -64,25 +50,16 @@ class _DoctorOverviewState extends State<DoctorOverview> {
           padding: EdgeInsets.all(10),
           sliver: SliverList(
             delegate: SliverChildListDelegate([
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  headline('Next Appointments'),
-                  TextButton(
-                    onPressed: _toggleNextAppointmentView,
-                    child: Text(
-                      'See all',
-                      style: AppTextStyle.textstyle12.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Next Appointments',
+                actionText: 'See all',
+                onAction: _toggleNextAppointmentView,
               ),
 
               widget.overview.nextAppointments.isEmpty
-                  ? _buildEmptyState('No upcoming appointments')
+                  ? const EmptyState(message: 'No upcoming appointments')
                   : AppListView(
+                      spacing: 10,
                       itemCount: nextAppointmentView
                           ? widget.overview.nextAppointments.length
                           : 1,
@@ -106,26 +83,16 @@ class _DoctorOverviewState extends State<DoctorOverview> {
                       },
                     ),
 
-              Row(
-                mainAxisAlignment: .spaceBetween,
-
-                children: [
-                  headline('Today\'s Appointments'),
-                  TextButton(
-                    onPressed: _toggleTodayAppointmentView,
-                    child: Text(
-                      'See all',
-                      style: AppTextStyle.textstyle12.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Today\'s Appointments',
+                actionText: 'See all',
+                onAction: _toggleTodayAppointmentView,
               ),
 
               widget.overview.todayAppointments.isEmpty
-                  ? _buildEmptyState('No appointments today')
+                  ? const EmptyState(message: 'No appointments today')
                   : AppListView(
+                      spacing: 10,
                       itemCount: todayAppointmentView
                           ? widget.overview.todayAppointments.length
                           : 2,
@@ -145,25 +112,16 @@ class _DoctorOverviewState extends State<DoctorOverview> {
                       },
                     ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  headline('New Requests'),
-                  TextButton(
-                    onPressed: _toggleNiewRequestView,
-                    child: Text(
-                      'See all',
-                      style: AppTextStyle.textstyle12.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
+              SectionHeader(
+                title: 'New Requests',
+                actionText: 'See all',
+                onAction: _toggleNewRequestView,
               ),
 
               widget.overview.newRequests.isEmpty
-                  ? _buildEmptyState('No new requests')
+                  ? const EmptyState(message: 'No new requests')
                   : AppListView(
+                      spacing: 10,
                       itemCount: newRequestView
                           ? widget.overview.newRequests.length
                           : 1,
@@ -183,8 +141,8 @@ class _DoctorOverviewState extends State<DoctorOverview> {
                             patientImage: request.patientImage,
                           ),
                         );
-                },
-              ),
+                      },
+                    ),
             ]),
           ),
         ),

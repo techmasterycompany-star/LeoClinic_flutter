@@ -62,6 +62,7 @@ class AuthCubit extends Cubit<AuthState> {
       }
 
       await Prefhelper.saveUserName(response.user.name);
+      await Prefhelper.saveUserEmail(response.user.email);
 
       emit(
         LoginSuccess(response),

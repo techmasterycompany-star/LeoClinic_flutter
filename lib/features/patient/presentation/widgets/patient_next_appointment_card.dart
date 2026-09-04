@@ -30,6 +30,7 @@ class NextAppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.antiAlias,
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
@@ -39,13 +40,15 @@ class NextAppointmentCard extends StatelessWidget {
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: ListTile(
         isThreeLine: true,
         leading: CircleAvatar(
           radius: 30,
-          child: doctorImage != null ? Image.network(doctorImage!) : Image.asset('assets/images/placeholder.png'),
+          backgroundImage: doctorImage != null
+              ? NetworkImage(doctorImage!)
+              : const AssetImage('assets/images/placeholder.png'),
         ),
         title: Text(
           'Dr. $doctorName',

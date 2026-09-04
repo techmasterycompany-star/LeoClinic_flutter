@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/network/dio_client.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
+import 'package:leoclinic_flutter/core/widgets/overview_shared.dart';
 import 'package:leoclinic_flutter/features/admin/data/models/admin_overview_model.dart';
 import 'package:leoclinic_flutter/features/admin/presentation/widgets/appbar.dart';
 import 'package:leoclinic_flutter/features/doctor/data/datasource/doctor_api_services.dart';
-import 'package:leoclinic_flutter/features/doctor/data/models/doctor_model.dart';
 
 import '../widgets/alert.dart';
 import '../widgets/doctorperformance.dart';
@@ -22,65 +21,9 @@ class AdminOverview extends StatefulWidget {
 }
 
 class _AdminOverviewState extends State<AdminOverview> {
+  // DoctorApiServices is kept for future API integration.
+  // ignore: unused_field
   final DoctorApiServices _doctorApiServices = DoctorApiServices(DioClient());
-  List<DoctorModel>? _doctors;
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchDoctors();
-  }
-
-  Future<void> _fetchDoctors() async {
-    try {
-      final doctors = await _doctorApiServices.searchDoctors();
-      if (mounted) {
-        setState(() {
-          _doctors = doctors;
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        setState(() {
-          _doctors = null;
-        });
-      }
-    }
-  }
-
-  List<DoctorPerformanceModel> get _doctorPerformance {
-    final doctors = _doctors;
-    if (doctors == null) return const [];
-    return doctors.map((doctor) {
-      return DoctorPerformanceModel(
-        doctorName: doctor.name,
-        speciality: doctor.speciality,
-        totalAppointments: 0,
-        appointmentsCompleted: 0,
-        rate: 0,
-        doctorImage: doctor.image,
-      );
-    }).toList();
-  }
-
-  Widget headline(String headline) {
-    return Text(
-      headline,
-      style: AppTextStyle.textstyle14.copyWith(fontSize: 16),
-    );
-  }
-
-  Widget _buildEmptyState(String message) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Center(
-        child: Text(
-          message,
-          style: AppTextStyle.secondarytext,
-        ),
-      ),
-    );
-  }
 
   void _toggleTodayAppointmentView() {
     setState(() {
@@ -103,6 +46,7 @@ class _AdminOverviewState extends State<AdminOverview> {
   bool todayAppointmentView = false;
   bool doctorPerformanceView = false;
   bool alertView = false;
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -113,8 +57,7 @@ class _AdminOverviewState extends State<AdminOverview> {
           padding: const EdgeInsets.all(10),
           sliver: SliverList(
             delegate: SliverChildListDelegate([
-              // Statistics
-              headline('Statistics'),
+              const SectionHeader(title: 'Statistics'),
               GridView.count(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -129,19 +72,15 @@ class _AdminOverviewState extends State<AdminOverview> {
                 }).toList(),
               ),
 
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  headline('Today\'s Appointments'),
-                  TextButton(
-                    onPressed: _toggleTodayAppointmentView,
-                    child: Text('View All Appointments'),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Today\'s Appointments',
+                actionText: 'View All Appointments',
+                onAction: _toggleTodayAppointmentView,
               ),
               widget.overview.todayAppointments.isEmpty
-                  ? _buildEmptyState('No appointments today')
+                  ? const EmptyState(message: 'No appointments today')
                   : AppListView(
+                      spacing: 10,
                       itemCount: todayAppointmentView &&
                               widget.overview.todayAppointments.isNotEmpty
                           ? widget.overview.todayAppointments.length
@@ -162,27 +101,23 @@ class _AdminOverviewState extends State<AdminOverview> {
                       },
                     ),
 
-              // Doctor Performance
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  headline('Doctor Performance'),
-                  TextButton(
-                    onPressed: _toggleDoctorPerformanceView,
-                    child: Text('View All'),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Doctor Performance',
+                actionText: 'View All',
+                onAction: _toggleDoctorPerformanceView,
               ),
-              _doctorPerformance.isEmpty
-                  ? _buildEmptyState('No doctor performance data available')
+              widget.overview.doctorPerformance.isEmpty
+                  ? const EmptyState(
+                      message: 'No doctor performance data available')
                   : AppListView(
+                      spacing: 10,
                       itemCount: doctorPerformanceView &&
-                              _doctorPerformance.isNotEmpty
-                          ? _doctorPerformance.length
+                              widget.overview.doctorPerformance.isNotEmpty
+                          ? widget.overview.doctorPerformance.length
                           : 1,
                       itemBuilder: (context, index) {
                         final doctor =
-                            _doctorPerformance[index];
+                            widget.overview.doctorPerformance[index];
 
                         return DoctorPerformanceCard(
                           doctorName: doctor.doctorName,
@@ -196,20 +131,15 @@ class _AdminOverviewState extends State<AdminOverview> {
                       },
                     ),
 
-              // Alerts
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  headline('Alerts'),
-                  TextButton(
-                    onPressed: _toggleAlertView,
-                    child: Text('View All'),
-                  ),
-                ],
+              SectionHeader(
+                title: 'Alerts',
+                actionText: 'View All',
+                onAction: _toggleAlertView,
               ),
               widget.overview.alerts.isEmpty
-                  ? _buildEmptyState('No alerts')
+                  ? const EmptyState(message: 'No alerts')
                   : AppListView(
+                      spacing: 10,
                       itemCount: alertView && widget.overview.alerts.isNotEmpty
                           ? widget.overview.alerts.length
                           : 1,
