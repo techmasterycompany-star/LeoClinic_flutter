@@ -15,6 +15,7 @@ import 'package:leoclinic_flutter/features/authentication/presentation/widgets/a
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/email_and_password.dart';
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/login_options_section.dart';
 
+import 'package:leoclinic_flutter/core/utils/pref-helper.dart';
 import '../../../../home.dart';
 import '../../data/models/login_request_model.dart';
 
@@ -45,8 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginSuccess) {
+          await Prefhelper.savetoken(state.response.accessToken);
           final role = state.response.user.role.toLowerCase();
 
           UserRole userRole;
@@ -71,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               return;
           }
 
+          if (!context.mounted) return;
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(

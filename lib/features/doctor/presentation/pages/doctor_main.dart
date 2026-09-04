@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/pick_a_slot_screen_for_patient.dart';
 import 'overview.dart';
 
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
@@ -23,20 +25,29 @@ class _DoctorMainScreenState extends State<DoctorMainScreen> {
     6. profile
     ============================================
      */
-    NavigationDestination(
-      icon: Icon(Icons.home),
-      selectedIcon: Icon(Icons.home, size: 30),
-      label: 'Patient',
+        NavigationDestination(
+      icon: Icon(Icons.home_outlined),
+      selectedIcon: Icon(Icons.home_outlined, size: 30),
+      label: 'home',
     ),
-
-    NavigationDestination(
-      icon: Icon(Icons.person),
-      selectedIcon: Icon(Icons.person, size: 30),
-      label: 'Profile',
+     NavigationDestination(
+      icon: Icon(Icons.calendar_today_outlined),
+      selectedIcon: Icon(Icons.calendar_today_outlined, size: 30),
+      label: 'booking',
+    ),
+     NavigationDestination(
+      icon: Icon(Icons.payment_sharp),
+      selectedIcon: Icon(Icons.payment_sharp, size: 30),
+      label: 'payment',
+    ),
+     NavigationDestination(
+      icon: Icon(Icons.person_outline),
+      selectedIcon: Icon(Icons.person_outline, size: 30),
+      label: 'profile',
     ),
   ];
 
-  final List<Widget> _pages = [DoctorOverview(), Placeholder()];
+  final List<Widget> _pages = [DoctorOverview(), DoctorRequestAppointment()];
 
   @override
   Widget build(BuildContext context) {

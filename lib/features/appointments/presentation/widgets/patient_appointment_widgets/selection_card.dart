@@ -30,7 +30,6 @@ class SelectionCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // الأيقونة داخل مربع بخلفية فاتحة
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -45,7 +44,6 @@ class SelectionCard extends StatelessWidget {
             ),
             const SizedBox(width: 14),
 
-            // العنوان
             Text(
               title,
               style: const TextStyle(
@@ -57,7 +55,6 @@ class SelectionCard extends StatelessWidget {
 
             const Spacer(),
 
-            // دائرة الاختيار (Radio)
             Container(
               width: 24,
               height: 24,

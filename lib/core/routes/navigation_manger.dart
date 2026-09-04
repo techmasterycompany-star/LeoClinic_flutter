@@ -15,9 +15,11 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/pick_a_slot_screen_for_patient.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/profile_patient_for_doctor.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor_main.dart';
+import 'package:leoclinic_flutter/features/patient/presentation/pages/patient_main.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/PaymentPage',
+  initialLocation: '/login',
   routes: [
     GoRoute(
       path: '/login',
@@ -94,6 +96,18 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         final appointmentReceiptCard = state.extra as AppointmentReceiptCard;
         return  ReviewBookingAppointment(appointmentReceiptCard: appointmentReceiptCard,);
+      },
+    ),
+     GoRoute(
+      path: '/PatientMainScreen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientMainScreen();
+      },
+    ),
+       GoRoute(
+      path: '/DoctorMainScreen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DoctorMainScreen();
       },
     ),
   ],
