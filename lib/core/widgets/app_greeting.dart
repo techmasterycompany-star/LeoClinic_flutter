@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/core/utils/pref-helper.dart';
 
-class AppGreeting extends StatelessWidget {
-  final String greeting;
-  final String userName;
+class AppGreeting extends StatefulWidget {
+  const AppGreeting({super.key});
 
-  const AppGreeting({
-    super.key,
-    this.greeting = 'Good Morning',
-    this.userName = 'Asser Mohammed',
-  });
+  @override
+  State<AppGreeting> createState() => _AppGreetingState();
+}
+
+class _AppGreetingState extends State<AppGreeting> {
+  String _userName = '';
+  String _greeting = 'Good Morning';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final name = await Prefhelper.getUserName();
+    final hour = DateTime.now().hour;
+
+    String greeting;
+    if (hour < 12) {
+      greeting = 'Good Morning';
+    } else if (hour < 17) {
+      greeting = 'Good Afternoon';
+    } else {
+      greeting = 'Good Evening';
+    }
+
+    if (mounted) {
+      setState(() {
+        _userName = name ?? '';
+        _greeting = greeting;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +49,11 @@ class AppGreeting extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            // TODO: Implement the greeting with time of the day.
-            greeting,
+            _greeting,
             style: AppTextStyle.secondarytext,
           ),
           Text(
-            // TODO: Replace this placeholder with the logged-in user's name.
-            userName,
+            _userName,
             style: AppTextStyle.textstyle14,
           ),
         ],
