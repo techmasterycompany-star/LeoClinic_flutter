@@ -17,6 +17,8 @@ import 'package:leoclinic_flutter/features/appointments/presentation/pages/docto
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
 import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor_main.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/pages/patient_main.dart';
+import 'package:leoclinic_flutter/features/admin/presentation/pages/admin_main.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/patient_info_detail.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login',
@@ -25,6 +27,40 @@ final GoRouter router = GoRouter(
       path: '/login',
       builder: (BuildContext context, GoRouterState state) {
         return const LoginScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/doctor',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DoctorMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/patient',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/admin',
+      builder: (BuildContext context, GoRouterState state) {
+        return const AdminMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/PatientInfoDetail',
+      builder: (BuildContext context, GoRouterState state) {
+        final extra = state.extra as Map<String, dynamic>;
+        return PatientInfoDetail(
+          patientName: extra['patientName'] as String,
+          patientImage: extra['patientImage'] as String,
+          patientInfo: extra['patientInfo'] as String,
+          patientStatus: extra['patientStatus'] as String,
+        );
       },
     ),
 

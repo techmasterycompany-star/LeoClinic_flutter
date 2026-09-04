@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:leoclinic_flutter/core/constants/userrole.dart';
 import 'package:leoclinic_flutter/core/utils/app_colors.dart';
 
 import 'package:leoclinic_flutter/features/authentication/business_logic/cubit/auth_cubit.dart';
@@ -51,19 +51,17 @@ class _LoginScreenState extends State<LoginScreen> {
           await Prefhelper.savetoken(state.response.accessToken);
           final role = state.response.user.role.toLowerCase();
 
-          UserRole userRole;
-
           switch (role) {
             case 'admin':
-              userRole = UserRole.admin;
+              context.go('/admin');
               break;
 
             case 'doctor':
-              userRole = UserRole.doctor;
+              context.go('/doctor');
               break;
 
             case 'patient':
-              userRole = UserRole.patient;
+              context.go('/patient');
               break;
 
             default:
@@ -72,14 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
               );
               return;
           }
-
-          if (!context.mounted) return;
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (_) => RoleBasedHomeScreen(userRole: userRole),
-            ),
-          );
         }
 
         if (state is AuthError) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_colors.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
@@ -89,13 +90,18 @@ class _DoctorOverviewState extends State<DoctorOverview> {
                         final appointment =
                             widget.overview.nextAppointments[index];
 
-                        return NextAppointmentCard(
-                          patientName: appointment.patientName,
-                          patientAge: appointment.patientAge,
-                          patientGender: appointment.patientGender,
-                          appointmentTime: appointment.appointmentTime,
-                          appointmentDate: appointment.appointmentDate,
-                          patientImage: appointment.patientImage,
+                        return GestureDetector(
+                          onTap: () {
+                            context.push('/ProfilePatientForDoctor');
+                          },
+                          child: NextAppointmentCard(
+                            patientName: appointment.patientName,
+                            patientAge: appointment.patientAge,
+                            patientGender: appointment.patientGender,
+                            appointmentTime: appointment.appointmentTime,
+                            appointmentDate: appointment.appointmentDate,
+                            patientImage: appointment.patientImage,
+                          ),
                         );
                       },
                     ),
@@ -164,13 +170,18 @@ class _DoctorOverviewState extends State<DoctorOverview> {
                       itemBuilder: (context, index) {
                         final request = widget.overview.newRequests[index];
 
-                        return NewRequestCard(
-                          patientName: request.patientName,
-                          patientAge: request.patientAge,
-                          patientGender: request.patientGender,
-                          appointmentDate: request.appointmentDate,
-                          location: request.location,
-                          patientImage: request.patientImage,
+                        return GestureDetector(
+                          onTap: () {
+                            context.push('/PickAslotScreen');
+                          },
+                          child: NewRequestCard(
+                            patientName: request.patientName,
+                            patientAge: request.patientAge,
+                            patientGender: request.patientGender,
+                            appointmentDate: request.appointmentDate,
+                            location: request.location,
+                            patientImage: request.patientImage,
+                          ),
                         );
                 },
               ),

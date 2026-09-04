@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/core/network/dio_client.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
+import 'package:leoclinic_flutter/features/doctor/data/datasource/doctor_api_services.dart';
+import 'package:leoclinic_flutter/features/doctor/data/models/doctor_model.dart';
 import 'package:leoclinic_flutter/features/patient/data/models/patient_overview_model.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/appbar.dart';
 import 'package:leoclinic_flutter/features/patient/presentation/widgets/patient_request_history.dart';
@@ -20,6 +24,48 @@ class PatientOverview extends StatefulWidget {
 class _PatientOverviewState extends State<PatientOverview> {
   bool nextAppointmentView = false;
   bool requestHistoryView = false;
+
+  final DoctorApiServices _doctorApiServices = DoctorApiServices(DioClient());
+  List<DoctorModel>? _doctors;
+  bool _loadingDoctors = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchDoctors();
+  }
+
+  Future<void> _fetchDoctors() async {
+    try {
+      final doctors = await _doctorApiServices.searchDoctors();
+      if (mounted) {
+        setState(() {
+          _doctors = doctors;
+          _loadingDoctors = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _doctors = null;
+          _loadingDoctors = false;
+        });
+      }
+    }
+  }
+
+  List<CaringSpecialistModel> get _caringSpecialists {
+    final doctors = _doctors;
+    if (doctors == null) return const [];
+    return doctors.map((doctor) {
+      return CaringSpecialistModel(
+        doctorName: doctor.name,
+        speciality: doctor.speciality,
+        amount: doctor.consultationFee ?? 0,
+        doctorImage: doctor.image,
+      );
+    }).toList();
+  }
 
   Widget headline(String headline) {
     return Text(
@@ -82,14 +128,19 @@ class _PatientOverviewState extends State<PatientOverview> {
                         final appointment =
                             widget.overview.nextAppointments[index];
 
-                        return NextAppointmentCard(
-                          doctorName: appointment.doctorName,
-                          doctorAge: appointment.doctorAge,
-                          doctorGender: appointment.doctorGender,
-                          appointmentTime: appointment.appointmentTime,
-                          appointmentDate: appointment.appointmentDate,
-                          location: appointment.location,
-                          doctorImage: appointment.doctorImage,
+                        return GestureDetector(
+                          onTap: () {
+                            context.push('/BookAppointment');
+                          },
+                          child: NextAppointmentCard(
+                            doctorName: appointment.doctorName,
+                            doctorAge: appointment.doctorAge,
+                            doctorGender: appointment.doctorGender,
+                            appointmentTime: appointment.appointmentTime,
+                            appointmentDate: appointment.appointmentDate,
+                            location: appointment.location,
+                            doctorImage: appointment.doctorImage,
+                          ),
                         );
                       },
                     ),
@@ -99,24 +150,30 @@ class _PatientOverviewState extends State<PatientOverview> {
                 children: [
                   headline('Caring specialist'),
                   Text(
-                    '${widget.overview.availableDoctorsThisWeek} doctors available this week',
+                    _loadingDoctors
+                        ? 'Loading doctors...'
+                        : '${_caringSpecialists.length} doctors available this week',
                     style: AppTextStyle.secondarytext,
                   ),
                 ],
               ),
-              widget.overview.caringSpecialists.isEmpty
+              _caringSpecialists.isEmpty
                   ? _buildEmptyState('No caring specialists available')
                   : AppListView(
-                      itemCount: widget.overview.caringSpecialists.length,
+                      itemCount: _caringSpecialists.length,
                       itemBuilder: (context, index) {
-                        final specialist =
-                            widget.overview.caringSpecialists[index];
+                        final specialist = _caringSpecialists[index];
 
-                        return CaringSpecialistCard(
-                          doctorName: specialist.doctorName,
-                          speciality: specialist.speciality,
-                          amount: specialist.amount,
-                          doctorImage: specialist.doctorImage,
+                        return GestureDetector(
+                          onTap: () {
+                            context.push('/BookAppointment');
+                          },
+                          child: CaringSpecialistCard(
+                            doctorName: specialist.doctorName,
+                            speciality: specialist.speciality,
+                            amount: specialist.amount,
+                            doctorImage: specialist.doctorImage,
+                          ),
                         );
                       },
                     ),

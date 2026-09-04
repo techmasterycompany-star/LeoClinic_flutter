@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:leoclinic_flutter/core/utils/app_colors.dart';
 import 'package:leoclinic_flutter/features/authentication/presentation/widgets/app_text_button.dart';
@@ -41,13 +42,7 @@ class _VerificationState extends State<Verification> {
             ),
           );
 
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const LoginScreen(),
-            ),
-                (route) => false,
-          );
+          context.go('/login');
         }
 
         if (state is AuthError) {

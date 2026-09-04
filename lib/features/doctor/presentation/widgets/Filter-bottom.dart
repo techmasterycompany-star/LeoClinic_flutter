@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/core/utils/color.dart';
-import 'package:leoclinic_flutter/core/utils/custam-Textstyle.dart';
+import 'package:leoclinic_flutter/core/constants/app_colors.dart';
+import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
 
 class Filterbottom extends StatelessWidget {
   final VoidCallback ontap;
@@ -21,12 +21,12 @@ class Filterbottom extends StatelessWidget {
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Color(0xffF0F1F5), width: 1),
-          color: isselecleted ? appcolor.color : Colors.white,
+          border: Border.all(color: AppColors.surfaceLight, width: 1),
+          color: isselecleted ? AppColors.primaryColor : Colors.white,
         ),
         child: Text(
           text,
-          style: Custamtextstyle.test12.copyWith(
+          style: AppTextStyle.textstyle12.copyWith(
             color: isselecleted ? Colors.white : Color(0xff4A4F5A),
           ),
         ),

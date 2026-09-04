@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/pick_a_slot_screen_for_patient.dart';
-import 'overview.dart';
-
 import 'package:leoclinic_flutter/core/utils/navbar.dart';
+import 'package:leoclinic_flutter/core/widgets/profile_page.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
+import 'overview.dart';
+import 'patient_list.dart';
+import 'Notifications.dart';
 
 class DoctorMainScreen extends StatefulWidget {
   const DoctorMainScreen({super.key});
@@ -15,39 +16,43 @@ class DoctorMainScreen extends StatefulWidget {
 class _DoctorMainScreenState extends State<DoctorMainScreen> {
   int _index = 0;
   final List<NavigationDestination> destination = const [
-    /*
-    ============================================
-    1. Home
-    2. appointment
-    3. schedule
-    4. patient list
-    5. chat
-    6. profile
-    ============================================
-     */
-        NavigationDestination(
-      icon: Icon(Icons.home_outlined),
-      selectedIcon: Icon(Icons.home_outlined, size: 30),
-      label: 'home',
+    NavigationDestination(
+      icon: Icon(Icons.home),
+      selectedIcon: Icon(Icons.home, size: 30),
+      label: 'Home',
     ),
-     NavigationDestination(
+    NavigationDestination(
       icon: Icon(Icons.calendar_today_outlined),
-      selectedIcon: Icon(Icons.calendar_today_outlined, size: 30),
-      label: 'booking',
+      selectedIcon: Icon(Icons.calendar_today, size: 30),
+      label: 'Appointments',
     ),
-     NavigationDestination(
-      icon: Icon(Icons.payment_sharp),
-      selectedIcon: Icon(Icons.payment_sharp, size: 30),
-      label: 'payment',
+    NavigationDestination(
+      icon: Icon(Icons.notifications_outlined),
+      selectedIcon: Icon(Icons.notifications, size: 30),
+      label: 'Notifications',
     ),
-     NavigationDestination(
-      icon: Icon(Icons.person_outline),
-      selectedIcon: Icon(Icons.person_outline, size: 30),
-      label: 'profile',
+    NavigationDestination(
+      icon: Icon(Icons.people_outline),
+      selectedIcon: Icon(Icons.people, size: 30),
+      label: 'Patients',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.person),
+      selectedIcon: Icon(Icons.person, size: 30),
+      label: 'Profile',
     ),
   ];
 
-  final List<Widget> _pages = [DoctorOverview(), DoctorRequestAppointment()];
+  final List<Widget> _pages = [
+    DoctorOverview(),
+    DoctorRequestAppointment(),
+    Notifications(),
+    PatientInfo(),
+    ProfilePage(
+      name: 'Dr. Mohamed Gamal',
+      email: 'mohamed.gamal@leoclinic.com',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {

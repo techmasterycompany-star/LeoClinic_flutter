@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/network/api_error.dart';
 import '../../../../core/network/api_exception.dart';
+import '../../../../core/utils/pref-helper.dart';
 import '../../data/models/forgot_password_request_model.dart';
 import '../../data/models/login_request_model.dart';
 import '../../data/models/register_request_model.dart';
@@ -54,6 +55,11 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       final response = await loginRepo.login(request);
+
+      final token = response.accessToken;
+      if (token.isNotEmpty) {
+        await Prefhelper.savetoken(token);
+      }
 
       emit(
         LoginSuccess(response),

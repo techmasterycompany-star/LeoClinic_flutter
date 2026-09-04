@@ -18,7 +18,7 @@ class AdminAppointment extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                TopHeadline(title: 'Appointments',numofPad: 73),
+                TopHeadline(title: 'Appointments',numofPad: 73,showBackButton: false),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                   child: SearchAndFiltering(hinttext: "Search..",),

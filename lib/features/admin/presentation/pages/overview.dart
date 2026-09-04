@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:leoclinic_flutter/core/constants/app_text_style.dart';
+import 'package:leoclinic_flutter/core/network/dio_client.dart';
 import 'package:leoclinic_flutter/core/widgets/app_list_view.dart';
 import 'package:leoclinic_flutter/features/admin/data/models/admin_overview_model.dart';
 import 'package:leoclinic_flutter/features/admin/presentation/widgets/appbar.dart';
+import 'package:leoclinic_flutter/features/doctor/data/datasource/doctor_api_services.dart';
+import 'package:leoclinic_flutter/features/doctor/data/models/doctor_model.dart';
 
 import '../widgets/alert.dart';
 import '../widgets/doctorperformance.dart';
@@ -19,6 +22,47 @@ class AdminOverview extends StatefulWidget {
 }
 
 class _AdminOverviewState extends State<AdminOverview> {
+  final DoctorApiServices _doctorApiServices = DoctorApiServices(DioClient());
+  List<DoctorModel>? _doctors;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchDoctors();
+  }
+
+  Future<void> _fetchDoctors() async {
+    try {
+      final doctors = await _doctorApiServices.searchDoctors();
+      if (mounted) {
+        setState(() {
+          _doctors = doctors;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _doctors = null;
+        });
+      }
+    }
+  }
+
+  List<DoctorPerformanceModel> get _doctorPerformance {
+    final doctors = _doctors;
+    if (doctors == null) return const [];
+    return doctors.map((doctor) {
+      return DoctorPerformanceModel(
+        doctorName: doctor.name,
+        speciality: doctor.speciality,
+        totalAppointments: 0,
+        appointmentsCompleted: 0,
+        rate: 0,
+        doctorImage: doctor.image,
+      );
+    }).toList();
+  }
+
   Widget headline(String headline) {
     return Text(
       headline,
@@ -129,16 +173,16 @@ class _AdminOverviewState extends State<AdminOverview> {
                   ),
                 ],
               ),
-              widget.overview.doctorPerformance.isEmpty
+              _doctorPerformance.isEmpty
                   ? _buildEmptyState('No doctor performance data available')
                   : AppListView(
                       itemCount: doctorPerformanceView &&
-                              widget.overview.doctorPerformance.isNotEmpty
-                          ? widget.overview.doctorPerformance.length
+                              _doctorPerformance.isNotEmpty
+                          ? _doctorPerformance.length
                           : 1,
                       itemBuilder: (context, index) {
                         final doctor =
-                            widget.overview.doctorPerformance[index];
+                            _doctorPerformance[index];
 
                         return DoctorPerformanceCard(
                           doctorName: doctor.doctorName,
