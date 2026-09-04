@@ -1,22 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leoclinic_flutter/core/network/dio-client.dart';
+import 'package:leoclinic_flutter/core/network/dio_client.dart';
+import 'package:leoclinic_flutter/core/routes/navigation_manger.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';
-import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin_appointment.dart';
+import 'package:leoclinic_flutter/features/authentication/business_logic/cubit/auth_cubit.dart';
+import 'package:leoclinic_flutter/features/authentication/data/datasource/auth_api_services.dart';
+import 'package:leoclinic_flutter/features/authentication/data/repositories/login_repo.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme().lightTheme,
-      themeMode: ThemeMode.light,
-      home: AdminAppointment(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(
+            LoginRepo(
+              AuthApiServices(DioClient()),
+            ),
+          ),
+        ),
+
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            themeMode: ThemeMode.light,
+            routerConfig: router,
+          );
+        },
+      ),
     );
   }
 }

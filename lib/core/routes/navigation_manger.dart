@@ -1,0 +1,138 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:leoclinic_flutter/features/appointments/domain/entities/receipt_appointment_card.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/book_appointment.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_details.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/payment_page.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/review_booking.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/select_type_of_visit.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/upload_file.dart';
+
+import 'package:leoclinic_flutter/features/authentication/presentation/pages/login_screen.dart';
+
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_add_prescription.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/doctor_request.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/pick_a_slot_screen_for_patient.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/doctor/profile_patient_for_doctor.dart';
+import 'package:leoclinic_flutter/features/appointments/presentation/pages/patient/patient_appointment.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/doctor_main.dart';
+import 'package:leoclinic_flutter/features/patient/presentation/pages/patient_main.dart';
+import 'package:leoclinic_flutter/features/admin/presentation/pages/admin_main.dart';
+import 'package:leoclinic_flutter/features/doctor/presentation/pages/patient_info_detail.dart';
+
+final GoRouter router = GoRouter(
+  initialLocation: '/login',
+  routes: [
+    GoRoute(
+      path: '/login',
+      builder: (BuildContext context, GoRouterState state) {
+        return const LoginScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/doctor',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DoctorMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/patient',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/admin',
+      builder: (BuildContext context, GoRouterState state) {
+        return const AdminMainScreen();
+      },
+    ),
+
+    GoRoute(
+      path: '/PatientInfoDetail',
+      builder: (BuildContext context, GoRouterState state) {
+        final extra = state.extra as Map<String, dynamic>;
+        return PatientInfoDetail(
+          patientName: extra['patientName'] as String,
+          patientImage: extra['patientImage'] as String,
+          patientInfo: extra['patientInfo'] as String,
+          patientStatus: extra['patientStatus'] as String,
+        );
+      },
+    ),
+
+    GoRoute(
+      path: '/ProfilePatientForDoctor',
+      builder: (BuildContext context, GoRouterState state) {
+        return const ProfilePatientForDoctor();
+      },
+    ),
+
+    GoRoute(
+      path: '/DoctorAddPrescription',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DoctorAddPrescription();
+      },
+    ),
+
+    GoRoute(
+      path: '/DoctorRequestAppointment',
+      builder: (BuildContext context, GoRouterState state) {
+        return const DoctorRequestAppointment();
+      },
+    ),
+
+    GoRoute(
+      path: '/PickAslotScreen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PickAslotScreen();
+      },
+    ),
+    GoRoute(
+      path: '/PatientAppointment',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientAppointment();
+      },
+    ),
+      GoRoute(
+      path: '/BookAppointment',
+      builder: (BuildContext context, GoRouterState state) {
+        return const BookAppointment();
+      },
+    ),
+        GoRoute(
+      path: '/SelectTypeOfVisitScreen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SelectTypeOfVisitScreen();
+      },
+    ),
+    GoRoute(
+      path: '/PatientDeatilsScreen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PatientDeatilsScreen();
+      },
+    ),
+      GoRoute(
+      path: '/UplaodFile',
+      builder: (BuildContext context, GoRouterState state) {
+        return const UplaodFile();
+      },
+    ),
+ GoRoute(
+      path: '/PaymentPage',
+      builder: (BuildContext context, GoRouterState state) {
+        return const PaymentPage();
+      },
+    ),
+     GoRoute(
+      path: '/ReviewBookingAppointment',
+      builder: (BuildContext context, GoRouterState state) {
+        final appointmentReceiptCard = state.extra as AppointmentReceiptCard;
+        return  ReviewBookingAppointment(appointmentReceiptCard: appointmentReceiptCard,);
+      },
+    ),
+  ],
+);
