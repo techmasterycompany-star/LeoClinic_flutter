@@ -42,7 +42,7 @@ class PickAslotScreen extends StatelessWidget {
                 ),
                 BookASlot(
                   onPressedOfBlueAcion: () {
-                    context.go('/ProfilePatientForDoctor');
+                    context.push('/ProfilePatientForDoctor');
                   },
                   onPressedOfLightBlueAcion: () {
                     GoRouter.of(context).pop();

@@ -21,7 +21,7 @@ import 'package:leoclinic_flutter/features/admin/presentation/pages/admin_main.d
 import 'package:leoclinic_flutter/features/doctor/presentation/pages/patient_info_detail.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/doctor',
+  initialLocation: '/login',
   routes: [
     GoRoute(
       path: '/login',
