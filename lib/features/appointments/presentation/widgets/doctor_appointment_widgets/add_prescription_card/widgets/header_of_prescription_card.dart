@@ -25,26 +25,28 @@ class HeaderOfPrescriptionCard extends StatelessWidget {
             width: 24.w,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 20.w, top: 10.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Add Prescription',
-                style: AppTextStyle.textstyle16.copyWith(
-                  color: AppColors.surfaceDark,
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(left: 20.w, top: 10.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Add Prescription',
+                  style: AppTextStyle.textstyle16.copyWith(
+                    color: AppColors.surfaceDark,
+                  ),
                 ),
-              ),
-              SizedBox(height: 5.h),
-              Text(
-                'Enter prescription details for the patient',
-                style: AppTextStyle.textstyle14.copyWith(
-                  color: AppColors.surfaceDark,
-                  fontWeight: FontWeight.w400,
+                SizedBox(height: 5.h),
+                Text(
+                  'Enter prescription details for the patient',
+                  style: AppTextStyle.textstyle14.copyWith(
+                    color: AppColors.surfaceDark,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

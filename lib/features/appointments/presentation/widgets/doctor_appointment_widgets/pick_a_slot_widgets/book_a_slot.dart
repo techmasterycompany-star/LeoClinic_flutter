@@ -166,7 +166,7 @@ class _BookASlotState extends State<BookASlot> {
           ActionsForCards(
             showiconLightbutton: false,
             showiconDarkbutton: false,
-            labelOfBlueAction: 'Canclled',
+            labelOfBlueAction: 'Cancel',
             labelOflightblueAction: 'Confirm',
             onPressedOfBlueAcion: widget.onPressedOfLightBlueAcion,
             onPressedOfLightBlueAcion: widget.onPressedOfBlueAcion,
