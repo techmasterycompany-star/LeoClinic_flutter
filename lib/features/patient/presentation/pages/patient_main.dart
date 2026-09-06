@@ -21,14 +21,14 @@ class _PatientMainScreenState extends State<PatientMainScreen> {
       label: 'Home',
     ),
         NavigationDestination(
-      icon: Icon(Icons.notifications_outlined),
-      selectedIcon: Icon(Icons.notifications, size: 30),
-      label: 'Notifications',
-    ),
-        NavigationDestination(
       icon: Icon(Icons.calendar_today_outlined),
       selectedIcon: Icon(Icons.calendar_today, size: 30),
       label: 'Appointments',
+    ),
+        NavigationDestination(
+      icon: Icon(Icons.notifications_outlined),
+      selectedIcon: Icon(Icons.notifications, size: 30),
+      label: 'Notifications',
     ),
     NavigationDestination(
       icon: Icon(Icons.person_outline),
@@ -38,8 +38,8 @@ class _PatientMainScreenState extends State<PatientMainScreen> {
   ];
   final List<Widget> _pages = [
     PatientOverview(),
-    Notifications(),
     PatientAppointment(),
+    Notifications(),
     ProfilePage(),
   ];
 

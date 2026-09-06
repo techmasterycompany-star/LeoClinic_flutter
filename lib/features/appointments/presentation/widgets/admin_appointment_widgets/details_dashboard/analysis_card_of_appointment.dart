@@ -67,7 +67,7 @@ class AnalysisAppointmentCard extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 12.h),
+            SizedBox(height: 6.h),
             Text(
               'Appointments',
               style: AppTextStyle.textstyle12

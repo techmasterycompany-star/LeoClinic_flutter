@@ -97,9 +97,19 @@ class _AddPrescriptionCardState extends State<AddPrescriptionCard> {
             SizedBox(height: 10.h),
             NewPrescriptionText(numberController: _numberController),
             SizedBox(height: 20.h),
-            ConfirmedAndCanclledButtons(confirmOnPressed: (){},canclledOnPressed: (){
-              GoRouter.of(context).push("/ProfilePatientForDoctor");
-            },),
+            ConfirmedAndCanclledButtons(
+              confirmOnPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Appointment confirmed'),
+                  ),
+                );
+                context.go('/doctor');
+              },
+              canclledOnPressed: () {
+                GoRouter.of(context).pop();
+              },
+            ),
           ],
         ),
       ),

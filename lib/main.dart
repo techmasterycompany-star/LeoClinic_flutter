@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:leoclinic_flutter/core/network/dio-client.dart';
 import 'package:leoclinic_flutter/core/network/dio_client.dart';
 import 'package:leoclinic_flutter/core/routes/navigation_manger.dart';
 import 'package:leoclinic_flutter/core/theme/app_theme.dart';

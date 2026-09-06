@@ -3,6 +3,7 @@ import 'package:leoclinic_flutter/core/utils/navbar.dart';
 import 'package:leoclinic_flutter/core/widgets/profile_page.dart';
 import 'package:leoclinic_flutter/features/appointments/presentation/pages/admin/admin_appointment.dart';
 
+import '../../../doctor/presentation/pages/Notifications.dart';
 import 'overview.dart';
 
 class AdminMainScreen extends StatefulWidget {
@@ -26,7 +27,12 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
       label: 'Appointments',
     ),
     NavigationDestination(
-      icon: Icon(Icons.person),
+      icon: Icon(Icons.notifications_outlined),
+      selectedIcon: Icon(Icons.notifications, size: 30),
+      label: 'Notifications',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.person_outline),
       selectedIcon: Icon(Icons.person, size: 30),
       label: 'Profile',
     ),
@@ -34,6 +40,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
   final List<Widget> _pages = [
     AdminOverview(),
     AdminAppointment(),
+    Notifications(),
     ProfilePage(),
   ];
   @override

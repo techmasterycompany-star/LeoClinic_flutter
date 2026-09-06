@@ -13,7 +13,6 @@ class HeaderOfPrescriptionSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        spacing: 241,
         children: [
           Text(
             title,

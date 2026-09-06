@@ -19,8 +19,8 @@ class PickAslotScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TopHeadline(title: 'Appointments',numofPad: 73),
-               SizedBox(height: 30.h),
+                TopHeadline(title: 'Appointments', numofPad: 73),
+                SizedBox(height: 30.h),
                 Center(
                   child: PatientDetailsCard(
                     name: 'Asmaa Osman',
@@ -33,11 +33,26 @@ class PickAslotScreen extends StatelessWidget {
                     upcomingCount: 1,
                   ),
                 ),
-                PatientIntakeBriefCard(reasonForVisit: 'Chest pain and shortness of breath',
-                 symptomsReported: 'Chest pain', durationOfSymptoms: 'Two Weeks',
-                  clinicalNotes: 'Type 2 Diabetes, Tooth extraction under general anesthesia',),
-                  BookASlot(onPressedOfBlueAcion: () {  }, onPressedOfLightBlueAcion: () { GoRouter.of(context).push("/DoctorRequestAppointment"); },),
-                  ]),
-          ))));
+                PatientIntakeBriefCard(
+                  reasonForVisit: 'Chest pain and shortness of breath',
+                  symptomsReported: 'Chest pain',
+                  durationOfSymptoms: 'Two Weeks',
+                  clinicalNotes:
+                      'Type 2 Diabetes, Tooth extraction under general anesthesia',
+                ),
+                BookASlot(
+                  onPressedOfBlueAcion: () {
+                    context.go('/ProfilePatientForDoctor');
+                  },
+                  onPressedOfLightBlueAcion: () {
+                    GoRouter.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
