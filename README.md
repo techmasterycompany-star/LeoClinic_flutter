@@ -46,3 +46,60 @@ lib/
 │   └── profile/
 ├── home.dart
 └── main.dart
+```
+
+---
+
+## Contributors
+
+A huge thank you to all the people who have contributed to this project!
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/techmasterycompany-star">
+        <img src="https://avatars.githubusercontent.com/u/311553323?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Tech Mastery</b></sub>
+      </a>
+      <br />
+      <sub>Project Owner</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/asaerxd6767">
+        <img src="https://avatars.githubusercontent.com/u/90705181?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Asser Mohammed</b></sub>
+      </a>
+      <br />
+      <sub>35 commits</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/omarbadawiii-91">
+        <img src="https://avatars.githubusercontent.com/u/209548370?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Omar Badawy</b></sub>
+      </a>
+      <br />
+      <sub>32 commits</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ahmed9126">
+        <img src="https://avatars.githubusercontent.com/u/268993813?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Ahmed Salehin</b></sub>
+      </a>
+      <br />
+      <sub>12 commits</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/zezopm300">
+        <img src="https://avatars.githubusercontent.com/u/215159878?v=4" width="100px;" alt=""/>
+        <br />
+        <sub><b>Zeyad Mohammed</b></sub>
+      </a>
+      <br />
+      <sub>9 commits</sub>
+    </td>
+  </tr>
+</table>
